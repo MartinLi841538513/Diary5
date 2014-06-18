@@ -32,6 +32,7 @@
 		2273D66A19499DED00409B84 /* ic_tab_artists_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2273D66819499DED00409B84 /* ic_tab_artists_unselected@2x.png */; };
 		2273D66D19499E5C00409B84 /* ic_tab_playlists_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2273D66B19499E5C00409B84 /* ic_tab_playlists_selected@2x.png */; };
 		2273D66E19499E5C00409B84 /* ic_tab_playlists_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2273D66C19499E5C00409B84 /* ic_tab_playlists_unselected@2x.png */; };
+		22D3ABB419518748003DFCC9 /* Li_common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3ABB319518748003DFCC9 /* Li_common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		2273D66819499DED00409B84 /* ic_tab_artists_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_tab_artists_unselected@2x.png"; sourceTree = "<group>"; };
 		2273D66B19499E5C00409B84 /* ic_tab_playlists_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_tab_playlists_selected@2x.png"; sourceTree = "<group>"; };
 		2273D66C19499E5C00409B84 /* ic_tab_playlists_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_tab_playlists_unselected@2x.png"; sourceTree = "<group>"; };
+		22D3ABB319518748003DFCC9 /* Li_common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Li_common.swift; path = tool/Li_common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 		2273D63A194982AD00409B84 /* SwiftStudy3 */ = {
 			isa = PBXGroup;
 			children = (
+				22D3ABB219518713003DFCC9 /* tool */,
 				2209A744194AF97000DEA18B /* Model */,
 				2273D66519499DE200409B84 /* source */,
 				2273D65A1949904200409B84 /* diary */,
@@ -199,6 +202,14 @@
 				2273D66819499DED00409B84 /* ic_tab_artists_unselected@2x.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		22D3ABB219518713003DFCC9 /* tool */ = {
+			isa = PBXGroup;
+			children = (
+				22D3ABB319518748003DFCC9 /* Li_common.swift */,
+			);
+			name = tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,6 +330,7 @@
 				2273D640194982AD00409B84 /* ViewController.swift in Sources */,
 				2209A73F194AAB1D00DEA18B /* DiaryListTableViewController.swift in Sources */,
 				2209A730194A92CD00DEA18B /* DiaryModefyViewController.swift in Sources */,
+				22D3ABB419518748003DFCC9 /* Li_common.swift in Sources */,
 				2209A743194ABEC600DEA18B /* DiaryCell.swift in Sources */,
 				2273D63E194982AD00409B84 /* AppDelegate.swift in Sources */,
 				2209A746194AF9A500DEA18B /* Diary.swift in Sources */,

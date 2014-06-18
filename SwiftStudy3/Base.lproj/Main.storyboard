@@ -59,7 +59,7 @@
                                 <rect key="frame" x="16" y="7" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <segue destination="GRN-SY-fx8" kind="push" id="HC1-E9-h2M"/>
+                                    <segue destination="GRN-SY-fx8" kind="push" id="3Hh-wZ-hWU"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -108,7 +108,7 @@
         <!--Diary Modefy View Controller - 编写日记-->
         <scene sceneID="9z4-cz-Sw0">
             <objects>
-                <viewController title="编写日记" hidesBottomBarWhenPushed="YES" id="GRN-SY-fx8" customClass="DiaryModefyViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiaryModefyViewController" title="编写日记" hidesBottomBarWhenPushed="YES" id="GRN-SY-fx8" customClass="DiaryModefyViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z2r-dE-hv9">
                         <rect key="frame" x="1" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,21 +128,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dNB-uu-6DB">
-                                <rect key="frame" x="108" y="73" width="30" height="30"/>
+                                <rect key="frame" x="120" y="73" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="天气">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xab-IR-ZA1">
-                                <rect key="frame" x="89" y="111" width="30" height="30"/>
+                                <rect key="frame" x="101" y="111" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="心情">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Il-qU-iAM">
-                                <rect key="frame" x="141" y="111" width="30" height="30"/>
+                                <rect key="frame" x="153" y="111" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="定位">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -162,6 +162,16 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EnS-Yh-ExK">
+                                <rect key="frame" x="8" y="82" width="86" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="2014-05-11">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="date:" destination="GRN-SY-fx8" eventType="touchUpInside" id="CDs-gP-3s6"/>
+                                </connections>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="T1V-Sp-Zne">
                                 <rect key="frame" x="20" y="149" width="280" height="307"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -169,19 +179,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EnS-Yh-ExK">
-                                <rect key="frame" x="14" y="82" width="49" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="日期">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="编辑日记" id="Kaa-a2-GQd">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="Lvv-RK-YMc"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dateButton" destination="EnS-Yh-ExK" id="vR6-E6-v7U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zc-re-cOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

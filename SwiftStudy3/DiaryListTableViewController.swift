@@ -54,7 +54,11 @@ class DiaryListTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!){
-        println("11")
+        var storyboard:UIStoryboard = UIStoryboard(name:"Main", bundle:nil) //Main对应storyboard的名字
+        var diaryDetail:DiaryModefyViewController = DiaryModefyViewController() //初始化稍后即将显示的那个viewController
+        diaryDetail = storyboard.instantiateViewControllerWithIdentifier("DiaryModefyViewController") as DiaryModefyViewController  //关联viewController对应storyboard的xib。其中Identifier对应Main.storyboard中的xib的storyboardIdentify
+        self.navigationController.pushViewController(diaryDetail,
+            animated: true)   //这是导航的push切换方式
     }
     /*
     // Override to support conditional editing of the table view.
