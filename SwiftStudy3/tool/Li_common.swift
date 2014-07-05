@@ -9,11 +9,11 @@
 import Foundation
 import UIKit
 
-class LI_common{
+class Li_common{
     /*
     快速创建一种常用的button，state：normal，  backgroundcolor：white，  type：system    ControlEvents:TouchUpInside
     */
-    func createButton(title:String!,x:CGFloat,y:CGFloat,width:CGFloat,height:CGFloat,target: AnyObject!, action: Selector) ->UIButton{
+    func Li_createButton(title:String!,x:CGFloat,y:CGFloat,width:CGFloat,height:CGFloat,target: AnyObject!, action: Selector) ->UIButton{
         var buttonRect:CGRect = CGRect(x:x, y:y, width:width, height:height)
         var button:UIButton = UIButton.buttonWithType(.System) as UIButton
         button.setTitle(title, forState: UIControlState.Normal)

@@ -10,15 +10,16 @@ import UIKit
 
 class DiaryListTableViewController: UITableViewController {
 
+    var diaries:NSArray = NSArray()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        var diaryList:String = NSBundle.mainBundle().pathForResource("DiaryList", ofType:"plist")
+//        diaries = NSArray(contentsOfFile:diaryList)
+        let diaryDao:DiaryService = DiaryService()
+        diaries = diaryDao.allDiaries()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,11 +38,12 @@ class DiaryListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 5
+        return diaries.count
     }
 
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath?) -> UITableViewCell? {
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
+        
         //cell标志符，使cell能够重用（如果不需要重用，是不是可以有更简单的配置方法？）
         let indentifier:String = "DiaryCell"
         //注册自定义cell到tableview中，并设置cell标识符为indentifier（nibName对应UItableviewcell xib的名字）
@@ -49,7 +51,12 @@ class DiaryListTableViewController: UITableViewController {
         tableView.registerNib(nib, forCellReuseIdentifier: indentifier)
         //从tableview中获取标识符为papercell的cell
         var cell:DiaryCell = tableView.dequeueReusableCellWithIdentifier(indentifier) as DiaryCell
+        
         //设置单元格属性
+        let row:Int = indexPath.row
+        let diary:Diary = diaries.objectAtIndex(row) as Diary
+        cell.time.text = diary.date
+        cell.diaryContent.text = diary.content
         return cell
     }
     

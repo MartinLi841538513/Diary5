@@ -8,15 +8,20 @@
 
 import Foundation
 
-struct Diary{
-    var date:String?
-    var weather:String?
-    var mood:String?
-    var latitude:String?
-    var longitude:String?
-    var imgPath:String?
-    var voicePath:String?
+class Diary{
+    var id:String = ""
+    var date:String = ""
+    var weather:String = ""
+    var mood:String = ""
+    var latitude:String = ""
+    var longitude:String = ""
+    var photos:String = ""
+    var voicePath:String = ""
+    var content:String = ""
     
+    init(){
+    
+    }
 }
 
 

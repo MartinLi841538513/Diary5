@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CXd-cb-K8n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CXd-cb-K8n">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -56,7 +57,7 @@
                     <navigationItem key="navigationItem" title="日记列表" id="KPR-O7-rlk">
                         <barButtonItem key="leftBarButtonItem" id="SYm-ad-6rd">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" id="lNj-Ww-KrE">
-                                <rect key="frame" x="16" y="7" width="22" height="22"/>
+                                <rect key="frame" x="16" y="11" width="22" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <segue destination="GRN-SY-fx8" kind="push" id="3Hh-wZ-hWU"/>
@@ -110,7 +111,7 @@
             <objects>
                 <viewController storyboardIdentifier="DiaryModefyViewController" title="编写日记" hidesBottomBarWhenPushed="YES" id="GRN-SY-fx8" customClass="DiaryModefyViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z2r-dE-hv9">
-                        <rect key="frame" x="1" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6x0-wU-bUk">
@@ -183,10 +184,16 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="编辑日记" id="Kaa-a2-GQd">
-                        <barButtonItem key="rightBarButtonItem" title="保存" id="Lvv-RK-YMc"/>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="Lvv-RK-YMc">
+                            <connections>
+                                <action selector="save:" destination="GRN-SY-fx8" id="8bc-Uy-Bes"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateButton" destination="EnS-Yh-ExK" id="vR6-E6-v7U"/>
+                        <outlet property="content" destination="T1V-Sp-Zne" id="AoZ-Bz-QUs"/>
+                        <outlet property="dateButton" destination="EnS-Yh-ExK" id="aV8-WQ-lY9"/>
+                        <outlet property="saveAndModefyButton" destination="Lvv-RK-YMc" id="Bjk-XJ-fHM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zc-re-cOv" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -10,23 +10,32 @@ import UIKit
 
 class DiaryModefyViewController: UIViewController,UIActionSheetDelegate{
     @IBOutlet var dateButton : UIButton = nil
+    @IBOutlet var content : UITextView = nil
+    @IBOutlet var saveAndModefyButton : UIBarButtonItem = nil
 
     var datePicker:UIDatePicker = UIDatePicker()
     var alertview:UIView! = UIView()
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.、
+        // Do any additional setup after loading the view.
         //设置默认日期为今天
         var currentDate:String = dateString(NSDate())
         dateButton.setTitle(currentDate, forState: UIControlState.Normal)
-
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func save(sender : AnyObject) {
+        let diaryService:DiaryService = DiaryService()
+        var diary:Diary = Diary()
+        diary.date = dateButton.currentTitle
+        diary.content = self.content.text
+        diaryService.addDiary(diary)
     }
     
     @IBAction func date(sender : AnyObject) {
@@ -47,9 +56,9 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate{
         datePicker.frame = CGRect(x:10,y:deviceHeight-297,width:deviceWidth-10*2,height:216)
         
         //设置 确定 和 取消 按钮
-        var li_common:LI_common = LI_common()
-        var selectedButton:UIButton = li_common.createButton("确定",x:10,y:deviceHeight-80,width:deviceWidth-10*2,height:35,target:self, action: Selector("selectedAction"))
-        var cancelButton:UIButton = li_common.createButton("取消",x:10,y:deviceHeight-40,width:deviceWidth-10*2,height:35,target:self, action: Selector("cancelAction"))
+        var li_common:Li_common = Li_common()
+        var selectedButton:UIButton = li_common.Li_createButton("确定",x:10,y:deviceHeight-80,width:deviceWidth-10*2,height:35,target:self, action: Selector("selectedAction"))
+        var cancelButton:UIButton = li_common.Li_createButton("取消",x:10,y:deviceHeight-40,width:deviceWidth-10*2,height:35,target:self, action: Selector("cancelAction"))
         
         alertview.addSubview(datePicker)
         alertview.addSubview(selectedButton)
