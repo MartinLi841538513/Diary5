@@ -10,24 +10,27 @@ import Foundation
 let DBNAME = "diary.sqlite"
 
 class DiaryDao{
-    let filePath:String = NSBundle.mainBundle().pathForResource("DiaryList", ofType:"plist")
     var db:COpaquePointer = nil
 
     let tableName:String = "diary"
     //新增一篇日记
     func addDiary(diary:Diary){
         if self.openSqlite() == true{
-            var sql:String = "insert into '%@' (date,weather,mood,latitude,longitude,photos,voicePath,content) values ('%@','%@','%@','%@','%@','%@','%@','%@'),"+self.tableName+","+diary.date+","+diary.weather+","+diary.mood+","+diary.latitude+","+diary.longitude+","+diary.photos+","+diary.voicePath+","+diary.content
-            self.execSql(sql)
+            var sql:String = "insert into diary(date,weather,mood,latitude,longitude,photos,voicePath,content) values('\(diary.date)','\(diary.weather)','\(diary.mood)','\(diary.latitude)','\(diary.longitude)','\(diary.photos)','\(diary.voicePath)','\(diary.content)')"
+            println(sql)
+            if self.openSqlite() == true{
+                self.execute(sql)
+            }
+            
         }
     }
-    
-    func deleteDiary(diary:Diary){
-        if self.openSqlite() == true{
-            var sql:String = "insert into '%@' (date,weather,mood,l8415atitude,longitude,photos,voicePath,content) values ('%@','%@','%@','%@','%@','%@','%@','%@'),"+self.tableName+","+diary.date+","+diary.weather+","+diary.mood+","+diary.latitude+","+diary.longitude+","+diary.photos+","+diary.voicePath+","+diary.content
-            self.execSql(sql)
-        }
-    }
+
+//    func deleteDiary(diary:Diary){
+//        if self.openSqlite() == true{
+//            var sql:String = "insert into '%@' (date,weather,mood,l8415atitude,longitude,photos,voicePath,content) values ('%@','%@','%@','%@','%@','%@','%@','%@'),"+self.tableName+","+diary.date+","+diary.weather+","+diary.mood+","+diary.latitude+","+diary.longitude+","+diary.photos+","+diary.voicePath+","+diary.content
+//            self.execSql(sql)
+//        }
+//    }
 
     
     //得到所有的日记
@@ -41,29 +44,30 @@ class DiaryDao{
                     var diary:Diary = Diary()
                     var column_count = sqlite3_column_count(statement)
                     while column_count>0 {
-                        var text:UnsafePointer<CUnsignedChar> = sqlite3_column_text(statement,column_count-1)
-                        var value = String.fromCString(CString(text))
+                        let value = String.fromCString(CString(sqlite3_column_text(statement,column_count-1)))
                         
-                        if column_count==1{
+                        switch column_count {
+                        case 1:
                             diary.id = value
-                        }else if column_count == 2{
+                        case 2:
                             diary.date = value
-                        }else if column_count == 3{
+                        case 3:
                             diary.weather = value
-                        }else if column_count == 4{
+                        case 4:
                             diary.mood = value
-                        }else if column_count == 5{
+                        case 5:
                             diary.latitude = value
-                        }else if column_count == 6{
+                        case 6:
                             diary.longitude = value
-                        }else if column_count == 7{
+                        case 7:
                             diary.photos = value
-                        }else if column_count == 8{
+                        case 8:
                             diary.voicePath = value
-                        }else if column_count == 9{
+                        case 9:
                             diary.content = value
+                        default:
+                            println("")
                         }
-
                         column_count = column_count-1
                     }
                     println(diary.weather)
@@ -86,6 +90,7 @@ class DiaryDao{
         var doucumentsDirectiory:String = storeFilePath.objectAtIndex(0) as String
         var path:String = doucumentsDirectiory.stringByAppendingPathComponent(DBNAME)
         var file:NSFileManager = NSFileManager.defaultManager()
+        println(path)
         if (file.fileExistsAtPath(path)){
             println("\(DBNAME)找到")
         }else{
@@ -99,14 +104,23 @@ class DiaryDao{
             return true
         }
     }
-    
-    func execSql(sql:String){
-        var err:COpaquePointer = nil
-        if sqlite3_exec(self.db,(sql as NSString).UTF8String,NULL,NULL,&err){
-            sqlite3_close(self.db)
-            println("sql语句执行失败")
+
+    func execute(sql:String){
+        var result:CInt = 0
+        var cSql:CString = sql.bridgeToObjectiveC().UTF8String
+        var stmt:COpaquePointer = nil
+        result = sqlite3_prepare_v2(self.db,cSql,-1,&stmt,nil)
+        if result != SQLITE_OK{
+            println("准备执行sql失败")
+        }else{
+            println("准备执行sql失败")
+            result = sqlite3_step(stmt)
+            if result != SQLITE_OK && result != SQLITE_DONE{
+                println("执行sql失败")
+            }else{
+                println("执行sql成功")
+            }
         }
-        
     }
 
 }

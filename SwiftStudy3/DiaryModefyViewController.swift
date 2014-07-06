@@ -12,6 +12,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate{
     @IBOutlet var dateButton : UIButton = nil
     @IBOutlet var content : UITextView = nil
     @IBOutlet var saveAndModefyButton : UIBarButtonItem = nil
+    var status:Int = 0 //0是编辑状态，1是详情状态
 
     var datePicker:UIDatePicker = UIDatePicker()
     var alertview:UIView! = UIView()
