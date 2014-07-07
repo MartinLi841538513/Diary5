@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DiaryListTableViewController: UITableViewController {
+class DiaryListTableViewController: UITableViewController{
 
-    var diaries:NSArray = NSArray()
+    var diaries:NSMutableArray = NSMutableArray()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +19,9 @@ class DiaryListTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool){
         super.viewWillAppear(animated)
-        let diaryDao:DiaryService = DiaryService()
-        diaries = diaryDao.allDiaries()
-        self.tableView.reloadData()
+        self.loadDiaries()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -40,7 +38,7 @@ class DiaryListTableViewController: UITableViewController {
     override func tableView(tableView: UITableView?, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return diaries.count
+        return self.diaries.count
     }
 
     
@@ -56,7 +54,7 @@ class DiaryListTableViewController: UITableViewController {
         
         //设置单元格属性
         let row:Int = indexPath.row
-        let diary:Diary = diaries.objectAtIndex(row) as Diary
+        let diary:Diary = self.diaries.objectAtIndex(row) as Diary
         cell.time.text = diary.date
         cell.diaryContent.text = diary.content
         return cell
@@ -90,25 +88,27 @@ class DiaryListTableViewController: UITableViewController {
     
     
     
-    /*
+    
     // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView?, canEditRowAtIndexPath indexPath: NSIndexPath?) -> Bool {
+    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
+    
     // Override to support editing the table view.
-    override func tableView(tableView: UITableView?, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath?) {
+    override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            let row:Int = indexPath.row
+            let diary:Diary = self.diaries.objectAtIndex(row) as Diary
+            self.diaries.removeObjectAtIndex(row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let diaryService:DiaryService = DiaryService()
+            diaryService.deleteDiary(diary)
+        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
@@ -135,4 +135,10 @@ class DiaryListTableViewController: UITableViewController {
     }
     */
 
+    //加载所有日记
+    func loadDiaries(){
+        let diaryDao:DiaryService = DiaryService()
+        self.diaries = diaryDao.allDiaries()
+        self.tableView.reloadData()
+    }
 }

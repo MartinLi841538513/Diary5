@@ -29,8 +29,8 @@ class DiaryService{
         return self.diaryDao.theLatestDiary()
     }
     //得到所有的日记
-    func allDiaries() ->NSArray{
-        let diaryList:NSArray = self.diaryDao.allDiaries() as NSArray
+    func allDiaries() ->NSMutableArray{
+        let diaryList:NSMutableArray = self.diaryDao.allDiaries()
         return diaryList
     }
     //删除一篇日记
