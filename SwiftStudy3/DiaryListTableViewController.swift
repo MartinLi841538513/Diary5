@@ -14,12 +14,16 @@ class DiaryListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let diaryDao:DiaryService = DiaryService()
-        diaries = diaryDao.allDiaries()
         
     }
-
+    
+    override func viewWillAppear(animated: Bool){
+        super.viewWillAppear(animated)
+        let diaryDao:DiaryService = DiaryService()
+        diaries = diaryDao.allDiaries()
+        self.tableView.reloadData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

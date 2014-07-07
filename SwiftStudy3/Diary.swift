@@ -9,7 +9,7 @@
 import Foundation
 
 class Diary{
-    var id:String = ""
+    var id:Integer?
     var date:String = ""
     var weather:String = ""
     var mood:String = ""

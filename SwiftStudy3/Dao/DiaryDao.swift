@@ -29,62 +29,96 @@ class DiaryDao{
             self.execute(sql)
         }
     }
+    
+    //修改一篇日记
+    func updateDiary(diary:Diary){
+        if self.openSqlite() == true{
+            var sql:String = "update diary set date = '\(diary.date)' , weather = '\(diary.weather)' , mood = '\(diary.mood)' , latitude = '\(diary.latitude)' , longitude = '\(diary.longitude)' , photos = '\(diary.photos)' , voicePath = '\(diary.voicePath)' , content = '\(diary.content)' where id = \(diary.id)"
+            println(sql)
+            self.execute(sql)
+        }
+    }
+    //删除一篇日记
+    func deleteDiary(diary:Diary){
+        if self.openSqlite() == true{
+            var sql:String = "delete from \(self.tableName) where id = \(diary.id)"
+            self.execute(sql)
+        }
+    }
 
-//    func deleteDiary(diary:Diary){
-//        if self.openSqlite() == true{
-//            var sql:String = "insert into '%@' (date,weather,mood,l8415atitude,longitude,photos,voicePath,content) values ('%@','%@','%@','%@','%@','%@','%@','%@'),"+self.tableName+","+diary.date+","+diary.weather+","+diary.mood+","+diary.latitude+","+diary.longitude+","+diary.photos+","+diary.voicePath+","+diary.content
-//            self.execSql(sql)
-//        }
-//    }
-
+    //得到刚刚创建的日记（也就是最新的日记，也就是最后一篇日记）
+    func theLatestDiary()->Diary{
+        var diary:Diary = Diary()
+        
+        if self.openSqlite() == true{
+            let sql:NSString = "select *from diary order by id desc limit 1"
+            var statement:COpaquePointer = nil
+            if sqlite3_prepare_v2(self.db,sql.UTF8String,-1,&statement,nil) == SQLITE_OK{
+                while sqlite3_step(statement) == SQLITE_ROW{
+                    diary = transformToDiary(statement)
+                }
+            }else{
+                println("查询准备失败")
+            }
+        }
+        
+        return diary
+    }
     
     //得到所有的日记
     func allDiaries() ->NSMutableArray{
         var diaryList:NSMutableArray = NSMutableArray()
+        
         if self.openSqlite() == true{
             let sql:NSString = "select * from "+self.tableName
             var statement:COpaquePointer = nil
             if sqlite3_prepare_v2(self.db,sql.UTF8String,-1,&statement,nil) == SQLITE_OK{
                 while sqlite3_step(statement) == SQLITE_ROW{
-                    var diary:Diary = Diary()
-                    var column_count = sqlite3_column_count(statement)
-                    while column_count>0 {
-                        let value = String.fromCString(CString(sqlite3_column_text(statement,column_count-1)))
-                        
-                        switch column_count {
-                        case 1:
-                            diary.id = value
-                        case 2:
-                            diary.date = value
-                        case 3:
-                            diary.weather = value
-                        case 4:
-                            diary.mood = value
-                        case 5:
-                            diary.latitude = value
-                        case 6:
-                            diary.longitude = value
-                        case 7:
-                            diary.photos = value
-                        case 8:
-                            diary.voicePath = value
-                        case 9:
-                            diary.content = value
-                        default:
-                            println("")
-                        }
-                        column_count = column_count-1
-                    }
-                    println(diary.weather)
+                    var diary = self.transformToDiary(statement)
                     diaryList.addObject(diary)
                 }
             }else{
                 println("查询准备失败")
             }
-
         }
         
         return diaryList
+    }
+    
+    /*
+        数据库得到数据转化成日记对象
+    */
+    func transformToDiary(statement:COpaquePointer)->Diary{
+        var diary:Diary = Diary()
+        var column_count = sqlite3_column_count(statement)
+        while column_count>0 {
+            let value = String.fromCString(CString(sqlite3_column_text(statement,column_count-1)))
+            
+            switch column_count {
+            case 1:
+                diary.id = value.toInt()
+            case 2:
+                diary.date = value
+            case 3:
+                diary.weather = value
+            case 4:
+                diary.mood = value
+            case 5:
+                diary.latitude = value
+            case 6:
+                diary.longitude = value
+            case 7:
+                diary.photos = value
+            case 8:
+                diary.voicePath = value
+            case 9:
+                diary.content = value
+            default:
+                println("")
+            }
+            column_count = column_count-1
+        }
+        return diary
     }
     
     /*
@@ -110,20 +144,23 @@ class DiaryDao{
         }
     }
 
-    func execute(sql:String){
+    func execute(sql:String)->Bool{
         var result:CInt = 0
         var cSql:CString = sql.bridgeToObjectiveC().UTF8String
         var stmt:COpaquePointer = nil
         result = sqlite3_prepare_v2(self.db,cSql,-1,&stmt,nil)
         if result != SQLITE_OK{
             println("准备执行sql失败")
+            return false
         }else{
             println("准备执行sql成功")
             result = sqlite3_step(stmt)
             if result != SQLITE_OK && result != SQLITE_DONE{
                 println("执行sql失败")
+                return false
             }else{
                 println("执行sql成功")
+                return true
             }
         }
     }

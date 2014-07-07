@@ -20,11 +20,22 @@ class DiaryService{
     func addDiary(diary:Diary){
         self.diaryDao.addDiary(diary)
     }
-    
+    //修改一篇日记
+    func updateDiary(diary:Diary){
+        self.diaryDao.updateDiary(diary)
+    }
+    //得到最新的那片日记
+    func theLatestDiary()->Diary{
+        return self.diaryDao.theLatestDiary()
+    }
     //得到所有的日记
     func allDiaries() ->NSArray{
         let diaryList:NSArray = self.diaryDao.allDiaries() as NSArray
         return diaryList
+    }
+    //删除一篇日记
+    func deleteDiary(diary:Diary){
+        self.diaryDao.deleteDiary(diary)
     }
 
     /*

@@ -6,9 +6,10 @@
 //  Copyright (c) 2014年 dongway. All rights reserved.
 //
 /*
-
-    0:编辑模式
+    status:
+    0:新增模式
     1:日记明细模式
+    2:修改模式
 */
 import UIKit
 
@@ -18,7 +19,8 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     @IBOutlet var content : UITextView = nil
     @IBOutlet var saveAndModefyButton : UIBarButtonItem = nil
     var menuBar:UIMenuBar = UIMenuBar()
-    var status:Int = 0 //0是编辑状态，1是详情状态
+    var fontColor:UIColor = UIColor()
+    var status:Int = 0
     
     var diary:Diary = Diary()
 
@@ -28,17 +30,13 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //0:日记编辑模式  1:日记明细模式
+        self.fontColor = self.dateButton.currentTitleColor
+        
+        //0:日记新增模式  1:日记明细模式
         if self.status == 0{
-            //设置默认日期为今天
-            var currentDate:String = dateString(NSDate())
-            dateButton.setTitle(currentDate, forState: UIControlState.Normal)
-            self.modefyModeSet()
+            self.addModeSet()
         }else if self.status == 1{
-            self.title = self.diary.id
-            self.content.text = self.diary.content
-            self.dateButton.setTitle(self.diary.date,forState:UIControlState.Normal)
-            self.detailModeSet()
+            self.detailModeSet(self.diary)
         }
     }
     
@@ -47,34 +45,48 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         // Dispose of any resources that can be recreated.
     }
     
-    //编辑状态模式参数设置
-    func modefyModeSet(){
+    //新增状态模式参数设置
+    func addModeSet(){
         self.status = 0
-        self.saveAndModefyButton.title = "保存"
-        self.title = "编辑日记"
-        self.content.editable = true
+        self.basicModefyModeSet()
+        //设置默认日期为今天
+        var currentDate:String = dateString(NSDate())
+        self.dateButton.setTitle(currentDate, forState: UIControlState.Normal)
     }
-    
     //日记明细模式参数设置
-    func detailModeSet(){
+    func detailModeSet(diary:Diary){
         self.status = 1
         self.saveAndModefyButton.title = "更多"
         self.title = "日记详情"
+        self.content.text = self.diary.content
+        self.dateButton.setTitle(self.diary.date,forState:UIControlState.Normal)
         self.content.editable = false
+        self.dateButton.enabled = false
+        self.dateButton.setTitleColor(self.fontColor, forState: UIControlState.Normal)
     }
-    
+    //修改状态模式参数设置
+    func updateModeSet(){
+        self.status = 2
+        self.basicModefyModeSet()
+    }
+    func basicModefyModeSet(){
+        self.saveAndModefyButton.title = "保存"
+        self.title = "编辑日记"
+        self.content.editable = true
+        self.dateButton.enabled = true
+    }
+
+    /*
+        0,2:点击保存
+        1:点击更多
+    */
     @IBAction func save(sender : AnyObject) {
-        /*
-            0:点击保存
-            1:点击更多
-        */
         if self.status == 0{
             let diaryService:DiaryService = DiaryService()
-            var diary:Diary = Diary()
-            diary.date = dateButton.currentTitle
-            diary.content = self.content.text
+            var diary:Diary = self.currentDiary()
             diaryService.addDiary(diary)
-            self.detailModeSet()
+            self.diary = diaryService.theLatestDiary()//这样就能或得到diary的id，那么就可以根据id修改这片新增的日记
+            self.detailModeSet(self.diary)
         }else if self.status == 1{
             var menuItem1:UIMenuBarItem = UIMenuBarItem(title:"编辑",target:self,image:UIImage(named:"modify.png"),action:Selector("modefyDiary:"))
             var menuItem2:UIMenuBarItem = UIMenuBarItem(title:"删除",target:self,image:UIImage(named:"modify.png"),action:Selector("deleteDiary:"))
@@ -84,13 +96,28 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
             self.menuBar.delegate = self
             self.menuBar.items = items
             self.menuBar.show()
+        }else if self.status == 2{
+            let diaryService:DiaryService = DiaryService()
+            var diary:Diary = self.currentDiary()
+            diaryService.updateDiary(diary)
+            self.detailModeSet(diary)
         }
     }
     
+    //获取当前日记对象
+    func currentDiary() ->Diary{
+        var diary:Diary = Diary()
+        diary = self.diary
+        diary.date = dateButton.currentTitle
+        diary.content = self.content.text
+        return diary
+    }
+    
     /*
-        编辑日记
+        编辑（修改）日记
     */
     func modefyDiary(sender:AnyObject){
+        self.updateModeSet()
         self.menuBar.dismiss()
     }
     
@@ -98,7 +125,10 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         删除日记
     */
     func deleteDiary(sender:AnyObject){
+        let diaryService:DiaryService = DiaryService()
+        diaryService.deleteDiary(self.currentDiary())
         self.menuBar.dismiss()
+        self.navigationController.popViewControllerAnimated(true)
     }
     
     /*
