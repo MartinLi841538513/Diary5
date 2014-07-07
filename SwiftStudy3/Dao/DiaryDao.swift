@@ -13,15 +13,20 @@ class DiaryDao{
     var db:COpaquePointer = nil
 
     let tableName:String = "diary"
+    
+    //创建数据库表
+    func createTable(){
+        if self.openSqlite() == true{
+            var sql:String = "CREATE TABLE \(self.tableName) ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'date' TEXT NOT NULL, 'weather' TEXT NOT NULL, 'mood' TEXT NOT NULL, 'latitude' TEXT NOT NULL, 'longitude' TEXT NOT NULL, 'photos' TEXT NOT NULL, 'voicePath' TEXT NOT NULL, 'content' TEXT NOT NULL)"
+            self.execute(sql)
+        }
+    }
+    
     //新增一篇日记
     func addDiary(diary:Diary){
         if self.openSqlite() == true{
             var sql:String = "insert into diary(date,weather,mood,latitude,longitude,photos,voicePath,content) values('\(diary.date)','\(diary.weather)','\(diary.mood)','\(diary.latitude)','\(diary.longitude)','\(diary.photos)','\(diary.voicePath)','\(diary.content)')"
-            println(sql)
-            if self.openSqlite() == true{
-                self.execute(sql)
-            }
-            
+            self.execute(sql)
         }
     }
 
@@ -113,7 +118,7 @@ class DiaryDao{
         if result != SQLITE_OK{
             println("准备执行sql失败")
         }else{
-            println("准备执行sql失败")
+            println("准备执行sql成功")
             result = sqlite3_step(stmt)
             if result != SQLITE_OK && result != SQLITE_DONE{
                 println("执行sql失败")

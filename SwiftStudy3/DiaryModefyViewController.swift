@@ -5,14 +5,22 @@
 //  Created by dongway on 14-6-13.
 //  Copyright (c) 2014年 dongway. All rights reserved.
 //
+/*
 
+    0:编辑模式
+    1:日记明细模式
+*/
 import UIKit
 
-class DiaryModefyViewController: UIViewController,UIActionSheetDelegate{
+class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBarDelegate{
+    
     @IBOutlet var dateButton : UIButton = nil
     @IBOutlet var content : UITextView = nil
     @IBOutlet var saveAndModefyButton : UIBarButtonItem = nil
+    var menuBar:UIMenuBar = UIMenuBar()
     var status:Int = 0 //0是编辑状态，1是详情状态
+    
+    var diary:Diary = Diary()
 
     var datePicker:UIDatePicker = UIDatePicker()
     var alertview:UIView! = UIView()
@@ -20,10 +28,18 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //设置默认日期为今天
-        var currentDate:String = dateString(NSDate())
-        dateButton.setTitle(currentDate, forState: UIControlState.Normal)
-        
+        //0:日记编辑模式  1:日记明细模式
+        if self.status == 0{
+            //设置默认日期为今天
+            var currentDate:String = dateString(NSDate())
+            dateButton.setTitle(currentDate, forState: UIControlState.Normal)
+            self.modefyModeSet()
+        }else if self.status == 1{
+            self.title = self.diary.id
+            self.content.text = self.diary.content
+            self.dateButton.setTitle(self.diary.date,forState:UIControlState.Normal)
+            self.detailModeSet()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,12 +47,65 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate{
         // Dispose of any resources that can be recreated.
     }
     
+    //编辑状态模式参数设置
+    func modefyModeSet(){
+        self.status = 0
+        self.saveAndModefyButton.title = "保存"
+        self.title = "编辑日记"
+        self.content.editable = true
+    }
+    
+    //日记明细模式参数设置
+    func detailModeSet(){
+        self.status = 1
+        self.saveAndModefyButton.title = "更多"
+        self.title = "日记详情"
+        self.content.editable = false
+    }
+    
     @IBAction func save(sender : AnyObject) {
-        let diaryService:DiaryService = DiaryService()
-        var diary:Diary = Diary()
-        diary.date = dateButton.currentTitle
-        diary.content = self.content.text
-        diaryService.addDiary(diary)
+        /*
+            0:点击保存
+            1:点击更多
+        */
+        if self.status == 0{
+            let diaryService:DiaryService = DiaryService()
+            var diary:Diary = Diary()
+            diary.date = dateButton.currentTitle
+            diary.content = self.content.text
+            diaryService.addDiary(diary)
+            self.detailModeSet()
+        }else if self.status == 1{
+            var menuItem1:UIMenuBarItem = UIMenuBarItem(title:"编辑",target:self,image:UIImage(named:"modify.png"),action:Selector("modefyDiary:"))
+            var menuItem2:UIMenuBarItem = UIMenuBarItem(title:"删除",target:self,image:UIImage(named:"modify.png"),action:Selector("deleteDiary:"))
+            var menuItem3:UIMenuBarItem = UIMenuBarItem(title:"分享",target:self,image:UIImage(named:"modify.png"),action:Selector("shareDiary:"))
+            var items:NSMutableArray = [menuItem1,menuItem2,menuItem3]
+            self.menuBar = UIMenuBar(frame:CGRectMake(10, 0, self.view.bounds.size.width, 240.0) ,items:items)
+            self.menuBar.delegate = self
+            self.menuBar.items = items
+            self.menuBar.show()
+        }
+    }
+    
+    /*
+        编辑日记
+    */
+    func modefyDiary(sender:AnyObject){
+        self.menuBar.dismiss()
+    }
+    
+    /*
+        删除日记
+    */
+    func deleteDiary(sender:AnyObject){
+        self.menuBar.dismiss()
+    }
+    
+    /*
+        分享日记
+    */
+    func shareDiary(sender:AnyObject){
+        self.menuBar.dismiss()
     }
     
     @IBAction func date(sender : AnyObject) {

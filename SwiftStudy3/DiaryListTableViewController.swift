@@ -15,8 +15,6 @@ class DiaryListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-//        var diaryList:String = NSBundle.mainBundle().pathForResource("DiaryList", ofType:"plist")
-//        diaries = NSArray(contentsOfFile:diaryList)
         let diaryDao:DiaryService = DiaryService()
         diaries = diaryDao.allDiaries()
         
@@ -61,12 +59,33 @@ class DiaryListTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!){
+        let row:Int = indexPath.row
+        let diary:Diary = diaries.objectAtIndex(row) as Diary
+        
         var storyboard:UIStoryboard = UIStoryboard(name:"Main", bundle:nil) //Main对应storyboard的名字
         var diaryDetail:DiaryModefyViewController = DiaryModefyViewController() //初始化稍后即将显示的那个viewController
         diaryDetail = storyboard.instantiateViewControllerWithIdentifier("DiaryModefyViewController") as DiaryModefyViewController  //关联viewController对应storyboard的xib。其中Identifier对应Main.storyboard中的xib的storyboardIdentify
+        diaryDetail.diary = diary
+        diaryDetail.status = 1
         self.navigationController.pushViewController(diaryDetail,
             animated: true)   //这是导航的push切换方式
     }
+    
+    
+    
+    @IBAction func addDiary(sender: AnyObject) {
+        
+        var storyboard:UIStoryboard = UIStoryboard(name:"Main", bundle:nil) //Main对应storyboard的名字
+        var diaryDetail:DiaryModefyViewController = DiaryModefyViewController() //初始化稍后即将显示的那个viewController
+        diaryDetail = storyboard.instantiateViewControllerWithIdentifier("DiaryModefyViewController") as DiaryModefyViewController  //关联viewController对应storyboard的xib。其中Identifier对应Main.storyboard中的xib的storyboardIdentify
+        diaryDetail.status = 0
+        self.navigationController.pushViewController(diaryDetail,
+            animated: true)   //这是导航的push切换方式
+
+    }
+    
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView?, canEditRowAtIndexPath indexPath: NSIndexPath?) -> Bool {
