@@ -6,8 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiaryCell" rowHeight="118" id="KqN-Tb-3Oq" customClass="DiaryCell" customModule="SwiftStudy3" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
+        <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiaryCell" rowHeight="117" id="KqN-Tb-3Oq" customClass="DiaryCell" customModule="SwiftStudy3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KqN-Tb-3Oq" id="AAt-B2-ueS">
                 <autoresizingMask key="autoresizingMask"/>
@@ -18,7 +18,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="diaryImg.png" translatesAutoresizingMaskIntoConstraints="NO" id="kAB-a5-qRV">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="diaryImg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kAB-a5-qRV">
                         <rect key="frame" x="206" y="7" width="106" height="104"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="weather.png" translatesAutoresizingMaskIntoConstraints="NO" id="jZA-eC-GoI">
@@ -51,11 +51,11 @@
                 <outlet property="voice" destination="gex-ax-gKh" id="B96-LT-Tcz"/>
                 <outlet property="weather" destination="jZA-eC-GoI" id="L5y-Uc-0Uf"/>
             </connections>
-            <point key="canvasLocation" x="440" y="227"/>
+            <point key="canvasLocation" x="441" y="244.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="diaryImg.png" width="81" height="81"/>
+        <image name="diaryImg.jpg" width="81" height="81"/>
         <image name="locate.png" width="36" height="36"/>
         <image name="photo.png" width="36" height="36"/>
         <image name="voice.png" width="36" height="36"/>

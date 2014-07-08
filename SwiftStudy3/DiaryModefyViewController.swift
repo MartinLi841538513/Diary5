@@ -12,17 +12,23 @@
     2:修改模式
 */
 import UIKit
+import CoreLocation
 
-class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBarDelegate{
+class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBarDelegate,CLLocationManagerDelegate{
     
     @IBOutlet var dateButton : UIButton = nil
     @IBOutlet var content : UITextView = nil
     @IBOutlet var saveAndModefyButton : UIBarButtonItem = nil
+    var diary:Diary = Diary()
+    let diaryService:DiaryService = DiaryService()
+    let li_common:Li_common = Li_common()
     var menuBar:UIMenuBar = UIMenuBar()
+    
+    var locationManager:CLLocationManager = CLLocationManager()
+    
     var fontColor:UIColor = UIColor()
     var status:Int = 0
     
-    var diary:Diary = Diary()
 
     var datePicker:UIDatePicker = UIDatePicker()
     var alertview:UIView! = UIView()
@@ -31,6 +37,15 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.fontColor = self.dateButton.currentTitleColor
+        
+//        var layout:UICollectionViewLayout = UICollectionViewLayout()
+//        var collectionView:UICollectionView = UICollectionView(frame: CGRectMake(10,10,300,400), collectionViewLayout: layout)
+//        collectionView.registerClass(IconCollectionViewCell.self, forCellWithReuseIdentifier: "IconCollectionViewCell")
+//        collectionView.registerNib(UINib(nibName:"IconCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "IconCollectionViewCell")
+//        collectionView.delegate = self
+//        collectionView.dataSource = self
+//        collectionView.backgroundColor = UIColor.greenColor()
+//        self.view.addSubview(collectionView)
         
         //0:日记新增模式  1:日记明细模式
         if self.status == 0{
@@ -45,12 +60,52 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         // Dispose of any resources that can be recreated.
     }
     
+    
+//    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int{
+//        println("1")
+//        return 10
+//    }
+//    
+//    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int{
+//        println("4")
+//        return 2
+//    }
+//    
+//    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell!{
+//        println("3")
+//        var identifier:String = "IconCollectionViewCell"
+//        var cell:IconCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath:indexPath) as IconCollectionViewCell
+//        cell.imageView = UIImageView(image: UIImage(named: "weather.png"))
+//        return cell
+//    }
+//    
+//    
+//    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize{
+//    println("2")
+//        return CGSizeMake(96,100)
+//    }
+    
+    
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: AnyObject[]!){
+        let thelocations:NSArray = locations as NSArray
+        let location:CLLocation = thelocations.objectAtIndex(0) as CLLocation
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    @IBAction func reLocationAction(sender: AnyObject) {
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.distanceFilter = 1000.0
+        self.locationManager.startUpdatingLocation()
+    }
     //新增状态模式参数设置
     func addModeSet(){
         self.status = 0
         self.basicModefyModeSet()
         //设置默认日期为今天
-        var currentDate:String = dateString(NSDate())
+        var currentDate:String = self.li_common.Li_dateString(NSDate())
         self.dateButton.setTitle(currentDate, forState: UIControlState.Normal)
     }
     //日记明细模式参数设置
@@ -82,10 +137,9 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     */
     @IBAction func save(sender : AnyObject) {
         if self.status == 0{
-            let diaryService:DiaryService = DiaryService()
             var diary:Diary = self.currentDiary()
-            diaryService.addDiary(diary)
-            self.diary = diaryService.theLatestDiary()//这样就能或得到diary的id，那么就可以根据id修改这片新增的日记
+            self.diaryService.addDiary(diary)
+            self.diary = self.diaryService.theLatestDiary()//这样就能或得到diary的id，那么就可以根据id修改这片新增的日记
             self.detailModeSet(self.diary)
         }else if self.status == 1{
             var menuItem1:UIMenuBarItem = UIMenuBarItem(title:"编辑",target:self,image:UIImage(named:"modify.png"),action:Selector("modefyDiary:"))
@@ -97,9 +151,8 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
             self.menuBar.items = items
             self.menuBar.show()
         }else if self.status == 2{
-            let diaryService:DiaryService = DiaryService()
             var diary:Diary = self.currentDiary()
-            diaryService.updateDiary(diary)
+            self.diaryService.updateDiary(diary)
             self.detailModeSet(diary)
         }
     }
@@ -125,8 +178,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         删除日记
     */
     func deleteDiary(sender:AnyObject){
-        let diaryService:DiaryService = DiaryService()
-        diaryService.deleteDiary(self.currentDiary())
+        self.diaryService.deleteDiary(self.currentDiary())
         self.menuBar.dismiss()
         self.navigationController.popViewControllerAnimated(true)
     }
@@ -169,11 +221,12 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     
     //选择日期
     func selectedAction(){
-        var dateString:String = self.dateString(datePicker.date)
+        var dateString:String = self.li_common.Li_dateString(datePicker.date)
         dateButton.setTitle(dateString, forState: UIControlState.Normal)
         removeAlertview()
         println(dateString)
     }
+    
     
     func cancelAction(){
         removeAlertview()
@@ -184,12 +237,6 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         alertview.removeFromSuperview()
     }
     
-    //返回2014-06-19格式的日期
-    func dateString(date:NSDate) ->String{
-        var dateFormatter:NSDateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        var dateString:String = dateFormatter.stringFromDate(date)
-        return dateString
-    }
+
    
 }

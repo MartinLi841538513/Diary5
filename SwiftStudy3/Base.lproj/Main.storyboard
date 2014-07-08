@@ -153,6 +153,9 @@
                                 <state key="normal" title="定位">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="reLocationAction:" destination="GRN-SY-fx8" eventType="touchUpInside" id="8Ty-d8-GBs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S1R-CF-mup">
                                 <rect key="frame" x="204" y="91" width="30" height="30"/>

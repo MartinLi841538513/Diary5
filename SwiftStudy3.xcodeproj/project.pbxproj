@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		22019D70196A3E7F002DE462 /* UIMenuBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 22019D6D196A3E7F002DE462 /* UIMenuBar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		22019D71196A3E7F002DE462 /* UIMenuBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 22019D6F196A3E7F002DE462 /* UIMenuBarItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		22039664196B896700426DA9 /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22039663196B896700426DA9 /* IconCollectionViewCell.swift */; };
+		22039666196B898800426DA9 /* IconCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22039665196B898800426DA9 /* IconCollectionViewCell.xib */; };
 		2209A71F194A7E8800DEA18B /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A715194A7E8800DEA18B /* delete.png */; };
 		2209A720194A7E8800DEA18B /* diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A716194A7E8800DEA18B /* diary.png */; };
 		2209A721194A7E8800DEA18B /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A717194A7E8800DEA18B /* locate.png */; };
@@ -19,7 +21,7 @@
 		2209A726194A7E8800DEA18B /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A71C194A7E8800DEA18B /* share.png */; };
 		2209A727194A7E8800DEA18B /* voice.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A71D194A7E8800DEA18B /* voice.png */; };
 		2209A728194A7E8800DEA18B /* weather.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A71E194A7E8800DEA18B /* weather.png */; };
-		2209A72A194A7F5C00DEA18B /* diaryImg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A729194A7F5C00DEA18B /* diaryImg.png */; };
+		2209A72A194A7F5C00DEA18B /* diaryImg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2209A729194A7F5C00DEA18B /* diaryImg.jpg */; };
 		2209A730194A92CD00DEA18B /* DiaryModefyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209A72F194A92CD00DEA18B /* DiaryModefyViewController.swift */; };
 		2209A741194ABCD900DEA18B /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2209A740194ABCD900DEA18B /* DiaryCell.xib */; };
 		2209A743194ABEC600DEA18B /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209A742194ABEC600DEA18B /* DiaryCell.swift */; };
@@ -70,6 +72,8 @@
 		22019D6D196A3E7F002DE462 /* UIMenuBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIMenuBar.m; path = tool/UIMenuBar/UIMenuBar.m; sourceTree = "<group>"; };
 		22019D6E196A3E7F002DE462 /* UIMenuBarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIMenuBarItem.h; path = tool/UIMenuBar/UIMenuBarItem.h; sourceTree = "<group>"; };
 		22019D6F196A3E7F002DE462 /* UIMenuBarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIMenuBarItem.m; path = tool/UIMenuBar/UIMenuBarItem.m; sourceTree = "<group>"; };
+		22039663196B896700426DA9 /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
+		22039665196B898800426DA9 /* IconCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconCollectionViewCell.xib; sourceTree = "<group>"; };
 		2209A715194A7E8800DEA18B /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		2209A716194A7E8800DEA18B /* diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diary.png; sourceTree = "<group>"; };
 		2209A717194A7E8800DEA18B /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locate.png; sourceTree = "<group>"; };
@@ -80,7 +84,7 @@
 		2209A71C194A7E8800DEA18B /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		2209A71D194A7E8800DEA18B /* voice.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voice.png; sourceTree = "<group>"; };
 		2209A71E194A7E8800DEA18B /* weather.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather.png; sourceTree = "<group>"; };
-		2209A729194A7F5C00DEA18B /* diaryImg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diaryImg.png; sourceTree = "<group>"; };
+		2209A729194A7F5C00DEA18B /* diaryImg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = diaryImg.jpg; sourceTree = "<group>"; };
 		2209A72F194A92CD00DEA18B /* DiaryModefyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryModefyViewController.swift; sourceTree = "<group>"; };
 		2209A740194ABCD900DEA18B /* DiaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryCell.xib; sourceTree = "<group>"; };
 		2209A742194ABEC600DEA18B /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
@@ -232,6 +236,8 @@
 				2209A72F194A92CD00DEA18B /* DiaryModefyViewController.swift */,
 				2209A740194ABCD900DEA18B /* DiaryCell.xib */,
 				2209A742194ABEC600DEA18B /* DiaryCell.swift */,
+				22039663196B896700426DA9 /* IconCollectionViewCell.swift */,
+				22039665196B898800426DA9 /* IconCollectionViewCell.xib */,
 			);
 			name = diary;
 			sourceTree = "<group>";
@@ -247,7 +253,7 @@
 		2273D66619499DE200409B84 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				2209A729194A7F5C00DEA18B /* diaryImg.png */,
+				2209A729194A7F5C00DEA18B /* diaryImg.jpg */,
 				2209A715194A7E8800DEA18B /* delete.png */,
 				2209A716194A7E8800DEA18B /* diary.png */,
 				2209A717194A7E8800DEA18B /* locate.png */,
@@ -376,11 +382,12 @@
 				2209A721194A7E8800DEA18B /* locate.png in Resources */,
 				2209A725194A7E8800DEA18B /* set.png in Resources */,
 				2209A720194A7E8800DEA18B /* diary.png in Resources */,
-				2209A72A194A7F5C00DEA18B /* diaryImg.png in Resources */,
+				2209A72A194A7F5C00DEA18B /* diaryImg.jpg in Resources */,
 				2209A722194A7E8800DEA18B /* modify.png in Resources */,
 				2273D66D19499E5C00409B84 /* ic_tab_playlists_selected@2x.png in Resources */,
 				2209A741194ABCD900DEA18B /* DiaryCell.xib in Resources */,
 				2209A727194A7E8800DEA18B /* voice.png in Resources */,
+				22039666196B898800426DA9 /* IconCollectionViewCell.xib in Resources */,
 				2273D645194982AD00409B84 /* Images.xcassets in Resources */,
 				2209A728194A7E8800DEA18B /* weather.png in Resources */,
 				2209A723194A7E8800DEA18B /* photo.png in Resources */,
@@ -413,6 +420,7 @@
 				2209A746194AF9A500DEA18B /* Diary.swift in Sources */,
 				222D6D28196949E2009C4EC4 /* DiaryListTableViewController.swift in Sources */,
 				225A40BF1952C422008E0E00 /* DiaryService.swift in Sources */,
+				22039664196B896700426DA9 /* IconCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,7 +481,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Martin Martin (HQXHNBL3NG)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Martin Martin (HQXHNBL3NG)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

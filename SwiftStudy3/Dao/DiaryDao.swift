@@ -70,7 +70,7 @@ class DiaryDao{
         var diaryList:NSMutableArray = NSMutableArray()
         
         if self.openSqlite() == true{
-            let sql:NSString = "select * from "+self.tableName
+            let sql:NSString = "select * from "+self.tableName+" order by id desc"
             var statement:COpaquePointer = nil
             if sqlite3_prepare_v2(self.db,sql.UTF8String,-1,&statement,nil) == SQLITE_OK{
                 while sqlite3_step(statement) == SQLITE_ROW{

@@ -23,6 +23,14 @@ class Li_common{
         return button
     }
     
+    //返回2014-06-19 String格式的日期
+    func Li_dateString(date:NSDate) ->String{
+        var dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var dateString:String = dateFormatter.stringFromDate(date)
+        return dateString
+    }
+    
 }
 
 

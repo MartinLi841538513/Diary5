@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiaryListTableViewController: UITableViewController{
+class DiaryListTableViewController: UITableViewController,UITableViewDataSource{
 
     var diaries:NSMutableArray = NSMutableArray()
 
@@ -73,8 +73,6 @@ class DiaryListTableViewController: UITableViewController{
             animated: true)   //这是导航的push切换方式
     }
     
-    
-    
     @IBAction func addDiary(sender: AnyObject) {
         
         var storyboard:UIStoryboard = UIStoryboard(name:"Main", bundle:nil) //Main对应storyboard的名字
@@ -85,9 +83,6 @@ class DiaryListTableViewController: UITableViewController{
             animated: true)   //这是导航的push切换方式
 
     }
-    
-    
-    
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
@@ -109,6 +104,9 @@ class DiaryListTableViewController: UITableViewController{
         }
     }
     
+    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat{
+        return 117.0
+    }
 
     /*
     // Override to support rearranging the table view.
