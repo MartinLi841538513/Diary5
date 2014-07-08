@@ -17,7 +17,7 @@ class DiaryDao{
     //创建数据库表
     func createTable(){
         if self.openSqlite() == true{
-            var sql:String = "CREATE TABLE \(self.tableName) ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'date' TEXT NOT NULL, 'weather' TEXT NOT NULL, 'mood' TEXT NOT NULL, 'latitude' TEXT NOT NULL, 'longitude' TEXT NOT NULL, 'photos' TEXT NOT NULL, 'voicePath' TEXT NOT NULL, 'content' TEXT NOT NULL)"
+            var sql:String = "CREATE TABLE \(self.tableName) ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'date' TEXT NOT NULL, 'weather' TEXT NOT NULL, 'mood' TEXT NOT NULL, 'latitude' DOUBLE NOT NULL, 'longitude' DOUBLE NOT NULL, 'photos' TEXT NOT NULL, 'voicePath' TEXT NOT NULL, 'content' TEXT NOT NULL)"
             self.execute(sql)
         }
     }
@@ -104,9 +104,9 @@ class DiaryDao{
             case 4:
                 diary.mood = value
             case 5:
-                diary.latitude = value
+                diary.latitude = String.bridgeToObjectiveC(value)().doubleValue
             case 6:
-                diary.longitude = value
+                diary.longitude = String.bridgeToObjectiveC(value)().doubleValue
             case 7:
                 diary.photos = value
             case 8:

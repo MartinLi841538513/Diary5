@@ -153,9 +153,6 @@
                                 <state key="normal" title="定位">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="reLocationAction:" destination="GRN-SY-fx8" eventType="touchUpInside" id="8Ty-d8-GBs"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S1R-CF-mup">
                                 <rect key="frame" x="204" y="91" width="30" height="30"/>
@@ -201,6 +198,7 @@
                     <connections>
                         <outlet property="content" destination="T1V-Sp-Zne" id="AoZ-Bz-QUs"/>
                         <outlet property="dateButton" destination="EnS-Yh-ExK" id="aV8-WQ-lY9"/>
+                        <outlet property="relocationButton" destination="3Il-qU-iAM" id="5C2-fW-xy6"/>
                         <outlet property="saveAndModefyButton" destination="Lvv-RK-YMc" id="Bjk-XJ-fHM"/>
                     </connections>
                 </viewController>

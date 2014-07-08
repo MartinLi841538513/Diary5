@@ -13,8 +13,8 @@ class Diary{
     var date:String = ""
     var weather:String = ""
     var mood:String = ""
-    var latitude:String = ""
-    var longitude:String = ""
+    var latitude:Double = 0.0
+    var longitude:Double = 0.0
     var photos:String = ""
     var voicePath:String = ""
     var content:String = ""

@@ -19,6 +19,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     @IBOutlet var dateButton : UIButton = nil
     @IBOutlet var content : UITextView = nil
     @IBOutlet var saveAndModefyButton : UIBarButtonItem = nil
+    @IBOutlet var relocationButton: UIButton = nil
     var diary:Diary = Diary()
     let diaryService:DiaryService = DiaryService()
     let li_common:Li_common = Li_common()
@@ -33,6 +34,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     var datePicker:UIDatePicker = UIDatePicker()
     var alertview:UIView! = UIView()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -85,30 +87,41 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
 //        return CGSizeMake(96,100)
 //    }
     
-    
+    //CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: AnyObject[]!){
         let thelocations:NSArray = locations as NSArray
         let location:CLLocation = thelocations.objectAtIndex(0) as CLLocation
         let latitude = location.coordinate.latitude
         let longitude = location.coordinate.longitude
+        if latitude != nil {
+            LIProgressHUD.showSuccessWithStatus("成功")
+            println("定位成功了以后，打印出位置,从下往上冒出来位置信息")
+            self.diary.latitude = latitude
+            self.diary.longitude = longitude
+            
+            
+            
+        }
         self.locationManager.stopUpdatingLocation()
     }
     
-    @IBAction func reLocationAction(sender: AnyObject) {
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.distanceFilter = 1000.0
-        self.locationManager.startUpdatingLocation()
-    }
-    //新增状态模式参数设置
+    
+    /*
+        新增状态模式参数设置
+    */
     func addModeSet(){
         self.status = 0
         self.basicModefyModeSet()
         //设置默认日期为今天
         var currentDate:String = self.li_common.Li_dateString(NSDate())
         self.dateButton.setTitle(currentDate, forState: UIControlState.Normal)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+            self.reLocationAction(self)
+        })
     }
-    //日记明细模式参数设置
+    /*
+         日记明细模式参数设置
+    */
     func detailModeSet(diary:Diary){
         self.status = 1
         self.saveAndModefyButton.title = "更多"
@@ -118,6 +131,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         self.content.editable = false
         self.dateButton.enabled = false
         self.dateButton.setTitleColor(self.fontColor, forState: UIControlState.Normal)
+        self.basicModeSet()
     }
     //修改状态模式参数设置
     func updateModeSet(){
@@ -129,6 +143,78 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         self.title = "编辑日记"
         self.content.editable = true
         self.dateButton.enabled = true
+        self.basicModeSet()
+    }
+    func basicModeSet(){
+        //设置“定位”单击和双击的效果
+        func setLocationButtonClickEvent(){
+            var gr1:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTapGesture:"))
+            var gr2:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTapGesture:"))
+            var longTouch:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target:self,action:Selector("cancelLocationInfo:"))
+            
+            gr1.numberOfTapsRequired = 1
+            gr1.requireGestureRecognizerToFail(gr2)//这里保证双击的时候不会出发单击时间
+            gr2.numberOfTapsRequired = 2
+            longTouch.minimumPressDuration = 1
+            self.relocationButton.addGestureRecognizer(gr1)
+            self.relocationButton.addGestureRecognizer(gr2)
+            self.relocationButton.addGestureRecognizer(longTouch)
+        }
+        setLocationButtonClickEvent()
+    }
+    
+    //单击是定位，双击是地图模式
+    func handleTapGesture(sender:UITapGestureRecognizer){
+        let touchCount:Int = sender.numberOfTapsRequired
+        switch touchCount {
+        case 1:
+            self.reLocationAction(self)
+        case 2:
+            self.goToMap(self)
+        default:println("")
+        }
+    }
+    
+    //出于对个别隐私用户的需求，增加功能，长按取消位置信息
+    func cancelLocationInfo(sender:AnyObject){
+        self.diary.latitude = 0
+        self.diary.longitude = 0
+        println("长按取消位置信息")
+    }
+
+    //单击“定位”或者获取位置信息
+    func reLocationAction(sender: AnyObject) {
+        //定位
+        func locationAction(){
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.distanceFilter = 1000.0
+            self.locationManager.startUpdatingLocation()
+        }
+        //打印位置信息
+        func alertLocation(){
+            if self.diary.latitude != 0 && self.diary.longitude != 0 {
+                println("打印出位置,从下往上冒出来位置信息")
+            }else{
+                println("那天可是个秘密哦")
+            }
+        }
+        
+        switch self.status {
+        case 0,2:
+            locationAction()
+        case 1:
+            alertLocation()
+        default:println("")
+        }
+        
+        
+    }
+    
+    //双击“定位”进入地图模式
+    func goToMap(sender: AnyObject) {
+        
+        println("双击进入地图模式")
     }
 
     /*
@@ -224,7 +310,6 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         var dateString:String = self.li_common.Li_dateString(datePicker.date)
         dateButton.setTitle(dateString, forState: UIControlState.Normal)
         removeAlertview()
-        println(dateString)
     }
     
     

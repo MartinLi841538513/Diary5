@@ -14,12 +14,12 @@ class DiaryListTableViewController: UITableViewController,UITableViewDataSource{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(animated: Bool){
         super.viewWillAppear(animated)
         self.loadDiaries()
+        
     }
 
     override func didReceiveMemoryWarning() {
