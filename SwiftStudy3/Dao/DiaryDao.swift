@@ -17,7 +17,7 @@ class DiaryDao{
     //创建数据库表
     func createTable(){
         if self.openSqlite() == true{
-            var sql:String = "CREATE TABLE \(self.tableName) ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'date' TEXT NOT NULL, 'weather' TEXT NOT NULL, 'mood' TEXT NOT NULL, 'latitude' DOUBLE NOT NULL, 'longitude' DOUBLE NOT NULL, 'photos' TEXT NOT NULL, 'voicePath' TEXT NOT NULL, 'content' TEXT NOT NULL)"
+            var sql:String = "CREATE TABLE \(self.tableName) ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'date' TEXT NOT NULL, 'weather' TEXT NOT NULL, 'mood' TEXT NOT NULL, 'latitude' DOUBLE NOT NULL, 'longitude' DOUBLE NOT NULL, 'photos' TEXT NOT NULL, 'voicePath' TEXT NOT NULL, 'content' TEXT NOT NULL,'address' TEXT NOT NULL,'detailAddress' TEXT NOT NULL)"
             self.execute(sql)
         }
     }
@@ -25,7 +25,7 @@ class DiaryDao{
     //新增一篇日记
     func addDiary(diary:Diary){
         if self.openSqlite() == true{
-            var sql:String = "insert into diary(date,weather,mood,latitude,longitude,photos,voicePath,content) values('\(diary.date)','\(diary.weather)','\(diary.mood)','\(diary.latitude)','\(diary.longitude)','\(diary.photos)','\(diary.voicePath)','\(diary.content)')"
+            var sql:String = "insert into diary(date,weather,mood,latitude,longitude,photos,voicePath,content,address,detailAddress) values('\(diary.date)','\(diary.weather)','\(diary.mood)','\(diary.latitude)','\(diary.longitude)','\(diary.photos)','\(diary.voicePath)','\(diary.content)','\(diary.address)','\(diary.detailAddress)')"
             self.execute(sql)
         }
     }
@@ -33,7 +33,7 @@ class DiaryDao{
     //修改一篇日记
     func updateDiary(diary:Diary){
         if self.openSqlite() == true{
-            var sql:String = "update diary set date = '\(diary.date)' , weather = '\(diary.weather)' , mood = '\(diary.mood)' , latitude = '\(diary.latitude)' , longitude = '\(diary.longitude)' , photos = '\(diary.photos)' , voicePath = '\(diary.voicePath)' , content = '\(diary.content)' where id = \(diary.id)"
+            var sql:String = "update diary set date = '\(diary.date)' , weather = '\(diary.weather)' , mood = '\(diary.mood)' , latitude = '\(diary.latitude)' , longitude = '\(diary.longitude)' , photos = '\(diary.photos)' , voicePath = '\(diary.voicePath)' , content = '\(diary.content)',address = '\(diary.address)',detailAddress = '\(diary.detailAddress)' where id = \(diary.id)"
             println(sql)
             self.execute(sql)
         }
@@ -113,6 +113,10 @@ class DiaryDao{
                 diary.voicePath = value
             case 9:
                 diary.content = value
+            case 10:
+                diary.address = value
+            case 11:
+                diary.detailAddress = value
             default:
                 println("")
             }

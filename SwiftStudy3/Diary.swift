@@ -18,6 +18,8 @@ class Diary{
     var photos:String = ""
     var voicePath:String = ""
     var content:String = ""
+    var address:String = ""
+    var detailAddress:String = ""
     
     init(){
     

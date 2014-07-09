@@ -94,17 +94,76 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         let latitude = location.coordinate.latitude
         let longitude = location.coordinate.longitude
         if latitude != nil {
-            LIProgressHUD.showSuccessWithStatus("成功")
-            println("定位成功了以后，打印出位置,从下往上冒出来位置信息")
             self.diary.latitude = latitude
             self.diary.longitude = longitude
-            
-            println(latitude)
-            println(longitude)
+            var geocoder:CLGeocoder = CLGeocoder()
+            var placemarks:NSArray?
+            var error:NSError?
+            geocoder.reverseGeocodeLocation(location, completionHandler:{(placemarks,error) in
+                if error == nil && placemarks.count > 0{
+                    var placemark:CLPlacemark = (placemarks as NSArray).objectAtIndex(0) as CLPlacemark
+                    self.diary.detailAddress = "\(placemark.name)"
+                    self.diary.address = "\(placemark.locality)\(placemark.subLocality)\(placemark.thoroughfare)"
+                    var text:String = "位置:\(self.diary.address)"
+                    self.li_common.Li_popUpfrombottomWithText(text,parentView:self.view)
+                }
+            })
         }
         self.locationManager.stopUpdatingLocation()
     }
     
+    @IBAction func date(sender : AnyObject) {
+        var screen:UIScreen = UIScreen.mainScreen()
+        var devicebounds:CGRect = screen.bounds
+        var deviceWidth:CGFloat = devicebounds.width
+        var deviceHeight:CGFloat = devicebounds.height
+        var viewColor:UIColor = UIColor(white:0, alpha: 0.6)
+        
+        //设置日期弹出窗口
+        alertview = UIView(frame:devicebounds)
+        alertview.backgroundColor = viewColor
+        alertview.userInteractionEnabled = true
+        
+        //设置datepicker
+        datePicker.datePickerMode = .Date
+        datePicker.backgroundColor = UIColor.whiteColor()
+        datePicker.frame = CGRect(x:10,y:deviceHeight-297,width:deviceWidth-10*2,height:216)
+        
+        //设置 确定 和 取消 按钮
+        var li_common:Li_common = Li_common()
+        var selectedButton:UIButton = li_common.Li_createButton("确定",x:10,y:deviceHeight-80,width:deviceWidth-10*2,height:35,target:self, action: Selector("selectedAction"))
+        var cancelButton:UIButton = li_common.Li_createButton("取消",x:10,y:deviceHeight-40,width:deviceWidth-10*2,height:35,target:self, action: Selector("cancelAction"))
+        
+        alertview.addSubview(datePicker)
+        alertview.addSubview(selectedButton)
+        alertview.addSubview(cancelButton)
+        
+        self.view.addSubview(alertview)
+    }
+    
+    
+    //单击是定位，双击是地图模式
+    func handleTapGesture(sender:UITapGestureRecognizer){
+        let touchCount:Int = sender.numberOfTapsRequired
+        switch touchCount {
+        case 1:
+            self.reLocationAction(self)
+        case 2:
+            self.goToMap(self)
+        default:println("")
+        }
+    }
+    
+    //长按取消位置信息（出于对个别隐私用户的需求，增加功能）
+    func cancelLocationInfo(sender:AnyObject){
+        if self.status == 0||self.status == 2{
+            self.diary.latitude = 0
+            self.diary.longitude = 0
+            self.diary.address = ""
+            self.diary.detailAddress = ""
+            LIProgressHUD.showSuccessWithStatus("消除位置信息成功")
+        }
+    }
     
     /*
         新增状态模式参数设置
@@ -163,24 +222,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         setLocationButtonClickEvent()
     }
     
-    //单击是定位，双击是地图模式
-    func handleTapGesture(sender:UITapGestureRecognizer){
-        let touchCount:Int = sender.numberOfTapsRequired
-        switch touchCount {
-        case 1:
-            self.reLocationAction(self)
-        case 2:
-            self.goToMap(self)
-        default:println("")
-        }
-    }
-    
-    //出于对个别隐私用户的需求，增加功能，长按取消位置信息
-    func cancelLocationInfo(sender:AnyObject){
-        self.diary.latitude = 0
-        self.diary.longitude = 0
-        println("长按取消位置信息")
-    }
+
 
     //单击“定位”或者获取位置信息
     func reLocationAction(sender: AnyObject) {
@@ -194,9 +236,11 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         //打印位置信息
         func alertLocation(){
             if self.diary.latitude != 0 && self.diary.longitude != 0 {
-                println("打印出位置,从下往上冒出来位置信息")
+                var text:String = "位置:\(self.diary.address)"
+                self.li_common.Li_popUpfrombottomWithText(text,parentView:self.view)
             }else{
-                println("那天可是个秘密哦")
+                var text:String = "那天不想定位"
+                self.li_common.Li_popUpfrombottomWithText(text,parentView:self.view)
             }
         }
         
@@ -277,34 +321,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         self.menuBar.dismiss()
     }
     
-    @IBAction func date(sender : AnyObject) {
-        var screen:UIScreen = UIScreen.mainScreen()
-        var devicebounds:CGRect = screen.bounds
-        var deviceWidth:CGFloat = devicebounds.width
-        var deviceHeight:CGFloat = devicebounds.height
-        var viewColor:UIColor = UIColor(white:0, alpha: 0.6)
 
-        //设置日期弹出窗口
-        alertview = UIView(frame:devicebounds)
-        alertview.backgroundColor = viewColor
-        alertview.userInteractionEnabled = true
-        
-        //设置datepicker
-        datePicker.datePickerMode = .Date
-        datePicker.backgroundColor = UIColor.whiteColor()
-        datePicker.frame = CGRect(x:10,y:deviceHeight-297,width:deviceWidth-10*2,height:216)
-        
-        //设置 确定 和 取消 按钮
-        var li_common:Li_common = Li_common()
-        var selectedButton:UIButton = li_common.Li_createButton("确定",x:10,y:deviceHeight-80,width:deviceWidth-10*2,height:35,target:self, action: Selector("selectedAction"))
-        var cancelButton:UIButton = li_common.Li_createButton("取消",x:10,y:deviceHeight-40,width:deviceWidth-10*2,height:35,target:self, action: Selector("cancelAction"))
-        
-        alertview.addSubview(datePicker)
-        alertview.addSubview(selectedButton)
-        alertview.addSubview(cancelButton)
-        
-        self.view.addSubview(alertview)
-    }
     
     //选择日期
     func selectedAction(){
