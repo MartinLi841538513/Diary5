@@ -21,10 +21,7 @@
 		2204EF2E196C36D100E18F5B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2204EF2D196C36D100E18F5B /* SystemConfiguration.framework */; };
 		2204EF30196C36D700E18F5B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2204EF2F196C36D700E18F5B /* CoreTelephony.framework */; };
 		2204EF32196C36DE00E18F5B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2204EF31196C36DE00E18F5B /* OpenGLES.framework */; };
-		2204EF34196C36E600E18F5B /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2204EF33196C36E600E18F5B /* libstdc++.6.0.9.dylib */; };
 		2204EF36196C36EF00E18F5B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2204EF35196C36EF00E18F5B /* Security.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		2204EF39196C383200E18F5B /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2204EF38196C383200E18F5B /* MAMapKit.framework */; };
-		2204EF3D196C38D500E18F5B /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2204EF3C196C38D500E18F5B /* AMap.bundle */; };
 		2209A71F194A7E8800DEA18B /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A715194A7E8800DEA18B /* delete.png */; };
 		2209A720194A7E8800DEA18B /* diary.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A716194A7E8800DEA18B /* diary.png */; };
 		2209A721194A7E8800DEA18B /* locate.png in Resources */ = {isa = PBXBuildFile; fileRef = 2209A717194A7E8800DEA18B /* locate.png */; };
@@ -40,6 +37,7 @@
 		2209A741194ABCD900DEA18B /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2209A740194ABCD900DEA18B /* DiaryCell.xib */; };
 		2209A743194ABEC600DEA18B /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209A742194ABEC600DEA18B /* DiaryCell.swift */; };
 		2209A746194AF9A500DEA18B /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209A745194AF9A500DEA18B /* Diary.swift */; };
+		2222B682196CCACA001D5B5A /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2222B681196CCACA001D5B5A /* MapViewController.swift */; };
 		222D6D28196949E2009C4EC4 /* DiaryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D6D27196949E2009C4EC4 /* DiaryListTableViewController.swift */; };
 		223C50F5196396510048AF71 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 223C50F4196396510048AF71 /* libsqlite3.dylib */; };
 		225A40BF1952C422008E0E00 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A40BE1952C422008E0E00 /* DiaryService.swift */; };
@@ -55,6 +53,10 @@
 		228D13B6195291D700654855 /* DiaryList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 228D13B5195291D600654855 /* DiaryList.plist */; };
 		228D13B91952A1C500654855 /* DiaryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D13B81952A1C500654855 /* DiaryDao.swift */; };
 		22D3ABB419518748003DFCC9 /* Li_common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3ABB319518748003DFCC9 /* Li_common.swift */; };
+		22F34BC2196D135C00DB0C40 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F34BC1196D135C00DB0C40 /* MAMapKit.framework */; };
+		22F34BC4196D137E00DB0C40 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22F34BC3196D137E00DB0C40 /* AMap.bundle */; };
+		22FEB252196CF28400FD8C94 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FEB251196CF28400FD8C94 /* libstdc++.6.0.9.dylib */; };
+		22FEB25A196CF4C300FD8C94 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FEB259196CF4C300FD8C94 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,10 +101,7 @@
 		2204EF2D196C36D100E18F5B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2204EF2F196C36D700E18F5B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		2204EF31196C36DE00E18F5B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
-		2204EF33196C36E600E18F5B /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		2204EF35196C36EF00E18F5B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		2204EF38196C383200E18F5B /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = ../../AMap_iOS_API_Lib_V2.2.1/3D/MAMapKit.framework; sourceTree = "<group>"; };
-		2204EF3C196C38D500E18F5B /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
 		2209A715194A7E8800DEA18B /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
 		2209A716194A7E8800DEA18B /* diary.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diary.png; sourceTree = "<group>"; };
 		2209A717194A7E8800DEA18B /* locate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locate.png; sourceTree = "<group>"; };
@@ -118,6 +117,7 @@
 		2209A740194ABCD900DEA18B /* DiaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryCell.xib; sourceTree = "<group>"; };
 		2209A742194ABEC600DEA18B /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
 		2209A745194AF9A500DEA18B /* Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
+		2222B681196CCACA001D5B5A /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		222D6D27196949E2009C4EC4 /* DiaryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryListTableViewController.swift; sourceTree = "<group>"; };
 		223C50F4196396510048AF71 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		223C50F61963967E0048AF71 /* Mixed-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mixed-Bridging.h"; sourceTree = "<group>"; };
@@ -138,6 +138,10 @@
 		228D13B5195291D600654855 /* DiaryList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DiaryList.plist; sourceTree = "<group>"; };
 		228D13B81952A1C500654855 /* DiaryDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryDao.swift; path = Dao/DiaryDao.swift; sourceTree = "<group>"; };
 		22D3ABB319518748003DFCC9 /* Li_common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Li_common.swift; path = tool/Li_common.swift; sourceTree = "<group>"; };
+		22F34BC1196D135C00DB0C40 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = ../AMap_iOS_API_Lib_V2.2.1/3D/MAMapKit.framework; sourceTree = "<group>"; };
+		22F34BC3196D137E00DB0C40 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
+		22FEB251196CF28400FD8C94 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
+		22FEB259196CF4C300FD8C94 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,9 +149,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2204EF39196C383200E18F5B /* MAMapKit.framework in Frameworks */,
+				22F34BC2196D135C00DB0C40 /* MAMapKit.framework in Frameworks */,
+				22FEB25A196CF4C300FD8C94 /* libz.dylib in Frameworks */,
+				22FEB252196CF28400FD8C94 /* libstdc++.6.0.9.dylib in Frameworks */,
 				2204EF36196C36EF00E18F5B /* Security.framework in Frameworks */,
-				2204EF34196C36E600E18F5B /* libstdc++.6.0.9.dylib in Frameworks */,
 				2204EF32196C36DE00E18F5B /* OpenGLES.framework in Frameworks */,
 				2204EF30196C36D700E18F5B /* CoreTelephony.framework in Frameworks */,
 				2204EF2E196C36D100E18F5B /* SystemConfiguration.framework in Frameworks */,
@@ -194,10 +199,9 @@
 		2204EF37196C36FA00E18F5B /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				2204EF3C196C38D500E18F5B /* AMap.bundle */,
-				2204EF38196C383200E18F5B /* MAMapKit.framework */,
+				22FEB259196CF4C300FD8C94 /* libz.dylib */,
+				22FEB251196CF28400FD8C94 /* libstdc++.6.0.9.dylib */,
 				2204EF35196C36EF00E18F5B /* Security.framework */,
-				2204EF33196C36E600E18F5B /* libstdc++.6.0.9.dylib */,
 				2204EF31196C36DE00E18F5B /* OpenGLES.framework */,
 				2204EF2F196C36D700E18F5B /* CoreTelephony.framework */,
 				2204EF2D196C36D100E18F5B /* SystemConfiguration.framework */,
@@ -235,6 +239,8 @@
 		2273D62F194982AD00409B84 = {
 			isa = PBXGroup;
 			children = (
+				22F34BC3196D137E00DB0C40 /* AMap.bundle */,
+				22F34BC1196D135C00DB0C40 /* MAMapKit.framework */,
 				2273D63A194982AD00409B84 /* SwiftStudy3 */,
 				2273D64D194982AD00409B84 /* SwiftStudy3Tests */,
 				2273D639194982AD00409B84 /* Products */,
@@ -305,6 +311,7 @@
 				2209A742194ABEC600DEA18B /* DiaryCell.swift */,
 				22039663196B896700426DA9 /* IconCollectionViewCell.swift */,
 				22039665196B898800426DA9 /* IconCollectionViewCell.xib */,
+				2222B681196CCACA001D5B5A /* MapViewController.swift */,
 			);
 			name = diary;
 			sourceTree = "<group>";
@@ -450,7 +457,7 @@
 				2209A71F194A7E8800DEA18B /* delete.png in Resources */,
 				2209A721194A7E8800DEA18B /* locate.png in Resources */,
 				2204EF23196C0F5100E18F5B /* error.png in Resources */,
-				2204EF3D196C38D500E18F5B /* AMap.bundle in Resources */,
+				22F34BC4196D137E00DB0C40 /* AMap.bundle in Resources */,
 				2204EF24196C0F5100E18F5B /* error@2x.png in Resources */,
 				2209A725194A7E8800DEA18B /* set.png in Resources */,
 				2209A720194A7E8800DEA18B /* diary.png in Resources */,
@@ -495,6 +502,7 @@
 				222D6D28196949E2009C4EC4 /* DiaryListTableViewController.swift in Sources */,
 				225A40BF1952C422008E0E00 /* DiaryService.swift in Sources */,
 				22039664196B896700426DA9 /* IconCollectionViewCell.swift in Sources */,
+				2222B682196CCACA001D5B5A /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,16 +631,21 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Sam/Desktop/AMap_iOS_API_Lib_V2.2.1/3D,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SwiftStudy3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftStudy3/Mixed-Bridging.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -643,15 +656,19 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Sam/Desktop/AMap_iOS_API_Lib_V2.2.1/3D,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = SwiftStudy3/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftStudy3/Mixed-Bridging.h";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};

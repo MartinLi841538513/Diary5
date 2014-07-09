@@ -99,8 +99,8 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
             self.diary.latitude = latitude
             self.diary.longitude = longitude
             
-            
-            
+            println(latitude)
+            println(longitude)
         }
         self.locationManager.stopUpdatingLocation()
     }
@@ -213,7 +213,8 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     
     //双击“定位”进入地图模式
     func goToMap(sender: AnyObject) {
-        
+        var mapViewController:MapViewController = MapViewController(nibName:nil, bundle:nil)
+        self.navigationController.pushViewController(mapViewController,animated:true)
         println("双击进入地图模式")
     }
 

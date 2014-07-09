@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         var diaryService:DiaryService = DiaryService()
         diaryService.loadWhenFirstRun()
+        
+        MAMapServices.sharedServices().apiKey = "e567de06b8565e33c162191e0c801ad1"
         return true
     }
 
