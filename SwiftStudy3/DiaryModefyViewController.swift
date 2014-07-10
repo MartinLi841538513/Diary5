@@ -14,12 +14,14 @@
 import UIKit
 import CoreLocation
 
-class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBarDelegate,CLLocationManagerDelegate{
+class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBarDelegate,CLLocationManagerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     @IBOutlet var dateButton : UIButton = nil
     @IBOutlet var content : UITextView = nil
     @IBOutlet var saveAndModefyButton : UIBarButtonItem = nil
     @IBOutlet var relocationButton: UIButton = nil
+    @IBOutlet var photo: UIImageView = nil
+    @IBOutlet var takePhotoButton: UIImageView = nil
     var diary:Diary = Diary()
     let diaryService:DiaryService = DiaryService()
     let li_common:Li_common = Li_common()
@@ -87,7 +89,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
 //        return CGSizeMake(96,100)
 //    }
     
-    //CLLocationManagerDelegate
+    //#pragma mark - CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: AnyObject[]!){
         let thelocations:NSArray = locations as NSArray
         let location:CLLocation = thelocations.objectAtIndex(0) as CLLocation
@@ -111,6 +113,47 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         }
         self.locationManager.stopUpdatingLocation()
     }
+    
+    //#pragma mark -UIImagePickerDelegate
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!){
+        if image != nil {
+            println("成功")
+        }
+    }
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingMediaWithInfo info: NSDictionary!){
+        var image:UIImage!
+        if picker.allowsEditing {
+            image = info.objectForKey(UIImagePickerControllerEditedImage) as UIImage
+        }else{
+            image = info.objectForKey(UIImagePickerControllerOriginalImage) as UIImage
+        }
+        
+        UIImageWriteToSavedPhotosAlbum(image,self,Selector("imageDidFinishSavingWithErrorContextInfo:error:contextInfo:"),nil) //这是存到了手机图库
+        let imagePath:String = self.li_common.Li_storageImgToDomain(image)  //这是存到了沙盒
+        self.diary.photos = imagePath
+        self.imageDidFinishSaving(imagePath)
+        self.dismissModalViewControllerAnimated(true)
+    }
+    func imagePickerControllerDidCancel(picker: UIImagePickerController!){
+        self.dismissModalViewControllerAnimated(true)
+    }
+    
+    
+    func imageDidFinishSaving(path:String){
+        var image:UIImage = UIImage(contentsOfFile:path)
+        self.photo.image = image
+        self.takePhotoButton.hidden = true
+        println("saved to domain successed")
+    }
+    
+    func imageDidFinishSavingWithErrorContextInfo(image:UIImage!,error:NSErrorPointer,contextInfo:CMutableVoidPointer){
+        if error != nil {
+            println("saved to album successed")
+        }else{
+            println(error)
+        }
+    }
+
     
     @IBAction func date(sender : AnyObject) {
         var screen:UIScreen = UIScreen.mainScreen()
@@ -166,6 +209,56 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     }
     
     /*
+        从相册中选择照片或者浏览照片
+    */
+    func selectPhotoFromAlbumOrBrowsePhoto(sender:AnyObject!){
+        switch self.status {
+        case 0,2:
+            self.selectPhotoFromAlbum()
+        case 1:
+            self.browsePhoto()
+        default:
+            println("")
+        }
+    }
+    
+    /*
+        拍照
+    */
+    func takePhoto(sender:AnyObject!){
+        
+        var imageController:UIImagePickerController = UIImagePickerController()
+        imageController.sourceType = .Camera
+        imageController.videoQuality = .TypeHigh
+        imageController.videoMaximumDuration = 10.0
+        imageController.allowsEditing = true
+        imageController.delegate = self
+        self.presentViewController(imageController,animated:true,completion:nil) //貌似说只能以模态形式展示
+    }
+    //从相册中选择照片
+    func selectPhotoFromAlbum(){
+        var imageController:UIImagePickerController = UIImagePickerController()
+        imageController.sourceType = .PhotoLibrary
+        imageController.videoMaximumDuration = 10.0
+        imageController.allowsEditing = true
+        imageController.delegate = self
+        self.presentViewController(imageController,animated:true,completion:nil) //貌似说只能以模态形式展示
+        println("从相册中选择照片")
+    }
+    
+    //浏览照片
+    func browsePhoto(){
+        let li_ImageViewer:Li_ImageViewer = Li_ImageViewer(frame:DeviceFrame)
+        li_ImageViewer.imageView.image = UIImage(contentsOfFile:self.diary.photos)
+        self.view.addSubview(li_ImageViewer)
+        UIView.animateWithDuration(0.3, animations:{
+            li_ImageViewer.backgroundColor = UIColor(white:0, alpha: 1)
+            li_ImageViewer.imageView.alpha = 1
+        })
+        println("浏览照片")
+    }
+    
+    /*
         新增状态模式参数设置
     */
     func addModeSet(){
@@ -190,7 +283,9 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         self.content.editable = false
         self.dateButton.enabled = false
         self.dateButton.setTitleColor(self.fontColor, forState: UIControlState.Normal)
+        self.photo.image = UIImage(contentsOfFile:self.diary.photos)
         self.basicModeSet()
+        self.takePhotoButton.hidden = true
     }
     //修改状态模式参数设置
     func updateModeSet(){
@@ -202,6 +297,10 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         self.title = "编辑日记"
         self.content.editable = true
         self.dateButton.enabled = true
+        var longTouch1:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target:self,action:Selector("takePhoto:"))
+        var longTouch2:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target:self,action:Selector("takePhoto:"))
+        self.photo.addGestureRecognizer(longTouch1)
+        self.takePhotoButton.addGestureRecognizer(longTouch2)
         self.basicModeSet()
     }
     func basicModeSet(){
@@ -219,10 +318,16 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
             self.relocationButton.addGestureRecognizer(gr2)
             self.relocationButton.addGestureRecognizer(longTouch)
         }
+        //设置照片。点击从相册选择相片，长按是拍照
+        func setPhotoButton(){
+            var gr1:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("selectPhotoFromAlbumOrBrowsePhoto:"))
+            var gr2:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("selectPhotoFromAlbumOrBrowsePhoto:"))
+            self.photo.addGestureRecognizer(gr1)
+            self.takePhotoButton.addGestureRecognizer(gr2)
+        }
         setLocationButtonClickEvent()
+        setPhotoButton()
     }
-    
-
 
     //单击“定位”或者获取位置信息
     func reLocationAction(sender: AnyObject) {

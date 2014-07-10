@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CXd-cb-K8n">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
@@ -154,13 +155,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S1R-CF-mup">
-                                <rect key="frame" x="204" y="91" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="拍照">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2nK-IW-EJL">
                                 <rect key="frame" x="259" y="91" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -185,6 +179,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xuy-B7-PAq">
+                                <rect key="frame" x="189" y="70" width="65" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.png" id="zGe-7m-jMn">
+                                <rect key="frame" x="204" y="87" width="34" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -198,8 +201,10 @@
                     <connections>
                         <outlet property="content" destination="T1V-Sp-Zne" id="AoZ-Bz-QUs"/>
                         <outlet property="dateButton" destination="EnS-Yh-ExK" id="aV8-WQ-lY9"/>
+                        <outlet property="photo" destination="xuy-B7-PAq" id="AbY-UT-KZM"/>
                         <outlet property="relocationButton" destination="3Il-qU-iAM" id="5C2-fW-xy6"/>
                         <outlet property="saveAndModefyButton" destination="Lvv-RK-YMc" id="Bjk-XJ-fHM"/>
+                        <outlet property="takePhotoButton" destination="zGe-7m-jMn" id="PgE-en-uB7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zc-re-cOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,6 +215,7 @@
     <resources>
         <image name="ic_tab_artists_selected.png" width="24" height="24"/>
         <image name="ic_tab_playlists_selected.png" width="24" height="24"/>
+        <image name="photo.png" width="36" height="36"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

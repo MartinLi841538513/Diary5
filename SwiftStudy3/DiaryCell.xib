@@ -19,7 +19,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="diaryImg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="kAB-a5-qRV">
-                        <rect key="frame" x="206" y="7" width="106" height="104"/>
+                        <rect key="frame" x="206" y="7" width="104" height="104"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="weather.png" translatesAutoresizingMaskIntoConstraints="NO" id="jZA-eC-GoI">
                         <rect key="frame" x="13" y="13" width="25" height="25"/>
@@ -46,12 +46,12 @@
                 <outlet property="diaryContent" destination="6gb-J4-Ua3" id="Nbg-ZJ-JqM"/>
                 <outlet property="locate" destination="cRJ-mx-swN" id="ehN-3l-r9v"/>
                 <outlet property="photo" destination="Xe5-wz-6qo" id="rFc-ol-aC7"/>
-                <outlet property="photoImg" destination="kAB-a5-qRV" id="JiX-8V-Flz"/>
+                <outlet property="photoImg" destination="kAB-a5-qRV" id="hBV-1f-sQm"/>
                 <outlet property="time" destination="rjB-4f-i1W" id="gSp-Jj-jzt"/>
                 <outlet property="voice" destination="gex-ax-gKh" id="B96-LT-Tcz"/>
                 <outlet property="weather" destination="jZA-eC-GoI" id="L5y-Uc-0Uf"/>
             </connections>
-            <point key="canvasLocation" x="441" y="244.5"/>
+            <point key="canvasLocation" x="411" y="274.5"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -34,6 +34,14 @@ class Li_common{
         return dateString
     }
     
+    func Li_detailTimeString()->String{
+        var date:NSDate = NSDate()
+        var dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyyMMddhhmmss"
+        var dateString:String = dateFormatter.stringFromDate(date)
+        return dateString
+    }
+    
     /*
         从下往上弹出信息提示
     */
@@ -76,6 +84,21 @@ class Li_common{
                         
                     })
             })
+    }
+    
+    /*
+        将image存入沙盒
+    */
+    func Li_storageImgToDomain(image:UIImage)->String{
+        let storeFilePath:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory,.UserDomainMask,true)
+        var doucumentsDirectiory:String = storeFilePath.objectAtIndex(0) as String
+        var path:String = doucumentsDirectiory.stringByAppendingPathComponent(self.Li_detailTimeString())
+        var result:Bool = UIImagePNGRepresentation(image).writeToFile(path, atomically:true)
+        if result == false {
+            println("Li_storageImgToDomain照片存入沙盒出错")
+        }
+        println(path)
+        return path
     }
     
 }

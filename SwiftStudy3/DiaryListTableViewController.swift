@@ -57,6 +57,7 @@ class DiaryListTableViewController: UITableViewController,UITableViewDataSource{
         let diary:Diary = self.diaries.objectAtIndex(row) as Diary
         cell.time.text = diary.date
         cell.diaryContent.text = diary.content
+        cell.photoImg.image = UIImage(contentsOfFile:diary.photos)
         return cell
     }
     

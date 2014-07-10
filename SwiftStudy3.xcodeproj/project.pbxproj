@@ -51,6 +51,7 @@
 		2273D66E19499E5C00409B84 /* ic_tab_playlists_unselected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2273D66C19499E5C00409B84 /* ic_tab_playlists_unselected@2x.png */; };
 		228D13B6195291D700654855 /* DiaryList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 228D13B5195291D600654855 /* DiaryList.plist */; };
 		228D13B91952A1C500654855 /* DiaryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228D13B81952A1C500654855 /* DiaryDao.swift */; };
+		22BDC3F8196E74BB0004F432 /* Li_ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BDC3F7196E74BB0004F432 /* Li_ImageViewer.swift */; };
 		22D3ABB419518748003DFCC9 /* Li_common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3ABB319518748003DFCC9 /* Li_common.swift */; };
 		22F34BC2196D135C00DB0C40 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22F34BC1196D135C00DB0C40 /* MAMapKit.framework */; };
 		22F34BC4196D137E00DB0C40 /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22F34BC3196D137E00DB0C40 /* AMap.bundle */; };
@@ -137,6 +138,7 @@
 		2273D66C19499E5C00409B84 /* ic_tab_playlists_unselected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_tab_playlists_unselected@2x.png"; sourceTree = "<group>"; };
 		228D13B5195291D600654855 /* DiaryList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DiaryList.plist; sourceTree = "<group>"; };
 		228D13B81952A1C500654855 /* DiaryDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryDao.swift; path = Dao/DiaryDao.swift; sourceTree = "<group>"; };
+		22BDC3F7196E74BB0004F432 /* Li_ImageViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Li_ImageViewer.swift; sourceTree = "<group>"; };
 		22D3ABB319518748003DFCC9 /* Li_common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Li_common.swift; path = tool/Li_common.swift; sourceTree = "<group>"; };
 		22F34BC1196D135C00DB0C40 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = ../../AMap_iOS_API_Lib_V2.2.1/3D/MAMapKit.framework; sourceTree = "<group>"; };
 		22F34BC3196D137E00DB0C40 /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AMap.bundle; path = ../AMap.bundle; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				2204EEFA196C0C1A00E18F5B /* ProgressHUD */,
 				22019D5B196A3D96002DE462 /* UIMenuBar */,
 				22D3ABB319518748003DFCC9 /* Li_common.swift */,
+				22BDC3F7196E74BB0004F432 /* Li_ImageViewer.swift */,
 			);
 			name = tool;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				22D3ABB419518748003DFCC9 /* Li_common.swift in Sources */,
 				2209A743194ABEC600DEA18B /* DiaryCell.swift in Sources */,
 				2273D63E194982AD00409B84 /* AppDelegate.swift in Sources */,
+				22BDC3F8196E74BB0004F432 /* Li_ImageViewer.swift in Sources */,
 				228D13B91952A1C500654855 /* DiaryDao.swift in Sources */,
 				22019D71196A3E7F002DE462 /* UIMenuBarItem.m in Sources */,
 				2209A746194AF9A500DEA18B /* Diary.swift in Sources */,
