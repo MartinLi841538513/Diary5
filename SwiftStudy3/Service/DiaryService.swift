@@ -17,25 +17,37 @@ class DiaryService{
     }
     
     //新增一篇日记
-    func addDiary(diary:Diary){
-        self.diaryDao.addDiary(diary)
+    func addDiary(diary:Diary)->(Bool,Diary){
+        return self.diaryDao.addDiary(diary)
     }
     //修改一篇日记
-    func updateDiary(diary:Diary){
-        self.diaryDao.updateDiary(diary)
+    func updateDiary(diary:Diary)->(Bool,Diary){
+        return self.diaryDao.updateDiary(diary)
     }
-    //得到最新的那片日记
-    func theLatestDiary()->Diary{
-        return self.diaryDao.theLatestDiary()
-    }
+
     //得到所有的日记
-    func allDiaries() ->NSMutableArray{
-        let diaryList:NSMutableArray = self.diaryDao.allDiaries()
-        return diaryList
+    func allDiariesWithUserId(userId:Int) ->(Bool , NSMutableArray){
+        return self.diaryDao.allDiariesWithUserId(userId)
     }
-    //删除一篇日记
-    func deleteDiary(diary:Diary){
-        self.diaryDao.deleteDiary(diary)
+    //在日记列表中删除一篇日记
+    func deleteDiary(diary:Diary)->Bool{
+        var result:Bool = self.diaryDao.deleteDiary(diary)
+        if result == false{
+            LIProgressHUD.showErrorWithStatus("删除失败")
+        }
+        return result
+    }
+    //在详情页面中删除一篇日记
+    func deleteDiary(diary:Diary,inViewController viewController:DiaryModefyViewController)->Bool{
+        var result:Bool = self.diaryDao.deleteDiary(diary)
+        if result == true{
+            LIProgressHUD.showSuccessWithStatus("删除成功")
+            viewController.menuBar.dismiss()
+            viewController.navigationController.popViewControllerAnimated(true)
+        }else{
+            LIProgressHUD.showErrorWithStatus("删除失败")
+        }
+        return result
     }
 
     /*
@@ -44,28 +56,74 @@ class DiaryService{
     */
     func loadWhenFirstRun(){
         if self.isFirstRun() == true{
+            
+            let userDao:UserDao = UserDao()
+            userDao.createTable()
+            userDao.addUserWithNickname("1",andEmail:"1",andPassword:"1")
             self.createTable()
         }
     }
     
     //判断是否第一次运行app
     func isFirstRun() ->Bool{
-        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var isFirstRunApp:AnyObject! = defaults.objectForKey("isFirstRunApp")
-        if isFirstRunApp == nil || isFirstRunApp as Bool==false{
-            defaults.setObject(true, forKey:"isFirstRunApp")
-            defaults.synchronize()
+        var userDefaults:UserDefault = UserDefault()
+        var isFirstRunApp:Bool! = userDefaults.isFirstRunApp()
+        if isFirstRunApp == nil || isFirstRunApp == false{
+            userDefaults.setIsFirstRunApp(true)
             println("第一次运行该app")
             return true
         }else{
-            defaults.setObject(false, forKey:"isFirstRunApp")
-            defaults.synchronize()
+            userDefaults.setIsFirstRunApp(false)
             println("不是第一次运行该app")
             return false
         }
     }
     
-
+    /*
+        把表情翻译成文字
+    */
+    func translateExpressWithImageName(imageName:String)->String{
+        var faceImgsPath:String = NSBundle.mainBundle().pathForResource("expression",ofType:"plist")
+        var data:NSMutableDictionary = NSMutableDictionary(contentsOfFile:faceImgsPath)
+        var keys:NSArray = data.allKeysForObject("\(imageName)@2x.png")
+        var key:String = keys.objectAtIndex(0) as String
+        return key
+    }
+    
+    /*
+        把文字翻译成表情
+    */
+    func translateExpressWithWords(words:String)->String{
+        var faceImgsPath:String = NSBundle.mainBundle().pathForResource("expression",ofType:"plist")
+        var data:NSMutableDictionary = NSMutableDictionary(contentsOfFile:faceImgsPath)
+        var value:NSString = data.objectForKey(words) as NSString
+        if value == ""||value.length<7{
+            value = "Expression_1@2x.png"
+        }
+        value = value.substringWithRange(NSRange(location:0,length:value.length-7))
+        return value as String
+    }
+    
+    /*
+        把天气图片翻译成文字
+    */
+    func translateWeatherWithImageName(imageName:String)->String{
+        var faceImgsPath:String = NSBundle.mainBundle().pathForResource("weatherPList",ofType:"plist")
+        var data:NSMutableDictionary = NSMutableDictionary(contentsOfFile:faceImgsPath)
+        var value:String = data.objectForKey(imageName) as String
+        return value
+    }
+    
+    /*
+        把文字翻译成天气图片
+    */
+    func translateWeatherWithWords(words:String)->String{
+        var faceImgsPath:String = NSBundle.mainBundle().pathForResource("weatherPList",ofType:"plist")
+        var data:NSMutableDictionary = NSMutableDictionary(contentsOfFile:faceImgsPath)
+        var keys:NSArray = data.allKeysForObject(words)
+        var key:String = keys.objectAtIndex(0) as String
+        return key
+    }
     
 }
 

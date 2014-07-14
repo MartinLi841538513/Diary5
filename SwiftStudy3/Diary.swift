@@ -8,11 +8,11 @@
 
 import Foundation
 
-class Diary{
-    var id:Integer?
+class Diary:NSObject{
+    var id:Int?
     var date:String = ""
-    var weather:String = ""
-    var mood:String = ""
+    var weather:String = "晴"
+    var mood:String = "[微笑]"
     var latitude:Double = 0.0
     var longitude:Double = 0.0
     var photos:String = ""
@@ -20,6 +20,7 @@ class Diary{
     var content:String = ""
     var address:String = ""
     var detailAddress:String = ""
+    var userId:Int?
     
     init(){
     

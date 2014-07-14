@@ -134,31 +134,10 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dNB-uu-6DB">
-                                <rect key="frame" x="120" y="73" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="天气">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xab-IR-ZA1">
-                                <rect key="frame" x="101" y="111" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="心情">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Il-qU-iAM">
-                                <rect key="frame" x="153" y="111" width="30" height="30"/>
+                                <rect key="frame" x="145" y="99" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="定位">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2nK-IW-EJL">
-                                <rect key="frame" x="259" y="91" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="语音">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -188,6 +167,14 @@
                                 <rect key="frame" x="204" y="87" width="34" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weather9.png" id="GLK-dd-QDn">
+                                <rect key="frame" x="255" y="70" width="65" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expression_1.png" id="CXr-N8-DQP">
+                                <rect key="frame" x="107" y="99" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -201,10 +188,12 @@
                     <connections>
                         <outlet property="content" destination="T1V-Sp-Zne" id="AoZ-Bz-QUs"/>
                         <outlet property="dateButton" destination="EnS-Yh-ExK" id="aV8-WQ-lY9"/>
+                        <outlet property="faceImageView" destination="CXr-N8-DQP" id="pZv-LL-xkY"/>
                         <outlet property="photo" destination="xuy-B7-PAq" id="AbY-UT-KZM"/>
                         <outlet property="relocationButton" destination="3Il-qU-iAM" id="5C2-fW-xy6"/>
                         <outlet property="saveAndModefyButton" destination="Lvv-RK-YMc" id="Bjk-XJ-fHM"/>
                         <outlet property="takePhotoButton" destination="zGe-7m-jMn" id="PgE-en-uB7"/>
+                        <outlet property="weatherImageView" destination="GLK-dd-QDn" id="mAm-oT-Y7L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zc-re-cOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -213,9 +202,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Expression_1.png" width="24" height="24"/>
         <image name="ic_tab_artists_selected.png" width="24" height="24"/>
         <image name="ic_tab_playlists_selected.png" width="24" height="24"/>
         <image name="photo.png" width="36" height="36"/>
+        <image name="weather9.png" width="162" height="162"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

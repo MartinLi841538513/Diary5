@@ -14,9 +14,11 @@
 import UIKit
 import CoreLocation
 
-class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBarDelegate,CLLocationManagerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBarDelegate,CLLocationManagerDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate, FaceDelegate,WeatherDelegate{
     
     @IBOutlet var dateButton : UIButton = nil
+    @IBOutlet var faceImageView: UIImageView = nil
+    @IBOutlet var weatherImageView: UIImageView = nil
     @IBOutlet var content : UITextView = nil
     @IBOutlet var saveAndModefyButton : UIBarButtonItem = nil
     @IBOutlet var relocationButton: UIButton = nil
@@ -26,31 +28,20 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     let diaryService:DiaryService = DiaryService()
     let li_common:Li_common = Li_common()
     var menuBar:UIMenuBar = UIMenuBar()
-    
+    var userDefault:UserDefault = UserDefault()
     var locationManager:CLLocationManager = CLLocationManager()
-    
     var fontColor:UIColor = UIColor()
     var status:Int = 0
-    
-
     var datePicker:UIDatePicker = UIDatePicker()
     var alertview:UIView! = UIView()
-    
+    var weatherCollectionViewController:WeatherCollectionViewController = WeatherCollectionViewController()
+    var faceCollectionViewController:FaceCollectionViewController = FaceCollectionViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.fontColor = self.dateButton.currentTitleColor
-        
-//        var layout:UICollectionViewLayout = UICollectionViewLayout()
-//        var collectionView:UICollectionView = UICollectionView(frame: CGRectMake(10,10,300,400), collectionViewLayout: layout)
-//        collectionView.registerClass(IconCollectionViewCell.self, forCellWithReuseIdentifier: "IconCollectionViewCell")
-//        collectionView.registerNib(UINib(nibName:"IconCollectionViewCell", bundle: NSBundle.mainBundle()), forCellWithReuseIdentifier: "IconCollectionViewCell")
-//        collectionView.delegate = self
-//        collectionView.dataSource = self
-//        collectionView.backgroundColor = UIColor.greenColor()
-//        self.view.addSubview(collectionView)
-        
+
         //0:日记新增模式  1:日记明细模式
         if self.status == 0{
             self.addModeSet()
@@ -64,30 +55,6 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         // Dispose of any resources that can be recreated.
     }
     
-    
-//    func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int{
-//        println("1")
-//        return 10
-//    }
-//    
-//    func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int{
-//        println("4")
-//        return 2
-//    }
-//    
-//    func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell!{
-//        println("3")
-//        var identifier:String = "IconCollectionViewCell"
-//        var cell:IconCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath:indexPath) as IconCollectionViewCell
-//        cell.imageView = UIImageView(image: UIImage(named: "weather.png"))
-//        return cell
-//    }
-//    
-//    
-//    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize{
-//    println("2")
-//        return CGSizeMake(96,100)
-//    }
     
     //#pragma mark - CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: AnyObject[]!){
@@ -108,6 +75,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
                     self.diary.address = "\(placemark.locality)\(placemark.subLocality)\(placemark.thoroughfare)"
                     var text:String = "位置:\(self.diary.address)"
                     self.li_common.Li_popUpfrombottomWithText(text,parentView:self.view)
+                    println(placemark)
                 }
             })
         }
@@ -154,6 +122,24 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         }
     }
 
+    /*
+        #FaceDelegate
+    */
+    func selectedFaceImgAction(imgName:String,view:UIView){
+        
+        self.li_common.Li_bottomViewAnimatedDown(view.superview.superview)
+        self.faceImageView.image = UIImage(named:imgName)
+        self.diary.mood = self.diaryService.translateExpressWithImageName(imgName)
+    }
+    
+    /*
+        #WeatherDelegate
+    */
+    func selectedWeatherImgAction(imgName:String,view:UIView){
+        self.li_common.Li_bottomViewAnimatedDown(view.superview.superview)
+        self.weatherImageView.image = UIImage(named:imgName)
+        self.diary.weather = self.diaryService.translateWeatherWithImageName(imgName)
+    }
     
     @IBAction func date(sender : AnyObject) {
         var screen:UIScreen = UIScreen.mainScreen()
@@ -184,6 +170,53 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         self.view.addSubview(alertview)
     }
     
+    /*
+        天气
+    */
+    @IBAction func weatherAction(sender: AnyObject) {
+        
+        func weatherIconsSelect(){
+            self.weatherCollectionViewController.view.frame = CGRectMake(0,0,DeviceFrame.size.width,200)
+            self.li_common.Li_viewPopUpFromBottomView(self.weatherCollectionViewController.view,popupOnView:self.view)
+        }
+        
+        switch self.status{
+        case 0,2:
+            weatherIconsSelect()
+        default:println("")
+        }
+    }
+    
+    /*
+        表情
+    */
+    func FaceSelectAction(sender: AnyObject) {
+        func faceIconsSelect(){
+            self.faceCollectionViewController.view.frame = CGRectMake(0,0,DeviceFrame.size.width,200)
+            self.li_common.Li_viewPopUpFromBottomView(self.faceCollectionViewController.view,popupOnView:self.view)
+        }
+        switch self.status{
+        case 0,2:
+            faceIconsSelect()
+        default:println("")
+        }
+    }
+    
+    /*
+        天气
+    */
+    func weatherSelectAction(sender:AnyObject){
+        func weatherIconsSelect(){
+            self.weatherCollectionViewController.view.frame = CGRectMake(0,0,DeviceFrame.size.width,200)
+            self.li_common.Li_viewPopUpFromBottomView(self.weatherCollectionViewController.view,popupOnView:self.view)
+        }
+        switch self.status{
+        case 0,2:
+            weatherIconsSelect()
+        default:println("")
+        }
+
+    }
     
     //单击是定位，双击是地图模式
     func handleTapGesture(sender:UITapGestureRecognizer){
@@ -222,19 +255,6 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         }
     }
     
-    /*
-        拍照
-    */
-    func takePhoto(sender:AnyObject!){
-        
-        var imageController:UIImagePickerController = UIImagePickerController()
-        imageController.sourceType = .Camera
-        imageController.videoQuality = .TypeHigh
-        imageController.videoMaximumDuration = 10.0
-        imageController.allowsEditing = true
-        imageController.delegate = self
-        self.presentViewController(imageController,animated:true,completion:nil) //貌似说只能以模态形式展示
-    }
     //从相册中选择照片
     func selectPhotoFromAlbum(){
         var imageController:UIImagePickerController = UIImagePickerController()
@@ -256,6 +276,34 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
             li_ImageViewer.imageView.alpha = 1
         })
         println("浏览照片")
+    }
+    
+    /*
+        拍照
+    */
+    func takePhoto(sender:AnyObject!){
+        func takePhotoAction(){
+            var imageController:UIImagePickerController = UIImagePickerController()
+            imageController.sourceType = .Camera
+            imageController.videoQuality = .TypeHigh
+            imageController.videoMaximumDuration = 10.0
+            imageController.allowsEditing = true
+            imageController.delegate = self
+            self.presentViewController(imageController,animated:true,completion:nil) //貌似说只能以模态形式展示
+        }
+        switch self.status {
+        case 0,2:
+            takePhotoAction()
+        default:
+            println("")
+        }
+    }
+    
+    /*
+        拍视频以及播放视频
+    */
+    func takeOrBrowerMovie(sender:AnyObject!){
+        println("拍视频以及播放视频")
     }
     
     /*
@@ -283,6 +331,9 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         self.content.editable = false
         self.dateButton.enabled = false
         self.dateButton.setTitleColor(self.fontColor, forState: UIControlState.Normal)
+        self.faceImageView.image = UIImage(named:self.diaryService.translateExpressWithWords(self.diary.mood))
+        self.weatherImageView.image = UIImage(named:self.diaryService.translateWeatherWithWords(self.diary.weather
+            ))
         self.photo.image = UIImage(contentsOfFile:self.diary.photos)
         self.basicModeSet()
         self.takePhotoButton.hidden = true
@@ -297,10 +348,6 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         self.title = "编辑日记"
         self.content.editable = true
         self.dateButton.enabled = true
-        var longTouch1:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target:self,action:Selector("takePhoto:"))
-        var longTouch2:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target:self,action:Selector("takePhoto:"))
-        self.photo.addGestureRecognizer(longTouch1)
-        self.takePhotoButton.addGestureRecognizer(longTouch2)
         self.basicModeSet()
     }
     func basicModeSet(){
@@ -318,15 +365,44 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
             self.relocationButton.addGestureRecognizer(gr2)
             self.relocationButton.addGestureRecognizer(longTouch)
         }
-        //设置照片。点击从相册选择相片，长按是拍照
+        //设置照片的单击双击和长按效果。单击从相册选择相片或者浏览照片
         func setPhotoButton(){
-            var gr1:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("selectPhotoFromAlbumOrBrowsePhoto:"))
-            var gr2:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("selectPhotoFromAlbumOrBrowsePhoto:"))
-            self.photo.addGestureRecognizer(gr1)
-            self.takePhotoButton.addGestureRecognizer(gr2)
+            var photogr1:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("selectPhotoFromAlbumOrBrowsePhoto:"))
+            var takePhotoButtongr1:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("selectPhotoFromAlbumOrBrowsePhoto:"))
+            var photogr2:UITapGestureRecognizer = UITapGestureRecognizer(target:self,action:Selector("takePhoto:"))
+            var takePhotoButtongr2:UITapGestureRecognizer = UITapGestureRecognizer(target:self,action:Selector("takePhoto:"))
+            var photolongTouch:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target:self,action:Selector("takeOrBrowerMovie:"))
+            var takePhotoButtonlongTouch:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target:self,action:Selector("takeOrBrowerMovie:"))
+            photogr1.numberOfTapsRequired = 1
+            takePhotoButtongr1.numberOfTapsRequired = 1
+            photogr2.numberOfTapsRequired = 2
+            takePhotoButtongr2.numberOfTapsRequired = 2
+            photogr1.requireGestureRecognizerToFail(photogr2)
+            takePhotoButtongr1.requireGestureRecognizerToFail(takePhotoButtongr2)
+            self.photo.addGestureRecognizer(photogr1)
+            self.takePhotoButton.addGestureRecognizer(takePhotoButtongr1)
+            self.photo.addGestureRecognizer(photogr2)
+            self.takePhotoButton.addGestureRecognizer(takePhotoButtongr2)
+            self.photo.addGestureRecognizer(photolongTouch)
+            self.takePhotoButton.addGestureRecognizer(takePhotoButtonlongTouch)
         }
+        
+        func faceIconEventSet(){
+            var faceTap1:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("FaceSelectAction:"))
+            self.faceImageView.addGestureRecognizer(faceTap1)
+            self.faceCollectionViewController.delegate = self
+        }
+        func weatherIconEventSet(){
+            var weatherTap1:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("weatherSelectAction:"))
+            self.weatherImageView.addGestureRecognizer(weatherTap1)
+            self.weatherCollectionViewController.delegate = self
+
+        }
+        
         setLocationButtonClickEvent()
         setPhotoButton()
+        faceIconEventSet()
+        weatherIconEventSet()
     }
 
     //单击“定位”或者获取位置信息
@@ -374,8 +450,13 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     @IBAction func save(sender : AnyObject) {
         if self.status == 0{
             var diary:Diary = self.currentDiary()
-            self.diaryService.addDiary(diary)
-            self.diary = self.diaryService.theLatestDiary()//这样就能或得到diary的id，那么就可以根据id修改这片新增的日记
+            var result:(Bool,Diary) = self.diaryService.addDiary(diary)
+            if result.0==true{
+                LIProgressHUD.showSuccessWithStatus("保存成功")
+                self.diary = result.1
+            }else{
+                LIProgressHUD.showErrorWithStatus("修改失败")
+            }
             self.detailModeSet(self.diary)
         }else if self.status == 1{
             var menuItem1:UIMenuBarItem = UIMenuBarItem(title:"编辑",target:self,image:UIImage(named:"modify.png"),action:Selector("modefyDiary:"))
@@ -388,7 +469,13 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
             self.menuBar.show()
         }else if self.status == 2{
             var diary:Diary = self.currentDiary()
-            self.diaryService.updateDiary(diary)
+            var result:(Bool,Diary) = self.diaryService.updateDiary(diary)
+            if result.0==true{
+                LIProgressHUD.showSuccessWithStatus("修改成功")
+                self.diary = result.1
+            }else{
+                LIProgressHUD.showErrorWithStatus("修改失败")
+            }
             self.detailModeSet(diary)
         }
     }
@@ -399,6 +486,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         diary = self.diary
         diary.date = dateButton.currentTitle
         diary.content = self.content.text
+        diary.userId = self.userDefault.userId()
         return diary
     }
     
@@ -414,9 +502,7 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         删除日记
     */
     func deleteDiary(sender:AnyObject){
-        self.diaryService.deleteDiary(self.currentDiary())
-        self.menuBar.dismiss()
-        self.navigationController.popViewControllerAnimated(true)
+        self.diaryService.deleteDiary(self.currentDiary(),inViewController:self)
     }
     
     /*

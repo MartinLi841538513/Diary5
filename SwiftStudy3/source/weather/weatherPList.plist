@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>weather1</key>
+	<string>闪电</string>
+	<key>weather2</key>
+	<string>雷阵雨</string>
+	<key>weather3</key>
+	<string>冰雹</string>
+	<key>weather4</key>
+	<string>晴雨</string>
+	<key>weather5</key>
+	<string>多云</string>
+	<key>weather6</key>
+	<string>雪</string>
+	<key>weather7</key>
+	<string>雨</string>
+	<key>weather8</key>
+	<string>晴转多云</string>
+	<key>weather9</key>
+	<string>晴</string>
+</dict>
+</plist>

@@ -9,7 +9,7 @@
 import Foundation
 let DBNAME = "diary.sqlite"
 
-class DiaryDao{
+class DiaryDao:NSObject{
     var db:COpaquePointer = nil
 
     let tableName:String = "diary"
@@ -17,72 +17,119 @@ class DiaryDao{
     //创建数据库表
     func createTable(){
         if self.openSqlite() == true{
-            var sql:String = "CREATE TABLE \(self.tableName) ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'date' TEXT NOT NULL, 'weather' TEXT NOT NULL, 'mood' TEXT NOT NULL, 'latitude' DOUBLE NOT NULL, 'longitude' DOUBLE NOT NULL, 'photos' TEXT NOT NULL, 'voicePath' TEXT NOT NULL, 'content' TEXT NOT NULL,'address' TEXT NOT NULL,'detailAddress' TEXT NOT NULL)"
+            var sql:String = "CREATE TABLE \(self.tableName) ('id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, 'date' TEXT NOT NULL, 'weather' TEXT NOT NULL, 'mood' TEXT NOT NULL, 'latitude' DOUBLE NOT NULL, 'longitude' DOUBLE NOT NULL, 'photos' TEXT NOT NULL, 'voicePath' TEXT NOT NULL, 'content' TEXT NOT NULL,'address' TEXT NOT NULL,'detailAddress' TEXT NOT NULL,'userId' INTEGER REFERENCES 'diary' ('id'))"
             self.execute(sql)
         }
     }
     
     //新增一篇日记
-    func addDiary(diary:Diary){
+    func addDiary(diary:Diary)->(Bool,Diary){
+        var bool:Bool = false
+        var newDiary:Diary = Diary()
         if self.openSqlite() == true{
-            var sql:String = "insert into diary(date,weather,mood,latitude,longitude,photos,voicePath,content,address,detailAddress) values('\(diary.date)','\(diary.weather)','\(diary.mood)','\(diary.latitude)','\(diary.longitude)','\(diary.photos)','\(diary.voicePath)','\(diary.content)','\(diary.address)','\(diary.detailAddress)')"
-            self.execute(sql)
+            var sql:String = "insert into diary(date,weather,mood,latitude,longitude,photos,voicePath,content,address,detailAddress,userId) values('\(diary.date)','\(diary.weather)','\(diary.mood)','\(diary.latitude)','\(diary.longitude)','\(diary.photos)','\(diary.voicePath)','\(diary.content)','\(diary.address)','\(diary.detailAddress)','\(diary.userId)')"
+            if self.execute(sql)==true{
+                let result:(Bool,Diary) = self.findTheNewDiaryByUserId(diary.userId)
+                if result.0 == true{
+                    newDiary = result.1
+                    bool = true
+                }
+            }
         }
+        return (bool,newDiary)
     }
     
     //修改一篇日记
-    func updateDiary(diary:Diary){
+    func updateDiary(diary:Diary)->(Bool,Diary){
+        var result:(Bool,Diary) = (false,Diary())
         if self.openSqlite() == true{
             var sql:String = "update diary set date = '\(diary.date)' , weather = '\(diary.weather)' , mood = '\(diary.mood)' , latitude = '\(diary.latitude)' , longitude = '\(diary.longitude)' , photos = '\(diary.photos)' , voicePath = '\(diary.voicePath)' , content = '\(diary.content)',address = '\(diary.address)',detailAddress = '\(diary.detailAddress)' where id = \(diary.id)"
             println(sql)
-            self.execute(sql)
+            if self.execute(sql)==true{
+               result = self.findDiaryByDiaryId(diary.id)
+            }
         }
+        return result
+    }
+    
+    //通过id找到diary
+    func findDiaryByDiaryId(diaryId:Int!)->(Bool,Diary){
+        var bool:Bool = false
+        var diary:Diary = Diary()
+        if self.openSqlite() == true{
+            var sql:NSString = "select *from \(self.tableName) where id = \(diaryId)"
+            println(sql)
+            var stmt:COpaquePointer = nil
+            if sqlite3_prepare_v2(self.db,sql.UTF8String,-1,&stmt,nil) == SQLITE_OK{
+                if sqlite3_step(stmt) == SQLITE_ROW{
+                    diary = transformToDiary(stmt)
+                    bool = true
+                }else{
+                    println("未获得最新的日记")
+                }
+            }else{
+                println("查询准备失败")
+            }
+            sqlite3_finalize(stmt)
+            sqlite3_close(self.db)
+        }
+        return (bool,diary)
     }
     //删除一篇日记
-    func deleteDiary(diary:Diary){
+    func deleteDiary(diary:Diary)->Bool{
+        var bool:Bool = false
         if self.openSqlite() == true{
             var sql:String = "delete from \(self.tableName) where id = \(diary.id)"
-            self.execute(sql)
+            bool = self.execute(sql)
         }
+        return bool
     }
 
     //得到刚刚创建的日记（也就是最新的日记，也就是最后一篇日记）
-    func theLatestDiary()->Diary{
+    func findTheNewDiaryByUserId(userId:Int!)->(Bool,Diary){
+        var bool:Bool = false
         var diary:Diary = Diary()
         
         if self.openSqlite() == true{
-            let sql:NSString = "select *from diary order by id desc limit 1"
-            var statement:COpaquePointer = nil
-            if sqlite3_prepare_v2(self.db,sql.UTF8String,-1,&statement,nil) == SQLITE_OK{
-                while sqlite3_step(statement) == SQLITE_ROW{
-                    diary = transformToDiary(statement)
+            let sql:NSString = "select *from diary where userId = \(userId) order by id desc limit 1"
+            var stmt:COpaquePointer = nil
+            if sqlite3_prepare_v2(self.db,sql.UTF8String,-1,&stmt,nil) == SQLITE_OK{
+                if sqlite3_step(stmt) == SQLITE_ROW{
+                    diary = transformToDiary(stmt)
+                    bool = true
+                }else{
+                    println("未获得最新的日记")
                 }
             }else{
                 println("查询准备失败")
             }
+            sqlite3_finalize(stmt)
+            sqlite3_close(self.db)
         }
-        
-        return diary
+        return (bool,diary)
     }
     
     //得到所有的日记
-    func allDiaries() ->NSMutableArray{
+    func allDiariesWithUserId(userId:Int!) ->(Bool,NSMutableArray){
+        var bool:Bool = false
         var diaryList:NSMutableArray = NSMutableArray()
-        
         if self.openSqlite() == true{
-            let sql:NSString = "select * from "+self.tableName+" order by id desc"
-            var statement:COpaquePointer = nil
-            if sqlite3_prepare_v2(self.db,sql.UTF8String,-1,&statement,nil) == SQLITE_OK{
-                while sqlite3_step(statement) == SQLITE_ROW{
-                    var diary = self.transformToDiary(statement)
+            let sql:NSString = "select * from "+self.tableName+" where userId = \(userId) order by id desc"
+            var stmt:COpaquePointer = nil
+            if sqlite3_prepare_v2(self.db,sql.UTF8String,-1,&stmt,nil) == SQLITE_OK{
+                while sqlite3_step(stmt) == SQLITE_ROW{
+                    var diary = self.transformToDiary(stmt)
                     diaryList.addObject(diary)
                 }
+                bool = true
             }else{
                 println("查询准备失败")
             }
+            sqlite3_finalize(stmt)
+            sqlite3_close(self.db)
         }
         
-        return diaryList
+        return (bool,diaryList)
     }
     
     /*
@@ -117,6 +164,8 @@ class DiaryDao{
                 diary.address = value
             case 11:
                 diary.detailAddress = value
+            case 12:
+                diary.userId = value.toInt()
             default:
                 println("")
             }
@@ -149,24 +198,27 @@ class DiaryDao{
     }
 
     func execute(sql:String)->Bool{
+        var bool:Bool = false
         var result:CInt = 0
         var cSql:CString = sql.bridgeToObjectiveC().UTF8String
         var stmt:COpaquePointer = nil
         result = sqlite3_prepare_v2(self.db,cSql,-1,&stmt,nil)
         if result != SQLITE_OK{
-            println("准备执行sql失败")
-            return false
+            println("准备执行\(sql)失败")
+            bool = false
         }else{
-            println("准备执行sql成功")
             result = sqlite3_step(stmt)
             if result != SQLITE_OK && result != SQLITE_DONE{
-                println("执行sql失败")
-                return false
+                println("执行\(sql)失败")
+                bool = false
             }else{
-                println("执行sql成功")
-                return true
+                println("执行\(sql)成功")
+                bool = true
             }
         }
+        sqlite3_finalize(stmt)
+        sqlite3_close(self.db)
+        return bool
     }
 
 }

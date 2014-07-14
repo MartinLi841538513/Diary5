@@ -11,21 +11,31 @@ import UIKit
 class DiaryListTableViewController: UITableViewController,UITableViewDataSource{
 
     var diaries:NSMutableArray = NSMutableArray()
-
+    var userDefault:UserDefault = UserDefault()
+    var isLogin:Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(animated: Bool){
         super.viewWillAppear(animated)
-        self.loadDiaries()
-        
+        self.isLogin = userDefault.isLoginStatus()
+        if self.isLogin == nil || self.isLogin == false{
+            self.showLoginView()
+        }else{
+            self.loadDiaries()
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
 
     // #pragma mark - Table view data source
 
@@ -109,35 +119,31 @@ class DiaryListTableViewController: UITableViewController,UITableViewDataSource{
         return 117.0
     }
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView?, moveRowAtIndexPath fromIndexPath: NSIndexPath?, toIndexPath: NSIndexPath?) {
-
+    func loadData(notification:NSNotification){
+        self.loadDiaries()
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView?, canMoveRowAtIndexPath indexPath: NSIndexPath?) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // #pragma mark - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
     //加载所有日记
     func loadDiaries(){
         let diaryDao:DiaryService = DiaryService()
-        self.diaries = diaryDao.allDiaries()
-        self.tableView.reloadData()
+        println(self.userDefault.userId())
+        var result:(Bool,NSMutableArray) = diaryDao.allDiariesWithUserId(self.userDefault.userId())
+        if result.0 == true {
+            self.diaries = result.1
+            self.tableView.reloadData()
+        }else{
+            println("获取用户所有日记失败")
+        }
+    }
+    
+    /*
+        显示登录界面
+    */
+    func showLoginView(){
+        var storyboard:UIStoryboard = UIStoryboard(name:"User",bundle:nil)
+        var navController:UINavigationController = storyboard.instantiateViewControllerWithIdentifier("SignUpNav") as UINavigationController
+        self.presentModalViewController(navController, animated: true)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadData:"), name:"Login_Notification", object: nil)
     }
 }

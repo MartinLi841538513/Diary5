@@ -11,8 +11,11 @@ import UIKit
 
 let DeviceFrame:CGRect = UIScreen.mainScreen().applicationFrame
 let StatusBarFrame:CGRect = UIApplication.sharedApplication().statusBarFrame
+let PopUpFromBottomBackgroundColor:UIColor = UIColor.greenColor()
 
-class Li_common{
+class Li_common:NSObject,UIGestureRecognizerDelegate{
+    
+    var fullScreenBlackView:UIView = UIView()
     /*
     快速创建一种常用的button，state：normal，  backgroundcolor：white，  type：system    ControlEvents:TouchUpInside
     */
@@ -50,7 +53,6 @@ class Li_common{
         frame.origin.y = DeviceFrame.height+StatusBarFrame.height
         frame.size.height = 30
         var bottomView:UIView = UIView(frame:frame)
-        bottomView.backgroundColor = UIColor.greenColor()
         bottomView.alpha = 0.9
         
         var label:UILabel = UILabel()
@@ -65,6 +67,31 @@ class Li_common{
     }
     
     /*
+        从下往上弹出view
+    */
+    func Li_viewPopUpFromBottomView(bottomView:UIView,popupOnView view:UIView){
+
+        fullScreenBlackView.frame = CGRectMake(0,StatusBarFrame.height+DeviceFrame.height,DeviceFrame.width,DeviceFrame.height)
+        fullScreenBlackView.backgroundColor = UIColor(white:0.2, alpha:0.6)
+        var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("tapAnimateDownWith:"))
+        tap.numberOfTapsRequired = 1
+        tap.delegate = self
+        var frame:CGRect = DeviceFrame
+        frame.origin.y = fullScreenBlackView.frame.height-bottomView.frame.height
+        frame.size.width = bottomView.frame.width
+        frame.size.height = bottomView.frame.height
+        bottomView.backgroundColor = PopUpFromBottomBackgroundColor
+        bottomView.frame = frame
+        fullScreenBlackView.userInteractionEnabled = true
+        fullScreenBlackView.addGestureRecognizer(tap)
+        fullScreenBlackView.addSubview(bottomView)
+        view.addSubview(fullScreenBlackView)
+
+        self.Li_bottomViewAnimatedPopup(fullScreenBlackView)
+    }
+    
+    
+    /*
         bottomView是位于屏幕最底下刚好看不见的地方，在需要的时候弹出来，再收回去（一般用作提示）
     */
     func Li_bottomViewAnimatedPopupAndDown(bottomView:UIView){
@@ -74,16 +101,36 @@ class Li_common{
             frame.origin.y = frame.origin.y - frame.size.height
             bottomView.frame = frame
             }, completion: {(value:Bool) in
-                
                 UIView.animateWithDuration(0.5, delay: 2.5, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                     var frame:CGRect = bottomView.frame
                     frame.origin.y = frame.origin.y + frame.size.height
                     bottomView.frame = frame
-                    
                     }, completion: {(value:Bool) in
                         
                     })
             })
+    }
+    
+    /*
+        bottomView弹出来
+    */
+    func Li_bottomViewAnimatedPopup(bottomView:UIView){
+        UIView.animateWithDuration(0.5, animations: {
+            var frame:CGRect = bottomView.frame
+            frame.origin.y = frame.origin.y - frame.size.height
+            bottomView.frame = frame
+        })
+    }
+    
+    /*
+        bottomView收回去
+    */
+    func Li_bottomViewAnimatedDown(bottomView:UIView){
+        UIView.animateWithDuration(0.4, animations: {
+            var frame:CGRect = bottomView.frame
+            frame.origin.y = frame.origin.y + frame.size.height
+            bottomView.frame = frame
+        })
     }
     
     /*
@@ -99,6 +146,34 @@ class Li_common{
         }
         println(path)
         return path
+    }
+    
+    /*
+        #UIGestureRecognizerDelegate
+        我在这里设置响应事件的优先级，因为UITap响应事件的优先级会高，则他的subview的事件会被阻止
+    */
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldReceiveTouch touch: UITouch!)->Bool{
+        var view:UIView = gestureRecognizer.view
+        if touch.view == view{
+            return true
+        }else{
+            return false
+        }
+        
+    }
+    
+    func tapAnimateDownWith(sender:UITapGestureRecognizer!){
+        var fullScreenBlackView:UIView = (sender as UIGestureRecognizer).view
+        self.Li_bottomViewAnimatedDown(fullScreenBlackView)
+    }
+    
+    
+    /*邮箱验证*/
+    func isValidateEmail(email:String)->Bool{
+//        let emailRegex:String = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$"
+//        var emailtest:NSPredicate = NSPredicate(format:"name = \(emailRegex)",nil)
+//        return emailtest.evaluateWithObject(email)
+        return true
     }
     
 }
