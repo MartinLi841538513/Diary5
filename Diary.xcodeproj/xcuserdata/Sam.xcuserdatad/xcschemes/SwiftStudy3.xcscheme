@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2273D637194982AD00409B84"
-               BuildableName = "SwiftStudy3.app"
-               BlueprintName = "SwiftStudy3"
-               ReferencedContainer = "container:SwiftStudy3.xcodeproj">
+               BuildableName = "Diary.app"
+               BlueprintName = "Diary"
+               ReferencedContainer = "container:Diary.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2273D649194982AD00409B84"
-               BuildableName = "SwiftStudy3Tests.xctest"
-               BlueprintName = "SwiftStudy3Tests"
-               ReferencedContainer = "container:SwiftStudy3.xcodeproj">
+               BuildableName = "DiaryTests.xctest"
+               BlueprintName = "DiaryTests"
+               ReferencedContainer = "container:Diary.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2273D637194982AD00409B84"
-            BuildableName = "SwiftStudy3.app"
-            BlueprintName = "SwiftStudy3"
-            ReferencedContainer = "container:SwiftStudy3.xcodeproj">
+            BuildableName = "Diary.app"
+            BlueprintName = "Diary"
+            ReferencedContainer = "container:Diary.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2273D637194982AD00409B84"
-            BuildableName = "SwiftStudy3.app"
-            BlueprintName = "SwiftStudy3"
-            ReferencedContainer = "container:SwiftStudy3.xcodeproj">
+            BuildableName = "Diary.app"
+            BlueprintName = "Diary"
+            ReferencedContainer = "container:Diary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2273D637194982AD00409B84"
-            BuildableName = "SwiftStudy3.app"
-            BlueprintName = "SwiftStudy3"
-            ReferencedContainer = "container:SwiftStudy3.xcodeproj">
+            BuildableName = "Diary.app"
+            BlueprintName = "Diary"
+            ReferencedContainer = "container:Diary.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

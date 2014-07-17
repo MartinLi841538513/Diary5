@@ -39,12 +39,11 @@
         [_containView addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
         
         _imageView = [[UIImageView alloc] initWithImage:image];
-
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _titleLabel.textAlignment = UITextAlignmentCenter;
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.backgroundColor = [UIColor clearColor];
         _titleLabel.textColor = [UIColor whiteColor];
-        _titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
+        _titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         _titleLabel.numberOfLines = 1;
         _titleLabel.font = [UIFont systemFontOfSize:13.f];
         _titleLabel.text = title;
@@ -53,7 +52,7 @@
         [_containView addSubview:_titleLabel];
         
         _sizeValue = ([UIScreen mainScreen].bounds.size.width - 40.0f)/3.0f;
-        
+        [_imageView setFrame:CGRectMake(10, 20, 30, 30)];
         [self setup];
         
     }

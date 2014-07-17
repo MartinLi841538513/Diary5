@@ -33,7 +33,7 @@ class PasswordViewController: UIViewController {
     
     @IBAction func nextStep(sender: AnyObject) {
         var password:NSString = self.password.text
-        if password.length > 6{
+        if password.length > 5{
             var storyboard:UIStoryboard = UIStoryboard(name:"User",bundle:nil)
             var viewController:ConfirmPasswordViewController = storyboard.instantiateViewControllerWithIdentifier("ConfirmPasswordViewController") as ConfirmPasswordViewController
             viewController.email = self.email

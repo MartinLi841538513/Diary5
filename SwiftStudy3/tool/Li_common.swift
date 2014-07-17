@@ -29,13 +29,29 @@ class Li_common:NSObject,UIGestureRecognizerDelegate{
         return button
     }
     
-    //返回2014-06-19 String格式的日期
-    func Li_dateString(date:NSDate) ->String{
-        var dateFormatter:NSDateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        var dateString:String = dateFormatter.stringFromDate(date)
-        return dateString
+    
+    func Li_weekdayTranslate(weekday:Int)->String{
+        var weekdayString:String!
+        switch weekday{
+        case 1:
+            weekdayString = "星期日"
+        case 2:
+            weekdayString = "星期一"
+        case 3:
+            weekdayString = "星期二"
+        case 4:
+            weekdayString = "星期三"
+        case 5:
+            weekdayString = "星期四"
+        case 6:
+            weekdayString = "星期五"
+        case 7:
+            weekdayString = "星期六"
+        default:println("")
+        }
+        return weekdayString
     }
+    
     
     func Li_detailTimeString()->String{
         var date:NSDate = NSDate()
@@ -53,8 +69,8 @@ class Li_common:NSObject,UIGestureRecognizerDelegate{
         frame.origin.y = DeviceFrame.height+StatusBarFrame.height
         frame.size.height = 30
         var bottomView:UIView = UIView(frame:frame)
-        bottomView.alpha = 0.9
-        
+        bottomView.alpha = 0.8
+        bottomView.backgroundColor = UIColor.greenColor()
         var label:UILabel = UILabel()
         label.frame = CGRectMake(10, 2, DeviceFrame.width-20, 25)
         label.text = text
@@ -115,7 +131,7 @@ class Li_common:NSObject,UIGestureRecognizerDelegate{
         bottomView弹出来
     */
     func Li_bottomViewAnimatedPopup(bottomView:UIView){
-        UIView.animateWithDuration(0.5, animations: {
+        UIView.animateWithDuration(0.3, animations: {
             var frame:CGRect = bottomView.frame
             frame.origin.y = frame.origin.y - frame.size.height
             bottomView.frame = frame
@@ -126,7 +142,7 @@ class Li_common:NSObject,UIGestureRecognizerDelegate{
         bottomView收回去
     */
     func Li_bottomViewAnimatedDown(bottomView:UIView){
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animateWithDuration(0.3, animations: {
             var frame:CGRect = bottomView.frame
             frame.origin.y = frame.origin.y + frame.size.height
             bottomView.frame = frame

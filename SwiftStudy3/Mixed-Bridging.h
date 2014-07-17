@@ -12,3 +12,4 @@
 #import <MAMapKit/MAMapKit.h>
 #import "MapViewController.h"
 #import <MapKit/MapKit.h>
+#import "TapPasswordView.h"

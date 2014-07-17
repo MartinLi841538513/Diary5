@@ -12,22 +12,24 @@ class DiaryListTableViewController: UITableViewController,UITableViewDataSource{
 
     var diaries:NSMutableArray = NSMutableArray()
     var userDefault:UserDefault = UserDefault()
+    var diaryService:DiaryService = DiaryService()
     var isLogin:Bool!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if UserDefault().isTapPasswordAllowed()==true&&object_getClassName(self.tabBarController.presentingViewController) != "UINavigationController"{
+            var storyboard:UIStoryboard = UIStoryboard(name:"Main",bundle:nil)
+            var setTapPasswordViewController:SetTapPasswordViewController = storyboard.instantiateViewControllerWithIdentifier("SetTapPasswordViewController") as SetTapPasswordViewController
+            setTapPasswordViewController.status = 0
+            self.tabBarController.presentModalViewController(setTapPasswordViewController,animated:true)
+        }
     }
     
     override func viewWillAppear(animated: Bool){
         super.viewWillAppear(animated)
-        self.isLogin = userDefault.isLoginStatus()
-        if self.isLogin == nil || self.isLogin == false{
-            self.showLoginView()
-        }else{
-            self.loadDiaries()
-        }
-
+        self.loadDiaries()
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,9 +67,20 @@ class DiaryListTableViewController: UITableViewController,UITableViewDataSource{
         //设置单元格属性
         let row:Int = indexPath.row
         let diary:Diary = self.diaries.objectAtIndex(row) as Diary
+        cell.weather.image = UIImage(named:self.diaryService.translateWeatherWithWords(diary.weather))
+        cell.mood.image = UIImage(named:self.diaryService.translateExpressWithWords(diary.mood))
+        if diary.latitude == 0{
+            cell.locate.image = UIImage(named:"locate")
+        }
+        
         cell.time.text = diary.date
         cell.diaryContent.text = diary.content
-        cell.photoImg.image = UIImage(contentsOfFile:diary.photos)
+        let image:UIImage = UIImage(contentsOfFile:diary.photos)
+        if image != nil{
+            cell.photoImg.image = image
+        }else{
+            cell.photoImg.image = UIImage(named:diary.photos)
+        }
         return cell
     }
     
@@ -116,8 +129,9 @@ class DiaryListTableViewController: UITableViewController,UITableViewDataSource{
     }
     
     override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat{
-        return 117.0
+        return 97.0
     }
+    
 
     func loadData(notification:NSNotification){
         self.loadDiaries()
@@ -136,14 +150,4 @@ class DiaryListTableViewController: UITableViewController,UITableViewDataSource{
         }
     }
     
-    /*
-        显示登录界面
-    */
-    func showLoginView(){
-        var storyboard:UIStoryboard = UIStoryboard(name:"User",bundle:nil)
-        var navController:UINavigationController = storyboard.instantiateViewControllerWithIdentifier("SignUpNav") as UINavigationController
-        self.presentModalViewController(navController, animated: true)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadData:"), name:"Login_Notification", object: nil)
-    }
 }

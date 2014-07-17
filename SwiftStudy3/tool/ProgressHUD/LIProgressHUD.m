@@ -212,7 +212,7 @@ CGFloat LIProgressHUDRingThickness = 6;
     BOOL imageUsed = (self.imageView.image) || (self.imageView.hidden);
     
     if(string) {
-        CGSize stringSize = [string sizeWithFont:self.stringLabel.font constrainedToSize:CGSizeMake(200, 300)];
+        CGSize stringSize = CGSizeMake(20, 20);
         stringWidth = stringSize.width;
         stringHeight = stringSize.height;
         if (imageUsed)
@@ -373,7 +373,7 @@ CGFloat LIProgressHUDRingThickness = 6;
     
     if(notification) {
         LIProgressHUD *__weak weakSelf=self;
-        [UIView animateWithDuration:animationDuration 
+        [UIView animateWithDuration:0.3
                               delay:0 
                             options:UIViewAnimationOptionAllowUserInteraction 
                          animations:^{

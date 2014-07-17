@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CXd-cb-K8n">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="Qfh-Ei-4G8">
             <objects>
-                <tabBarController id="CXd-cb-K8n" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" id="CXd-cb-K8n" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="bIx-dH-C4V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -44,7 +43,7 @@
         <!--Diary List Table View Controller - 日记列表-->
         <scene sceneID="x8p-Fe-B9Z">
             <objects>
-                <tableViewController storyboardIdentifier="DiaryListTableViewController" title="日记列表" id="GsK-Eo-WBp" customClass="DiaryListTableViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DiaryListTableViewController" title="日记列表" id="GsK-Eo-WBp" customClass="DiaryListTableViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="NcC-mB-11T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -76,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="670" y="-252"/>
         </scene>
-        <!--Table View Controller - 设置-->
+        <!--Set Table View Controller - 设置-->
         <scene sceneID="vvz-gd-jBr">
             <objects>
-                <tableViewController id="rA0-Mm-rJf" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SetTableViewController" id="rA0-Mm-rJf" customClass="SetTableViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iai-OA-6sV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +92,55 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDI-2J-GyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="608"/>
+            <point key="canvasLocation" x="670" y="1015"/>
+        </scene>
+        <!--Privacy Set View Controller-->
+        <scene sceneID="OGD-11-Syo">
+            <objects>
+                <viewController storyboardIdentifier="PrivacySetViewController" id="vbm-qD-Kr6" customClass="PrivacySetViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HCW-7w-M5e">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0Mz-3R-Srt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableview" destination="0Mz-3R-Srt" id="6QH-Lc-PYk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m0x-WO-uu0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050" y="1015"/>
+        </scene>
+        <!--Set Tap Password View Controller-->
+        <scene sceneID="pRk-wf-JPM">
+            <objects>
+                <viewController storyboardIdentifier="SetTapPasswordViewController" id="JfI-nd-KxJ" customClass="SetTapPasswordViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Pl7-Pk-r2E">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="yr9-N9-rjX" customClass="TapPasswordView">
+                                <rect key="frame" x="0.0" y="52" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tapPasswordView" destination="yr9-N9-rjX" id="M7Q-D3-DIT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QwI-c4-yz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1425" y="1015"/>
         </scene>
         <!--Navigation Controller - 设置-->
         <scene sceneID="7vM-ul-H4Y">
@@ -110,12 +157,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Jg-8M-VCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="237" y="608"/>
+            <point key="canvasLocation" x="237" y="1015"/>
         </scene>
         <!--Diary Modefy View Controller - 编写日记-->
         <scene sceneID="9z4-cz-Sw0">
             <objects>
-                <viewController storyboardIdentifier="DiaryModefyViewController" title="编写日记" hidesBottomBarWhenPushed="YES" id="GRN-SY-fx8" customClass="DiaryModefyViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiaryModefyViewController" title="编写日记" hidesBottomBarWhenPushed="YES" id="GRN-SY-fx8" customClass="DiaryModefyViewController" customModule="Diary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z2r-dE-hv9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -134,49 +181,73 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Il-qU-iAM">
-                                <rect key="frame" x="145" y="99" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="定位">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EnS-Yh-ExK">
-                                <rect key="frame" x="8" y="82" width="86" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="2014-05-11">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="date:" destination="GRN-SY-fx8" eventType="touchUpInside" id="CDs-gP-3s6"/>
-                                </connections>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="T1V-Sp-Zne">
-                                <rect key="frame" x="20" y="149" width="280" height="307"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="写点啥记录今天的心情吧..." id="T1V-Sp-Zne">
+                                <rect key="frame" x="8" y="149" width="305" height="360"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="xuy-B7-PAq">
-                                <rect key="frame" x="189" y="70" width="65" height="65"/>
+                                <rect key="frame" x="247" y="73" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo.png" id="zGe-7m-jMn">
-                                <rect key="frame" x="204" y="87" width="34" height="31"/>
+                                <rect key="frame" x="254" y="88" width="42" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="weather9.png" id="GLK-dd-QDn">
-                                <rect key="frame" x="255" y="70" width="65" height="65"/>
+                                <rect key="frame" x="180" y="72" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expression_1.png" id="CXr-N8-DQP">
-                                <rect key="frame" x="107" y="99" width="30" height="30"/>
+                                <rect key="frame" x="145" y="91" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" id="VSU-vv-dnt">
+                                <rect key="frame" x="5" y="145" width="310" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="eso-AY-OxS">
+                                <rect key="frame" x="10" y="71" width="71" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2014年08月" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RLZ-EY-fnw">
+                                        <rect key="frame" x="0.0" y="0.0" width="71" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星期三" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4bT-Vl-YRL">
+                                        <rect key="frame" x="0.0" y="47" width="70" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fjn-SL-Fqs">
+                                        <rect key="frame" x="0.0" y="22" width="71" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </view>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectedLocate.png" id="xZo-rY-KiN">
+                                <rect key="frame" x="97" y="87" width="38" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" id="3M6-ey-mRy">
+                                <rect key="frame" x="86" y="92" width="1" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.88235294117647056" green="0.96862745098039216" blue="0.9882352941176471" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="编辑日记" id="Kaa-a2-GQd">
                         <barButtonItem key="rightBarButtonItem" title="保存" id="Lvv-RK-YMc">
@@ -187,13 +258,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="content" destination="T1V-Sp-Zne" id="AoZ-Bz-QUs"/>
-                        <outlet property="dateButton" destination="EnS-Yh-ExK" id="aV8-WQ-lY9"/>
+                        <outlet property="dateView" destination="eso-AY-OxS" id="J7e-t4-D4X"/>
+                        <outlet property="day" destination="Fjn-SL-Fqs" id="aoh-5S-req"/>
                         <outlet property="faceImageView" destination="CXr-N8-DQP" id="pZv-LL-xkY"/>
+                        <outlet property="locateView" destination="xZo-rY-KiN" id="2C7-IQ-lrE"/>
                         <outlet property="photo" destination="xuy-B7-PAq" id="AbY-UT-KZM"/>
-                        <outlet property="relocationButton" destination="3Il-qU-iAM" id="5C2-fW-xy6"/>
                         <outlet property="saveAndModefyButton" destination="Lvv-RK-YMc" id="Bjk-XJ-fHM"/>
                         <outlet property="takePhotoButton" destination="zGe-7m-jMn" id="PgE-en-uB7"/>
                         <outlet property="weatherImageView" destination="GLK-dd-QDn" id="mAm-oT-Y7L"/>
+                        <outlet property="weekday" destination="4bT-Vl-YRL" id="lk6-Xr-mBu"/>
+                        <outlet property="yearAndMonth" destination="RLZ-EY-fnw" id="FRS-KS-GlM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2zc-re-cOv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -205,7 +279,8 @@
         <image name="Expression_1.png" width="24" height="24"/>
         <image name="ic_tab_artists_selected.png" width="24" height="24"/>
         <image name="ic_tab_playlists_selected.png" width="24" height="24"/>
-        <image name="photo.png" width="36" height="36"/>
+        <image name="photo.png" width="100" height="80"/>
+        <image name="selectedLocate.png" width="36" height="36"/>
         <image name="weather9.png" width="162" height="162"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

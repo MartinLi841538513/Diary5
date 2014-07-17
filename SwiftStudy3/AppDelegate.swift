@@ -14,12 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow!
 
 
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
-        var diaryService:DiaryService = DiaryService()
-        diaryService.loadWhenFirstRun()
-        
-        MAMapServices.sharedServices().apiKey = "e567de06b8565e33c162191e0c801ad1"
+        DiaryService().loadWhenFirstRun()
+        MAMapServices.sharedServices().apiKey = "e567de06b8565e33c162191e0c801ad1" //高德地图
+        self.setRootViewController()
         return true
     }
 
@@ -46,6 +46,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    func setRootViewController(){
+        self.window = UIWindow(frame:CGRectMake(0,0,DeviceFrame.width,DeviceFrame.height+StatusBarFrame.height))
+        
+        var rootViewController:UIViewController!
+        var userDefaults:UserDefault = UserDefault()
+        if userDefaults.isLoginStatus()==true{
+            var storyboard:UIStoryboard = UIStoryboard(name:"Main",bundle:nil)
+            rootViewController = storyboard.instantiateViewControllerWithIdentifier("MainTabBarController") as UITabBarController
+        }else{
+            var storyboard:UIStoryboard = UIStoryboard(name:"User",bundle:nil)
+            rootViewController = storyboard.instantiateViewControllerWithIdentifier("SignUpNav") as UINavigationController
+        }
+        
+        self.window.rootViewController = rootViewController
+        self.window.makeKeyAndVisible()
+    }
 }
 

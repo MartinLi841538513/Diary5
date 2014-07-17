@@ -42,7 +42,6 @@ class DiaryService{
         var result:Bool = self.diaryDao.deleteDiary(diary)
         if result == true{
             LIProgressHUD.showSuccessWithStatus("删除成功")
-            viewController.menuBar.dismiss()
             viewController.navigationController.popViewControllerAnimated(true)
         }else{
             LIProgressHUD.showErrorWithStatus("删除失败")
@@ -68,8 +67,8 @@ class DiaryService{
     func isFirstRun() ->Bool{
         var userDefaults:UserDefault = UserDefault()
         var isFirstRunApp:Bool! = userDefaults.isFirstRunApp()
-        if isFirstRunApp == nil || isFirstRunApp == false{
-            userDefaults.setIsFirstRunApp(true)
+        if isFirstRunApp == nil || isFirstRunApp == true{
+            userDefaults.setIsFirstRunApp(false)
             println("第一次运行该app")
             return true
         }else{
@@ -125,6 +124,53 @@ class DiaryService{
         return key
     }
     
+    //得到日历日期，以及对应的星期
+    func tupleFromDate(date:NSDate) ->(String,String,String,String){
+        let comps = self.getCompsFromDate(date)
+        let year:String = "\(comps.year)"
+        let month:String = "\(comps.month)"
+        let day:String = "\(comps.day)"
+        let weekday:String = "\(Li_common().Li_weekdayTranslate(comps.weekday))"
+        println(year)
+        println(month)
+        println(day)
+        println(weekday)
+
+        return (year,month,day,weekday)
+    }
+    
+    //返回2014-06-19 星期三 String格式的日期
+    func dateStringFromDate(date:NSDate) ->String{
+        var dateFormatter:NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var dateString:String = dateFormatter.stringFromDate(date)
+        
+        let comps = self.getCompsFromDate(date)
+        let weekday:Int = comps.weekday
+        let weekdayString:String = Li_common().Li_weekdayTranslate(weekday)
+
+        dateString = "\(dateString) \(weekdayString)"
+        
+        return dateString
+    }
+    
+    //将2014-06-19 星期三 String格式的日期 转化成（年月，日，星期）格式
+    func tupleFromDateString(dateString:String!)->(String,String,String,String){
+        var date:NSString = dateString as NSString
+        var year:String = date.substringWithRange(NSRange(location:0,length:4))
+        var month:String = date.substringWithRange(NSRange(location:5,length:2))
+        var day:String = date.substringWithRange(NSRange(location:8,length:2))
+        var weekday:String = date.substringWithRange(NSRange(location:11,length:3))
+        return (year,month,day,weekday)
+    }
+    
+    func getCompsFromDate(date:NSDate)->NSDateComponents{
+        var calendar:NSCalendar = NSCalendar.currentCalendar()
+        var comps:NSDateComponents = calendar.components(NSCalendarUnit.CalendarUnitYear|NSCalendarUnit.CalendarUnitMonth|NSCalendarUnit.CalendarUnitDay|NSCalendarUnit.CalendarUnitWeekday,fromDate:date)
+        let year = comps.year
+        let weekday = comps.weekday
+        return comps
+    }
 }
 
 

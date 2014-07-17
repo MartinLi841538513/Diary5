@@ -24,9 +24,21 @@ class UserDefault: NSObject {
     func isFirstRunApp()->Bool{
         var isFirstRunApp:AnyObject! = self.defaults.objectForKey("isFirstRunApp")
         if isFirstRunApp == nil{
-            return false
+            return true
         }
         return isFirstRunApp as Bool
+    }
+    
+    func setIsFirstSetTapPassword(isFirstSetTapPassword:Bool){
+        self.defaults.setObject(isFirstSetTapPassword,forKey:"isFirstSetTapPassword")
+        self.defaults.synchronize()
+    }
+    func isFirstSetTapPassword()->Bool{
+        var isFirstSetTapPassword:AnyObject! = self.defaults.objectForKey("isFirstSetTapPassword")
+        if isFirstSetTapPassword == nil{
+            return true
+        }
+        return isFirstSetTapPassword as Bool
     }
     
     func setIsLoginStatus(isLoginStatus:Bool){
@@ -35,10 +47,22 @@ class UserDefault: NSObject {
     }
     func isLoginStatus()->Bool{
         var isLoginStatus:AnyObject! = self.defaults.objectForKey("isLoginStatus")
-        if isLoginStatus == nil{
+        if isLoginStatus == nil||isLoginStatus as Bool == false{
             return false
         }
         return isLoginStatus as Bool
+    }
+    
+    func setIsTapPasswordAllowed(isTapPasswordAllowed:Bool){
+        self.defaults.setObject(isTapPasswordAllowed,forKey:"isTapPasswordAllowed")
+        self.defaults.synchronize()
+    }
+    func isTapPasswordAllowed()->Bool{
+        var isTapPasswordAllowed:AnyObject! = self.defaults.objectForKey("isTapPasswordAllowed")
+        if isTapPasswordAllowed == nil{
+            return false
+        }
+        return isTapPasswordAllowed as Bool
     }
     
     func setUserId(userId:Int){
@@ -63,6 +87,14 @@ class UserDefault: NSObject {
     }
     func password()->String{
         return self.defaults.objectForKey("password") as String
+    }
+    
+    func setTapPassword(tapPassword:String){
+        self.defaults.setObject(tapPassword,forKey:"tapPassword")
+        self.defaults.synchronize()
+    }
+    func tapPassword()->String{
+        return self.defaults.objectForKey("tapPassword") as String
     }
     
     func setEmail(email:String){

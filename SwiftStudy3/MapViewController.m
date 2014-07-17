@@ -14,6 +14,9 @@
 #define Longitude 112.947241748764
 
 @interface MapViewController ()
+{
+
+}
 
 @end
 
@@ -32,15 +35,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    // Do any additional setup after loading the view.
     self.mapView = [[MAMapView alloc] initWithFrame:DeviceFrame];
     self.mapView.delegate = self;
     self.mapView.visibleMapRect = MAMapRectMake(220880104.0, 101476980.0,  9249.0, 13265.0);
-    self.mapView.centerCoordinate = CLLocationCoordinate2DMake(Latitude, Longitude);
+    self.mapView.centerCoordinate = CLLocationCoordinate2DMake(self.latitude, self.longitude);
     
     NSMutableArray *annotations = [[NSMutableArray alloc] init];
     MAPointAnnotation *point1 = [[MAPointAnnotation alloc] init];
-    point1.coordinate = CLLocationCoordinate2DMake(Latitude, Longitude);
+    point1.coordinate = CLLocationCoordinate2DMake(self.latitude, self.longitude);
     [annotations addObject:point1];
     [self.mapView addAnnotations:annotations];
     

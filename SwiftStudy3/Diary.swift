@@ -15,7 +15,7 @@ class Diary:NSObject{
     var mood:String = "[微笑]"
     var latitude:Double = 0.0
     var longitude:Double = 0.0
-    var photos:String = ""
+    var photos:String = "DongWay76"
     var voicePath:String = ""
     var content:String = ""
     var address:String = ""

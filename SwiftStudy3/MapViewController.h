@@ -12,5 +12,7 @@
 @interface MapViewController : UIViewController<MAMapViewDelegate>
 
 @property(nonatomic) MAMapView *mapView;
+@property(nonatomic) double latitude;
+@property(nonatomic) double longitude;
 
 @end

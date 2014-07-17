@@ -1,22 +1,16 @@
 //
-//  DiaryCell.swift
+//  Set2TableViewCell.swift
 //  SwiftStudy3
 //
-//  Created by dongway on 14-6-13.
+//  Created by dongway on 14-7-14.
 //  Copyright (c) 2014年 dongway. All rights reserved.
 //
 
 import UIKit
 
-class DiaryCell: UITableViewCell {
+class Set2TableViewCell: UITableViewCell {
 
-    @IBOutlet var weather : UIImageView = nil
-    @IBOutlet var locate : UIImageView = nil
-    @IBOutlet var mood: UIImageView
-    @IBOutlet var photoImg : UIImageView = nil
-    @IBOutlet var diaryContent : UILabel = nil
-    @IBOutlet var time : UILabel = nil
-
+    @IBOutlet var title: UILabel
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,5 +21,5 @@ class DiaryCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

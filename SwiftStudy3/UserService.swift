@@ -32,8 +32,7 @@ class UserService: NSObject {
             var userdefault:UserDefault = UserDefault()
             userdefault.setIsLoginStatus(true)
             userdefault.setUserInfos(user)
-            NSNotificationCenter.defaultCenter().postNotificationName("Login_Notification",object:self,userInfo:nil)
-            viewController.navigationController.dismissModalViewControllerAnimated(true)
+            self.showMainTabBarControllerOnViewController(viewController)
             LIProgressHUD.showSuccessWithStatus("用户\(email)注册成功")
         }else{
             LIProgressHUD.showErrorWithStatus("注册失败")
@@ -58,8 +57,7 @@ class UserService: NSObject {
                 var userdefault:UserDefault = UserDefault()
                 userdefault.setIsLoginStatus(true)
                 userdefault.setUserInfos(user)
-                NSNotificationCenter.defaultCenter().postNotificationName("Login_Notification",object:self,userInfo:nil)
-                viewController.navigationController.dismissModalViewControllerAnimated(true)
+                self.showMainTabBarControllerOnViewController(viewController)
                 LIProgressHUD.showSuccessWithStatus("用户\(email)登录成功")
             }
 
@@ -76,6 +74,13 @@ class UserService: NSObject {
             loginEvent()
         }
         return (true,user)
+    }
+    
+    //显示Maintabbar
+    func showMainTabBarControllerOnViewController(viewController:UIViewController){
+        var storyboard:UIStoryboard = UIStoryboard(name:"Main",bundle:nil)
+        var tabBarController:UITabBarController = storyboard.instantiateViewControllerWithIdentifier("MainTabBarController") as UITabBarController
+        viewController.navigationController.presentModalViewController(tabBarController,animated:true)
     }
     
     /*
