@@ -149,6 +149,7 @@
 		22FD179D197815D500AAF09E /* error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FD1799197815D500AAF09E /* error@2x.png */; };
 		22FD179E197815D500AAF09E /* success.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FD179A197815D500AAF09E /* success.png */; };
 		22FD179F197815D500AAF09E /* success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FD179B197815D500AAF09E /* success@2x.png */; };
+		22FD17A31978178800AAF09E /* DongWay120.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FD17A21978178800AAF09E /* DongWay120.png */; };
 		22FEB252196CF28400FD8C94 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FEB251196CF28400FD8C94 /* libstdc++.6.0.9.dylib */; };
 		22FEB25A196CF4C300FD8C94 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FEB259196CF4C300FD8C94 /* libz.dylib */; };
 /* End PBXBuildFile section */
@@ -209,13 +210,13 @@
 		224EC21C196FB39300E77638 /* FaceCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceCollectionViewController.swift; sourceTree = "<group>"; };
 		224EC221196FB5F600E77638 /* expression.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = expression.plist; sourceTree = "<group>"; };
 		225A40BE1952C422008E0E00 /* DiaryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryService.swift; path = Service/DiaryService.swift; sourceTree = "<group>"; };
-		2273D638194982AD00409B84 /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2273D638194982AD00409B84 /* 懂味日记.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "懂味日记.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2273D63C194982AD00409B84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2273D63D194982AD00409B84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2273D63F194982AD00409B84 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2273D642194982AD00409B84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2273D644194982AD00409B84 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		2273D64A194982AD00409B84 /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2273D64A194982AD00409B84 /* 懂味日记Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "懂味日记Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2273D64F194982AD00409B84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2273D650194982AD00409B84 /* SwiftStudy3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftStudy3Tests.swift; sourceTree = "<group>"; };
 		228D13B5195291D600654855 /* DiaryList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DiaryList.plist; sourceTree = "<group>"; };
@@ -330,6 +331,7 @@
 		22FD1799197815D500AAF09E /* error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "error@2x.png"; path = "tool/ProgressHUD/error@2x.png"; sourceTree = "<group>"; };
 		22FD179A197815D500AAF09E /* success.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = success.png; path = tool/ProgressHUD/success.png; sourceTree = "<group>"; };
 		22FD179B197815D500AAF09E /* success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "success@2x.png"; path = "tool/ProgressHUD/success@2x.png"; sourceTree = "<group>"; };
+		22FD17A21978178800AAF09E /* DongWay120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DongWay120.png; sourceTree = "<group>"; };
 		22FEB251196CF28400FD8C94 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		22FEB259196CF4C300FD8C94 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -527,8 +529,8 @@
 		2273D639194982AD00409B84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2273D638194982AD00409B84 /* Diary.app */,
-				2273D64A194982AD00409B84 /* DiaryTests.xctest */,
+				2273D638194982AD00409B84 /* 懂味日记.app */,
+				2273D64A194982AD00409B84 /* 懂味日记Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -611,6 +613,7 @@
 		2273D66619499DE200409B84 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				22FD17A21978178800AAF09E /* DongWay120.png */,
 				22FD16EE1978159100AAF09E /* delete.png */,
 				22FD16EF1978159100AAF09E /* diary.png */,
 				22FD16F01978159100AAF09E /* DongWay76.png */,
@@ -695,9 +698,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2273D637194982AD00409B84 /* Diary */ = {
+		2273D637194982AD00409B84 /* 懂味日记 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2273D654194982AD00409B84 /* Build configuration list for PBXNativeTarget "Diary" */;
+			buildConfigurationList = 2273D654194982AD00409B84 /* Build configuration list for PBXNativeTarget "懂味日记" */;
 			buildPhases = (
 				2273D634194982AD00409B84 /* Sources */,
 				2273D635194982AD00409B84 /* Frameworks */,
@@ -707,14 +710,14 @@
 			);
 			dependencies = (
 			);
-			name = Diary;
+			name = "懂味日记";
 			productName = SwiftStudy3;
-			productReference = 2273D638194982AD00409B84 /* Diary.app */;
+			productReference = 2273D638194982AD00409B84 /* 懂味日记.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2273D649194982AD00409B84 /* DiaryTests */ = {
+		2273D649194982AD00409B84 /* 懂味日记Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2273D657194982AD00409B84 /* Build configuration list for PBXNativeTarget "DiaryTests" */;
+			buildConfigurationList = 2273D657194982AD00409B84 /* Build configuration list for PBXNativeTarget "懂味日记Tests" */;
 			buildPhases = (
 				2273D646194982AD00409B84 /* Sources */,
 				2273D647194982AD00409B84 /* Frameworks */,
@@ -727,9 +730,9 @@
 				228D13B219527A6600654855 /* PBXTargetDependency */,
 				228D13B419527A6600654855 /* PBXTargetDependency */,
 			);
-			name = DiaryTests;
+			name = "懂味日记Tests";
 			productName = SwiftStudy3Tests;
-			productReference = 2273D64A194982AD00409B84 /* DiaryTests.xctest */;
+			productReference = 2273D64A194982AD00409B84 /* 懂味日记Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -751,7 +754,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2273D633194982AD00409B84 /* Build configuration list for PBXProject "Diary" */;
+			buildConfigurationList = 2273D633194982AD00409B84 /* Build configuration list for PBXProject "懂味日记" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -764,8 +767,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2273D637194982AD00409B84 /* Diary */,
-				2273D649194982AD00409B84 /* DiaryTests */,
+				2273D637194982AD00409B84 /* 懂味日记 */,
+				2273D649194982AD00409B84 /* 懂味日记Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -804,6 +807,7 @@
 				22FD177F1978159F00AAF09E /* Expression_58@2x.png in Resources */,
 				22FD179D197815D500AAF09E /* error@2x.png in Resources */,
 				22FD17041978159100AAF09E /* privacy.png in Resources */,
+				22FD17A31978178800AAF09E /* DongWay120.png in Resources */,
 				22FD176D1978159F00AAF09E /* Expression_40@2x.png in Resources */,
 				22FD17751978159F00AAF09E /* Expression_48@2x.png in Resources */,
 				22A624F91973D68A0087E733 /* SetTableViewCell.xib in Resources */,
@@ -940,17 +944,17 @@
 /* Begin PBXTargetDependency section */
 		2273D64C194982AD00409B84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2273D637194982AD00409B84 /* Diary */;
+			target = 2273D637194982AD00409B84 /* 懂味日记 */;
 			targetProxy = 2273D64B194982AD00409B84 /* PBXContainerItemProxy */;
 		};
 		228D13B219527A6600654855 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2273D637194982AD00409B84 /* Diary */;
+			target = 2273D637194982AD00409B84 /* 懂味日记 */;
 			targetProxy = 228D13B119527A6600654855 /* PBXContainerItemProxy */;
 		};
 		228D13B419527A6600654855 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2273D637194982AD00409B84 /* Diary */;
+			target = 2273D637194982AD00409B84 /* 懂味日记 */;
 			targetProxy = 228D13B319527A6600654855 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1063,7 +1067,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = Diary;
+				PRODUCT_NAME = "懂味日记";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftStudy3/Mixed-Bridging.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VALID_ARCHS = "armv7 armv7s";
@@ -1087,7 +1091,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = Diary;
+				PRODUCT_NAME = "懂味日记";
 				SWIFT_OBJC_BRIDGING_HEADER = "SwiftStudy3/Mixed-Bridging.h";
 				VALID_ARCHS = "armv7 armv7s";
 			};
@@ -1108,7 +1112,7 @@
 				INFOPLIST_FILE = SwiftStudy3Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = DiaryTests;
+				PRODUCT_NAME = "懂味日记Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -1124,7 +1128,7 @@
 				INFOPLIST_FILE = SwiftStudy3Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = DiaryTests;
+				PRODUCT_NAME = "懂味日记Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
@@ -1132,7 +1136,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2273D633194982AD00409B84 /* Build configuration list for PBXProject "Diary" */ = {
+		2273D633194982AD00409B84 /* Build configuration list for PBXProject "懂味日记" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2273D652194982AD00409B84 /* Debug */,
@@ -1141,7 +1145,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2273D654194982AD00409B84 /* Build configuration list for PBXNativeTarget "Diary" */ = {
+		2273D654194982AD00409B84 /* Build configuration list for PBXNativeTarget "懂味日记" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2273D655194982AD00409B84 /* Debug */,
@@ -1150,7 +1154,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2273D657194982AD00409B84 /* Build configuration list for PBXNativeTarget "DiaryTests" */ = {
+		2273D657194982AD00409B84 /* Build configuration list for PBXNativeTarget "懂味日记Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2273D658194982AD00409B84 /* Debug */,

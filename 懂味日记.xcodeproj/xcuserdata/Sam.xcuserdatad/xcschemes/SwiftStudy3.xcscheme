@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2273D637194982AD00409B84"
                BuildableName = "Diary.app"
-               BlueprintName = "Diary"
-               ReferencedContainer = "container:Diary.xcodeproj">
+               BlueprintName = "&#x61c2;&#x5473;&#x65e5;&#x8bb0;"
+               ReferencedContainer = "container:&#x61c2;&#x5473;&#x65e5;&#x8bb0;.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2273D649194982AD00409B84"
                BuildableName = "DiaryTests.xctest"
-               BlueprintName = "DiaryTests"
-               ReferencedContainer = "container:Diary.xcodeproj">
+               BlueprintName = "&#x61c2;&#x5473;&#x65e5;&#x8bb0;Tests"
+               ReferencedContainer = "container:&#x61c2;&#x5473;&#x65e5;&#x8bb0;.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,8 +44,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2273D637194982AD00409B84"
             BuildableName = "Diary.app"
-            BlueprintName = "Diary"
-            ReferencedContainer = "container:Diary.xcodeproj">
+            BlueprintName = "&#x61c2;&#x5473;&#x65e5;&#x8bb0;"
+            ReferencedContainer = "container:&#x61c2;&#x5473;&#x65e5;&#x8bb0;.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2273D637194982AD00409B84"
             BuildableName = "Diary.app"
-            BlueprintName = "Diary"
-            ReferencedContainer = "container:Diary.xcodeproj">
+            BlueprintName = "&#x61c2;&#x5473;&#x65e5;&#x8bb0;"
+            ReferencedContainer = "container:&#x61c2;&#x5473;&#x65e5;&#x8bb0;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -81,8 +81,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2273D637194982AD00409B84"
             BuildableName = "Diary.app"
-            BlueprintName = "Diary"
-            ReferencedContainer = "container:Diary.xcodeproj">
+            BlueprintName = "&#x61c2;&#x5473;&#x65e5;&#x8bb0;"
+            ReferencedContainer = "container:&#x61c2;&#x5473;&#x65e5;&#x8bb0;.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
