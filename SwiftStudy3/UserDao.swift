@@ -60,7 +60,7 @@ class UserDao:NSObject{
                 if sqlite3_step(stmt) == SQLITE_ROW{
                     user = self.transformTouser(stmt)
                 }else{
-                    println("查询成功，但数据库无此信息")
+                    println("没有该用户")
                 }
                 bool = true
             }else{
@@ -76,23 +76,15 @@ class UserDao:NSObject{
     func findUserWithEmail(email:String,andPassword password:String)->(Bool,User){
         var user:User = User()
         var bool:Bool=false
-        if self.openSqlite() == true{
-            var sql:NSString = "select *from \(self.tableName) where email = \(email) and password = \(password) limit 1"
-            var stmt:COpaquePointer = nil
-            if sqlite3_prepare_v2(self.db,sql.UTF8String,-1,&stmt,nil) == SQLITE_OK{
-                if sqlite3_step(stmt) == SQLITE_ROW{
-                    user = self.transformTouser(stmt)
-                    bool = true
-                }else{
-                    println("查询成功，但数据库无此信息")
-                }
-            }else{
-                println("查询准备失败")
-            }
-            sqlite3_finalize(stmt)
-            sqlite3_close(self.db)
+        var result:(Bool,User) = self.finUserWithEmail(email)
+        bool = result.0
+        user = result.1
+        if bool==true&&user.password==password{
+            return (bool,user)
+        }else{
+            bool = false
+            return (bool,user)
         }
-        return (bool,user)
     }
     
     /*

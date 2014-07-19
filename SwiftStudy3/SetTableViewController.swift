@@ -23,12 +23,15 @@ class SetTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.dataArray1 = ["隐私"]
         self.images1 = ["privacy.png"]
         self.tableView.scrollEnabled = false
     }
-
+    
+    override func viewWillAppear(animated: Bool){
+        super.viewWillAppear(animated)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -107,6 +110,7 @@ class SetTableViewController: UITableViewController {
             case 0:
                 var storyboard:UIStoryboard = UIStoryboard(name:"Main",bundle:nil)
                 var privacySetViewController:PrivacySetViewController = storyboard.instantiateViewControllerWithIdentifier("PrivacySetViewController") as PrivacySetViewController
+                privacySetViewController.hidesBottomBarWhenPushed = true
                 self.navigationController.pushViewController(privacySetViewController,animated:true)
             default:
                 println("")
@@ -127,5 +131,7 @@ class SetTableViewController: UITableViewController {
         self.tabBarController.presentModalViewController(navController, animated: true)
         UserDefault().setIsLoginStatus(false)
     }
+    
+
 
 }

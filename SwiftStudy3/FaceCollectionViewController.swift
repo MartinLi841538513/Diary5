@@ -50,7 +50,7 @@ class FaceCollectionViewController: UICollectionViewController {
     func faceImgNamesSet()->NSMutableArray{
         var imgNames:NSMutableArray = NSMutableArray()
         var imgBaseName:String = "Expression_"
-        for index in 1...60{
+        for index in 1...39{
             var imgName:String = imgBaseName+String(index)
             imgNames.addObject(imgName)
         }

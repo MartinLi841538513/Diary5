@@ -308,7 +308,12 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
     func browsePhoto(){
         let li_ImageViewer:Li_ImageViewer = Li_ImageViewer(frame:self.photo.frame)
         li_ImageViewer.delegate = self
-        li_ImageViewer.imageView.image = UIImage(contentsOfFile:self.diary.photos)
+        let image:UIImage = UIImage(contentsOfFile:self.diary.photos)
+        if image != nil{
+            li_ImageViewer.imageView.image = image
+        }else{
+            li_ImageViewer.imageView.image = UIImage(named:"DongWay76")
+        }
         self.view.addSubview(li_ImageViewer)
         UIView.animateWithDuration(0.2, animations:{
             li_ImageViewer.frame = CGRect(x: 0,y: 0,width: DeviceFrame.width,height: DeviceFrame.height+StatusBarFrame.height)

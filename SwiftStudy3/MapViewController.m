@@ -35,6 +35,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"地图模式";
     self.mapView = [[MAMapView alloc] initWithFrame:DeviceFrame];
     self.mapView.delegate = self;
     self.mapView.visibleMapRect = MAMapRectMake(220880104.0, 101476980.0,  9249.0, 13265.0);
