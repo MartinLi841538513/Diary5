@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
@@ -43,7 +44,7 @@
         <!--Diary List Table View Controller - 日记列表-->
         <scene sceneID="x8p-Fe-B9Z">
             <objects>
-                <tableViewController storyboardIdentifier="DiaryListTableViewController" title="日记列表" id="GsK-Eo-WBp" customClass="DiaryListTableViewController" customModule="____" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="DiaryListTableViewController" title="日记列表" id="GsK-Eo-WBp" customClass="DiaryListTableViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="110" sectionHeaderHeight="22" sectionFooterHeight="22" id="NcC-mB-11T">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -78,7 +79,7 @@
         <!--Set Table View Controller - 设置-->
         <scene sceneID="vvz-gd-jBr">
             <objects>
-                <tableViewController storyboardIdentifier="SetTableViewController" id="rA0-Mm-rJf" customClass="SetTableViewController" customModule="____" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SetTableViewController" id="rA0-Mm-rJf" customClass="SetTableViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="iai-OA-6sV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -97,7 +98,7 @@
         <!--Privacy Set View Controller-->
         <scene sceneID="OGD-11-Syo">
             <objects>
-                <viewController storyboardIdentifier="PrivacySetViewController" id="vbm-qD-Kr6" customClass="PrivacySetViewController" customModule="____" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PrivacySetViewController" id="vbm-qD-Kr6" customClass="PrivacySetViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HCW-7w-M5e">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,7 +122,7 @@
         <!--Set Tap Password View Controller-->
         <scene sceneID="pRk-wf-JPM">
             <objects>
-                <viewController storyboardIdentifier="SetTapPasswordViewController" id="JfI-nd-KxJ" customClass="SetTapPasswordViewController" customModule="____" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetTapPasswordViewController" id="JfI-nd-KxJ" customClass="SetTapPasswordViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pl7-Pk-r2E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +163,7 @@
         <!--Diary Modefy View Controller - 编写日记-->
         <scene sceneID="9z4-cz-Sw0">
             <objects>
-                <viewController storyboardIdentifier="DiaryModefyViewController" title="编写日记" hidesBottomBarWhenPushed="YES" id="GRN-SY-fx8" customClass="DiaryModefyViewController" customModule="____" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiaryModefyViewController" title="编写日记" hidesBottomBarWhenPushed="YES" id="GRN-SY-fx8" customClass="DiaryModefyViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z2r-dE-hv9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

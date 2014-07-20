@@ -36,7 +36,6 @@
 		225A40BF1952C422008E0E00 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A40BE1952C422008E0E00 /* DiaryService.swift */; };
 		2263E9E7197A34B30060CFB2 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2263E9E6197A34B30060CFB2 /* MAMapKit.framework */; };
 		2273D63E194982AD00409B84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273D63D194982AD00409B84 /* AppDelegate.swift */; };
-		2273D640194982AD00409B84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273D63F194982AD00409B84 /* ViewController.swift */; };
 		2273D643194982AD00409B84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2273D641194982AD00409B84 /* Main.storyboard */; };
 		2273D645194982AD00409B84 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2273D644194982AD00409B84 /* Images.xcassets */; };
 		2273D651194982AD00409B84 /* SwiftStudy3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273D650194982AD00409B84 /* SwiftStudy3Tests.swift */; };
@@ -188,7 +187,6 @@
 		2273D638194982AD00409B84 /* DongwayDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DongwayDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2273D63C194982AD00409B84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2273D63D194982AD00409B84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2273D63F194982AD00409B84 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2273D642194982AD00409B84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2273D644194982AD00409B84 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2273D64A194982AD00409B84 /* DongwayDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DongwayDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,6 +333,19 @@
 			name = UIMenuBar;
 			sourceTree = "<group>";
 		};
+		220224FA197B5C27007C3525 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				2273D63D194982AD00409B84 /* AppDelegate.swift */,
+				22004C2819710F22000BA368 /* User.storyboard */,
+				2273D641194982AD00409B84 /* Main.storyboard */,
+				2273D65A1949904200409B84 /* diary */,
+				22004C2519710EBB000BA368 /* user */,
+				22A624F51973D2CD0087E733 /* Set */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
 		2204EEFA196C0C1A00E18F5B /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +393,7 @@
 				223C50F4196396510048AF71 /* libsqlite3.dylib */,
 			);
 			name = lib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		224EC21E196FB5F600E77638 /* emoticon */ = {
@@ -428,7 +440,8 @@
 				22FD172E1978159F00AAF09E /* Expression_39@2x.png */,
 				224EC221196FB5F600E77638 /* expression.plist */,
 			);
-			path = emoticon;
+			name = emoticon;
+			path = ../emoticon;
 			sourceTree = "<group>";
 		};
 		225A40BD1952C3F9008E0E00 /* Service */ = {
@@ -461,19 +474,12 @@
 		2273D63A194982AD00409B84 /* Diary */ = {
 			isa = PBXGroup;
 			children = (
-				22A624F51973D2CD0087E733 /* Set */,
-				22004C2519710EBB000BA368 /* user */,
-				223C50F3196396370048AF71 /* lib */,
+				220224FA197B5C27007C3525 /* Class */,
 				225A40BD1952C3F9008E0E00 /* Service */,
-				22D3ABB219518713003DFCC9 /* tool */,
 				228D13B71952A19300654855 /* Dao */,
 				2209A744194AF97000DEA18B /* Model */,
+				22D3ABB219518713003DFCC9 /* tool */,
 				2273D66519499DE200409B84 /* source */,
-				2273D65A1949904200409B84 /* diary */,
-				2273D63D194982AD00409B84 /* AppDelegate.swift */,
-				2273D63F194982AD00409B84 /* ViewController.swift */,
-				22004C2819710F22000BA368 /* User.storyboard */,
-				2273D641194982AD00409B84 /* Main.storyboard */,
 				2273D644194982AD00409B84 /* Images.xcassets */,
 				2273D63B194982AD00409B84 /* Supporting Files */,
 			);
@@ -526,8 +532,7 @@
 		2273D66519499DE200409B84 /* source */ = {
 			isa = PBXGroup;
 			children = (
-				22E6A77E197022EB006368BF /* weather */,
-				224EC21E196FB5F600E77638 /* emoticon */,
+				223C50F3196396370048AF71 /* lib */,
 				2273D66619499DE200409B84 /* images */,
 			);
 			path = source;
@@ -536,6 +541,8 @@
 		2273D66619499DE200409B84 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				224EC21E196FB5F600E77638 /* emoticon */,
+				22E6A77E197022EB006368BF /* weather */,
 				22FD17A21978178800AAF09E /* DongWay120.png */,
 				22FD16EE1978159100AAF09E /* delete.png */,
 				22FD16EF1978159100AAF09E /* diary.png */,
@@ -613,7 +620,8 @@
 				22FD178A197815A900AAF09E /* weather9.png */,
 				22E6A7931970230B006368BF /* weatherPList.plist */,
 			);
-			path = weather;
+			name = weather;
+			path = ../weather;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -795,7 +803,6 @@
 				22CA831E197655C900435381 /* SetTapPasswordViewController.swift in Sources */,
 				22A624FB1973D6AE0087E733 /* SetTableViewCell.swift in Sources */,
 				22019D70196A3E7F002DE462 /* UIMenuBar.m in Sources */,
-				2273D640194982AD00409B84 /* ViewController.swift in Sources */,
 				2209A730194A92CD00DEA18B /* DiaryModefyViewController.swift in Sources */,
 				22004C2D197111A6000BA368 /* PasswordViewController.swift in Sources */,
 				224EC21D196FB39300E77638 /* FaceCollectionViewController.swift in Sources */,

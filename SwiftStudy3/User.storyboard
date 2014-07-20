@@ -23,7 +23,7 @@
         <!--Sign In View Controller - 登录-->
         <scene sceneID="eqg-2q-e9m">
             <objects>
-                <viewController storyboardIdentifier="SignInViewController" id="5K9-0f-pmU" customClass="SignInViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="5K9-0f-pmU" customClass="SignInViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dW9-j7-SoW"/>
                         <viewControllerLayoutGuide type="bottom" id="3mQ-zy-VSm"/>
@@ -88,7 +88,7 @@
         <!--Email View Controller - 用户注册-->
         <scene sceneID="DcQ-W4-UN9">
             <objects>
-                <viewController storyboardIdentifier="EmailViewController" title="用户注册" id="Vij-fD-rlM" customClass="EmailViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EmailViewController" title="用户注册" id="Vij-fD-rlM" customClass="EmailViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="940-Zn-99a"/>
                         <viewControllerLayoutGuide type="bottom" id="Rxv-jk-Uie"/>
@@ -134,7 +134,7 @@
         <!--Password View Controller - 用户注册-->
         <scene sceneID="fVR-rv-xJo">
             <objects>
-                <viewController storyboardIdentifier="PasswordViewController" title="用户注册" id="0Iy-Ii-ifQ" customClass="PasswordViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PasswordViewController" title="用户注册" id="0Iy-Ii-ifQ" customClass="PasswordViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HwL-cs-ak2"/>
                         <viewControllerLayoutGuide type="bottom" id="6Xg-tp-T42"/>
@@ -179,7 +179,7 @@
         <!--Confirm Password View Controller - 用户注册-->
         <scene sceneID="hiV-VJ-YGh">
             <objects>
-                <viewController storyboardIdentifier="ConfirmPasswordViewController" title="用户注册" id="EWE-hI-GuO" customClass="ConfirmPasswordViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmPasswordViewController" title="用户注册" id="EWE-hI-GuO" customClass="ConfirmPasswordViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I2J-1B-dfO"/>
                         <viewControllerLayoutGuide type="bottom" id="Pzx-PA-Eg3"/>
@@ -224,7 +224,7 @@
         <!--Sign Up View Controller - 用户注册-->
         <scene sceneID="NkO-gt-cEf">
             <objects>
-                <viewController storyboardIdentifier="SignUpViewController" title="用户注册" id="zDr-U3-gO7" customClass="SignUpViewController" customModule="SwiftStudy3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" title="用户注册" id="zDr-U3-gO7" customClass="SignUpViewController" customModule="DongwayDiary" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sa7-oG-XBY"/>
                         <viewControllerLayoutGuide type="bottom" id="qHj-OR-amJ"/>
