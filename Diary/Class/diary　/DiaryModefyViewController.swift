@@ -77,9 +77,14 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
             var error:NSError?
             geocoder.reverseGeocodeLocation(location, completionHandler:{(placemarks,error) in
                 if error == nil && placemarks.count > 0{
-                    var placemark:CLPlacemark = (placemarks as NSArray).objectAtIndex(0) as CLPlacemark
-                    self.diary.detailAddress = "\(placemark.name)"
-                    self.diary.address = "\(placemark.locality)\(placemark.subLocality)\(placemark.thoroughfare)"
+                    let placemark:CLPlacemark = (placemarks as NSArray).objectAtIndex(0) as CLPlacemark
+                    let name:String = placemark.name != nil ? placemark.name : ""
+                    let locality:String = placemark.locality != nil ? placemark.locality : ""
+                    let subLocality:String = placemark.subLocality != nil ? placemark.subLocality : ""
+                    let thoroughfare:String = placemark.thoroughfare != nil ? placemark.thoroughfare : ""
+
+                    self.diary.detailAddress = "\(name)"
+                    self.diary.address = "\(locality)\(subLocality)\(thoroughfare)"
                     var text:String = "位置:\(self.diary.address)"
                     self.li_common.Li_popUpfrombottomWithText(text,parentView:self.view)
                     println(placemark)

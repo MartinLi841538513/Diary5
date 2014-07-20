@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22088AB9197BEF2B00D7044E /* AMap.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22088AB8197BEF2B00D7044E /* AMap.bundle */; };
+		22088ABB197BEF3C00D7044E /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22088ABA197BEF3C00D7044E /* MAMapKit.framework */; };
 		223767E6197B888B00824C11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22376763197B888B00824C11 /* Main.storyboard */; };
 		223767E7197B888B00824C11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22376766197B888B00824C11 /* AppDelegate.swift */; };
 		223767E8197B888B00824C11 /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22376768197B888B00824C11 /* DiaryCell.swift */; };
@@ -101,7 +103,6 @@
 		22376841197B888B00824C11 /* weather8.png in Resources */ = {isa = PBXBuildFile; fileRef = 223767CD197B888B00824C11 /* weather8.png */; };
 		22376842197B888B00824C11 /* weather9.png in Resources */ = {isa = PBXBuildFile; fileRef = 223767CE197B888B00824C11 /* weather9.png */; };
 		22376843197B888B00824C11 /* weatherPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 223767CF197B888B00824C11 /* weatherPList.plist */; };
-		22376844197B888B00824C11 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 223767D1197B888B00824C11 /* MAMapKit.framework */; };
 		22376845197B888B00824C11 /* Li_common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223767D3197B888B00824C11 /* Li_common.swift */; };
 		22376846197B888B00824C11 /* Li_ImageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223767D4197B888B00824C11 /* Li_ImageViewer.swift */; };
 		22376847197B888B00824C11 /* error.png in Resources */ = {isa = PBXBuildFile; fileRef = 223767D6197B888B00824C11 /* error.png */; };
@@ -123,6 +124,7 @@
 		2237685E197B8B0900824C11 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2237685D197B8B0900824C11 /* CoreLocation.framework */; };
 		22376860197B8B0F00824C11 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2237685F197B8B0F00824C11 /* QuartzCore.framework */; };
 		22376862197B8B3B00824C11 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 22376861197B8B3B00824C11 /* libsqlite3.dylib */; };
+		225546B2197BC91300D70D74 /* launchImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 225546B1197BC91300D70D74 /* launchImage.png */; };
 		2273D651194982AD00409B84 /* SwiftStudy3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273D650194982AD00409B84 /* SwiftStudy3Tests.swift */; };
 /* End PBXBuildFile section */
 
@@ -151,6 +153,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		22088AB8197BEF2B00D7044E /* AMap.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AMap.bundle; sourceTree = "<group>"; };
+		22088ABA197BEF3C00D7044E /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		22376764197B888B00824C11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22376766197B888B00824C11 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22376768197B888B00824C11 /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
@@ -247,7 +251,6 @@
 		223767CD197B888B00824C11 /* weather8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather8.png; sourceTree = "<group>"; };
 		223767CE197B888B00824C11 /* weather9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather9.png; sourceTree = "<group>"; };
 		223767CF197B888B00824C11 /* weatherPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = weatherPList.plist; sourceTree = "<group>"; };
-		223767D1197B888B00824C11 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MAMapKit.framework; sourceTree = "<group>"; };
 		223767D3197B888B00824C11 /* Li_common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Li_common.swift; sourceTree = "<group>"; };
 		223767D4197B888B00824C11 /* Li_ImageViewer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Li_ImageViewer.swift; sourceTree = "<group>"; };
 		223767D6197B888B00824C11 /* error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = error.png; sourceTree = "<group>"; };
@@ -273,8 +276,9 @@
 		2237685D197B8B0900824C11 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2237685F197B8B0F00824C11 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		22376861197B8B3B00824C11 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		2273D638194982AD00409B84 /* DongwayDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DongwayDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2273D64A194982AD00409B84 /* DongwayDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DongwayDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		225546B1197BC91300D70D74 /* launchImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchImage.png; sourceTree = "<group>"; };
+		2273D638194982AD00409B84 /* 懂味日记.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "懂味日记.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2273D64A194982AD00409B84 /* 懂味日记Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "懂味日记Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2273D64F194982AD00409B84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2273D650194982AD00409B84 /* SwiftStudy3Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftStudy3Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,6 +288,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22088ABB197BEF3C00D7044E /* MAMapKit.framework in Frameworks */,
 				22376862197B8B3B00824C11 /* libsqlite3.dylib in Frameworks */,
 				22376860197B8B0F00824C11 /* QuartzCore.framework in Frameworks */,
 				2237685E197B8B0900824C11 /* CoreLocation.framework in Frameworks */,
@@ -293,7 +298,6 @@
 				22376856197B8AE500824C11 /* libstdc++.6.0.9.dylib in Frameworks */,
 				22376854197B8ADC00824C11 /* Security.framework in Frameworks */,
 				22376852197B8ACE00824C11 /* libz.dylib in Frameworks */,
-				22376844197B888B00824C11 /* MAMapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +316,6 @@
 			children = (
 				22376765197B888B00824C11 /* Class */,
 				22376781197B888B00824C11 /* Dao */,
-				22376784197B888B00824C11 /* DiaryForSwift */,
 				22376785197B888B00824C11 /* Images.xcassets */,
 				22376786197B888B00824C11 /* Info.plist */,
 				22376787197B888B00824C11 /* Mixed-Bridging.h */,
@@ -389,13 +392,6 @@
 			path = Dao;
 			sourceTree = "<group>";
 		};
-		22376784197B888B00824C11 /* DiaryForSwift */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DiaryForSwift;
-			sourceTree = "<group>";
-		};
 		22376788197B888B00824C11 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +427,7 @@
 				22376795197B888B00824C11 /* emoticon */,
 				22376791197B888B00824C11 /* delete.png */,
 				22376792197B888B00824C11 /* diary.png */,
+				225546B1197BC91300D70D74 /* launchImage.png */,
 				22376793197B888B00824C11 /* DongWay120.png */,
 				22376794197B888B00824C11 /* DongWay76.png */,
 				223767BE197B888B00824C11 /* ic_tab_artists_selected@2x.png */,
@@ -511,6 +508,8 @@
 		223767D0197B888B00824C11 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				22088ABA197BEF3C00D7044E /* MAMapKit.framework */,
+				22088AB8197BEF2B00D7044E /* AMap.bundle */,
 				22376861197B8B3B00824C11 /* libsqlite3.dylib */,
 				2237685F197B8B0F00824C11 /* QuartzCore.framework */,
 				2237685D197B8B0900824C11 /* CoreLocation.framework */,
@@ -520,7 +519,6 @@
 				22376855197B8AE500824C11 /* libstdc++.6.0.9.dylib */,
 				22376853197B8ADC00824C11 /* Security.framework */,
 				22376851197B8ACE00824C11 /* libz.dylib */,
-				223767D1197B888B00824C11 /* MAMapKit.framework */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -584,8 +582,8 @@
 		2273D639194982AD00409B84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2273D638194982AD00409B84 /* DongwayDiary.app */,
-				2273D64A194982AD00409B84 /* DongwayDiaryTests.xctest */,
+				2273D638194982AD00409B84 /* 懂味日记.app */,
+				2273D64A194982AD00409B84 /* 懂味日记Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -610,9 +608,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2273D637194982AD00409B84 /* DongwayDiary */ = {
+		2273D637194982AD00409B84 /* 懂味日记 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2273D654194982AD00409B84 /* Build configuration list for PBXNativeTarget "DongwayDiary" */;
+			buildConfigurationList = 2273D654194982AD00409B84 /* Build configuration list for PBXNativeTarget "懂味日记" */;
 			buildPhases = (
 				2273D634194982AD00409B84 /* Sources */,
 				2273D635194982AD00409B84 /* Frameworks */,
@@ -622,14 +620,14 @@
 			);
 			dependencies = (
 			);
-			name = DongwayDiary;
+			name = "懂味日记";
 			productName = SwiftStudy3;
-			productReference = 2273D638194982AD00409B84 /* DongwayDiary.app */;
+			productReference = 2273D638194982AD00409B84 /* 懂味日记.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2273D649194982AD00409B84 /* DongwayDiaryTests */ = {
+		2273D649194982AD00409B84 /* 懂味日记Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2273D657194982AD00409B84 /* Build configuration list for PBXNativeTarget "DongwayDiaryTests" */;
+			buildConfigurationList = 2273D657194982AD00409B84 /* Build configuration list for PBXNativeTarget "懂味日记Tests" */;
 			buildPhases = (
 				2273D646194982AD00409B84 /* Sources */,
 				2273D647194982AD00409B84 /* Frameworks */,
@@ -642,9 +640,9 @@
 				228D13B219527A6600654855 /* PBXTargetDependency */,
 				228D13B419527A6600654855 /* PBXTargetDependency */,
 			);
-			name = DongwayDiaryTests;
+			name = "懂味日记Tests";
 			productName = SwiftStudy3Tests;
-			productReference = 2273D64A194982AD00409B84 /* DongwayDiaryTests.xctest */;
+			productReference = 2273D64A194982AD00409B84 /* 懂味日记Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -666,7 +664,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2273D633194982AD00409B84 /* Build configuration list for PBXProject "DongwayDiary" */;
+			buildConfigurationList = 2273D633194982AD00409B84 /* Build configuration list for PBXProject "懂味日记" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -679,8 +677,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2273D637194982AD00409B84 /* DongwayDiary */,
-				2273D649194982AD00409B84 /* DongwayDiaryTests */,
+				2273D637194982AD00409B84 /* 懂味日记 */,
+				2273D649194982AD00409B84 /* 懂味日记Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -694,6 +692,7 @@
 				22376801197B888B00824C11 /* Info.plist in Resources */,
 				22376838197B888B00824C11 /* privacy.png in Resources */,
 				223767F3197B888B00824C11 /* SetTableViewCell.xib in Resources */,
+				22088AB9197BEF2B00D7044E /* AMap.bundle in Resources */,
 				2237680D197B888B00824C11 /* Expression_11@2x.png in Resources */,
 				2237680E197B888B00824C11 /* Expression_12@2x.png in Resources */,
 				2237680A197B888B00824C11 /* DongWay76.png in Resources */,
@@ -702,6 +701,7 @@
 				22376814197B888B00824C11 /* Expression_18@2x.png in Resources */,
 				22376810197B888B00824C11 /* Expression_14@2x.png in Resources */,
 				223767F1197B888B00824C11 /* Set2TableViewCell.xib in Resources */,
+				225546B2197BC91300D70D74 /* launchImage.png in Resources */,
 				2237681E197B888B00824C11 /* Expression_27@2x.png in Resources */,
 				2237682F197B888B00824C11 /* Expression_6@2x.png in Resources */,
 				2237681F197B888B00824C11 /* Expression_28@2x.png in Resources */,
@@ -829,17 +829,17 @@
 /* Begin PBXTargetDependency section */
 		2273D64C194982AD00409B84 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2273D637194982AD00409B84 /* DongwayDiary */;
+			target = 2273D637194982AD00409B84 /* 懂味日记 */;
 			targetProxy = 2273D64B194982AD00409B84 /* PBXContainerItemProxy */;
 		};
 		228D13B219527A6600654855 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2273D637194982AD00409B84 /* DongwayDiary */;
+			target = 2273D637194982AD00409B84 /* 懂味日记 */;
 			targetProxy = 228D13B119527A6600654855 /* PBXContainerItemProxy */;
 		};
 		228D13B419527A6600654855 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2273D637194982AD00409B84 /* DongwayDiary */;
+			target = 2273D637194982AD00409B84 /* 懂味日记 */;
 			targetProxy = 228D13B319527A6600654855 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -958,7 +958,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = DongwayDiary;
+				PRODUCT_NAME = "懂味日记";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "diary/Mixed-Bridging.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -988,7 +988,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = DongwayDiary;
+				PRODUCT_NAME = "懂味日记";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "diary/Mixed-Bridging.h";
 				VALID_ARCHS = "armv7 armv7s";
@@ -1010,7 +1010,7 @@
 				INFOPLIST_FILE = SwiftStudy3Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = DongwayDiaryTests;
+				PRODUCT_NAME = "懂味日记Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -1026,7 +1026,7 @@
 				INFOPLIST_FILE = SwiftStudy3Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = DongwayDiaryTests;
+				PRODUCT_NAME = "懂味日记Tests";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
@@ -1034,7 +1034,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2273D633194982AD00409B84 /* Build configuration list for PBXProject "DongwayDiary" */ = {
+		2273D633194982AD00409B84 /* Build configuration list for PBXProject "懂味日记" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2273D652194982AD00409B84 /* Debug */,
@@ -1043,7 +1043,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2273D654194982AD00409B84 /* Build configuration list for PBXNativeTarget "DongwayDiary" */ = {
+		2273D654194982AD00409B84 /* Build configuration list for PBXNativeTarget "懂味日记" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2273D655194982AD00409B84 /* Debug */,
@@ -1052,7 +1052,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2273D657194982AD00409B84 /* Build configuration list for PBXNativeTarget "DongwayDiaryTests" */ = {
+		2273D657194982AD00409B84 /* Build configuration list for PBXNativeTarget "懂味日记Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2273D658194982AD00409B84 /* Debug */,
