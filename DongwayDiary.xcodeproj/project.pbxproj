@@ -11,7 +11,6 @@
 		22004C221970E411000BA368 /* UserDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22004C211970E411000BA368 /* UserDao.swift */; };
 		22004C2419710C6E000BA368 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22004C2319710C6E000BA368 /* UserService.swift */; };
 		22004C2719710F0D000BA368 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22004C2619710F0D000BA368 /* SignUpViewController.swift */; };
-		22004C2919710F22000BA368 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22004C2819710F22000BA368 /* User.storyboard */; };
 		22004C2B19711192000BA368 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22004C2A19711192000BA368 /* EmailViewController.swift */; };
 		22004C2D197111A6000BA368 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22004C2C197111A6000BA368 /* PasswordViewController.swift */; };
 		22004C2F197111BA000BA368 /* ConfirmPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22004C2E197111BA000BA368 /* ConfirmPasswordViewController.swift */; };
@@ -24,16 +23,9 @@
 		2204EF30196C36D700E18F5B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2204EF2F196C36D700E18F5B /* CoreTelephony.framework */; };
 		2204EF32196C36DE00E18F5B /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2204EF31196C36DE00E18F5B /* OpenGLES.framework */; };
 		2204EF36196C36EF00E18F5B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2204EF35196C36EF00E18F5B /* Security.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		2209A730194A92CD00DEA18B /* DiaryModefyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209A72F194A92CD00DEA18B /* DiaryModefyViewController.swift */; };
-		2209A741194ABCD900DEA18B /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2209A740194ABCD900DEA18B /* DiaryCell.xib */; };
-		2209A743194ABEC600DEA18B /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209A742194ABEC600DEA18B /* DiaryCell.swift */; };
 		2209A746194AF9A500DEA18B /* Diary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2209A745194AF9A500DEA18B /* Diary.swift */; };
-		222D6D28196949E2009C4EC4 /* DiaryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D6D27196949E2009C4EC4 /* DiaryListTableViewController.swift */; };
 		223C50F5196396510048AF71 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 223C50F4196396510048AF71 /* libsqlite3.dylib */; };
-		224EC213196F65DF00E77638 /* WeatherCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EC211196F65DF00E77638 /* WeatherCollectionViewController.swift */; };
-		224EC21D196FB39300E77638 /* FaceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224EC21C196FB39300E77638 /* FaceCollectionViewController.swift */; };
 		225A40BF1952C422008E0E00 /* DiaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225A40BE1952C422008E0E00 /* DiaryService.swift */; };
-		2273D63E194982AD00409B84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273D63D194982AD00409B84 /* AppDelegate.swift */; };
 		2273D643194982AD00409B84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2273D641194982AD00409B84 /* Main.storyboard */; };
 		2273D645194982AD00409B84 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2273D644194982AD00409B84 /* Images.xcassets */; };
 		2273D651194982AD00409B84 /* SwiftStudy3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2273D650194982AD00409B84 /* SwiftStudy3Tests.swift */; };
@@ -90,6 +82,15 @@
 		229B9866197B5F8D00479586 /* weather9.png in Resources */ = {isa = PBXBuildFile; fileRef = 229B985C197B5F8D00479586 /* weather9.png */; };
 		229B9867197B5F8D00479586 /* weatherPList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 229B985D197B5F8D00479586 /* weatherPList.plist */; };
 		229B986B197B602500479586 /* MAMapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B9869197B602500479586 /* MAMapKit.framework */; };
+		229B986E197B749700479586 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B986C197B749700479586 /* AppDelegate.swift */; };
+		229B986F197B749700479586 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 229B986D197B749700479586 /* User.storyboard */; };
+		229B9878197B752900479586 /* DiaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B9870197B752900479586 /* DiaryCell.swift */; };
+		229B9879197B752900479586 /* DiaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 229B9871197B752900479586 /* DiaryCell.xib */; };
+		229B987A197B752900479586 /* DiaryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B9872197B752900479586 /* DiaryListTableViewController.swift */; };
+		229B987B197B752900479586 /* DiaryModefyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B9873197B752900479586 /* DiaryModefyViewController.swift */; };
+		229B987C197B752900479586 /* FaceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B9874197B752900479586 /* FaceCollectionViewController.swift */; };
+		229B987D197B752900479586 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 229B9876197B752900479586 /* MapViewController.m */; };
+		229B987E197B752900479586 /* WeatherCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B9877197B752900479586 /* WeatherCollectionViewController.swift */; };
 		22A624F71973D3060087E733 /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A624F61973D3060087E733 /* SetTableViewController.swift */; };
 		22A624F91973D68A0087E733 /* SetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22A624F81973D68A0087E733 /* SetTableViewCell.xib */; };
 		22A624FB1973D6AE0087E733 /* SetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A624FA1973D6AE0087E733 /* SetTableViewCell.swift */; };
@@ -102,7 +103,6 @@
 		22CA831C1976217500435381 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA831B1976217500435381 /* SwitchCell.swift */; };
 		22CA831E197655C900435381 /* SetTapPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA831D197655C900435381 /* SetTapPasswordViewController.swift */; };
 		22D3ABB419518748003DFCC9 /* Li_common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3ABB319518748003DFCC9 /* Li_common.swift */; };
-		22F34BCE196D33A300DB0C40 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22F34BCD196D33A300DB0C40 /* MapViewController.m */; };
 		22F443BA1971292B00A10A4D /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F443B91971292B00A10A4D /* UserDefault.swift */; };
 		22F443BC1971512E00A10A4D /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F443BB1971512E00A10A4D /* SignInViewController.swift */; };
 		22FD16FA1978159100AAF09E /* delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FD16EE1978159100AAF09E /* delete.png */; };
@@ -155,7 +155,6 @@
 		22004C211970E411000BA368 /* UserDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDao.swift; sourceTree = "<group>"; };
 		22004C2319710C6E000BA368 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		22004C2619710F0D000BA368 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		22004C2819710F22000BA368 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		22004C2A19711192000BA368 /* EmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		22004C2C197111A6000BA368 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		22004C2E197111BA000BA368 /* ConfirmPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPasswordViewController.swift; sourceTree = "<group>"; };
@@ -171,19 +170,12 @@
 		2204EF2F196C36D700E18F5B /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		2204EF31196C36DE00E18F5B /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		2204EF35196C36EF00E18F5B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		2209A72F194A92CD00DEA18B /* DiaryModefyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryModefyViewController.swift; sourceTree = "<group>"; };
-		2209A740194ABCD900DEA18B /* DiaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiaryCell.xib; sourceTree = "<group>"; };
-		2209A742194ABEC600DEA18B /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryCell.swift; sourceTree = "<group>"; };
 		2209A745194AF9A500DEA18B /* Diary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Diary.swift; sourceTree = "<group>"; };
-		222D6D27196949E2009C4EC4 /* DiaryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryListTableViewController.swift; sourceTree = "<group>"; };
 		223C50F4196396510048AF71 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		223C50F61963967E0048AF71 /* Mixed-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mixed-Bridging.h"; sourceTree = "<group>"; };
-		224EC211196F65DF00E77638 /* WeatherCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewController.swift; sourceTree = "<group>"; };
-		224EC21C196FB39300E77638 /* FaceCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceCollectionViewController.swift; sourceTree = "<group>"; };
 		225A40BE1952C422008E0E00 /* DiaryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryService.swift; path = Service/DiaryService.swift; sourceTree = "<group>"; };
 		2273D638194982AD00409B84 /* DongwayDiary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DongwayDiary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2273D63C194982AD00409B84 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2273D63D194982AD00409B84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2273D642194982AD00409B84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2273D644194982AD00409B84 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2273D64A194982AD00409B84 /* DongwayDiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DongwayDiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +234,16 @@
 		229B985C197B5F8D00479586 /* weather9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = weather9.png; path = SwiftStudy3/source/images/weather/weather9.png; sourceTree = SOURCE_ROOT; };
 		229B985D197B5F8D00479586 /* weatherPList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = weatherPList.plist; path = SwiftStudy3/source/images/weather/weatherPList.plist; sourceTree = SOURCE_ROOT; };
 		229B9869197B602500479586 /* MAMapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MAMapKit.framework; path = source/lib/MAMapKit.framework; sourceTree = "<group>"; };
+		229B986C197B749700479586 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Class/AppDelegate.swift; sourceTree = "<group>"; };
+		229B986D197B749700479586 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = User.storyboard; path = Class/User.storyboard; sourceTree = "<group>"; };
+		229B9870197B752900479586 /* DiaryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryCell.swift; path = "Class/diary　/DiaryCell.swift"; sourceTree = "<group>"; };
+		229B9871197B752900479586 /* DiaryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiaryCell.xib; path = "Class/diary　/DiaryCell.xib"; sourceTree = "<group>"; };
+		229B9872197B752900479586 /* DiaryListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryListTableViewController.swift; path = "Class/diary　/DiaryListTableViewController.swift"; sourceTree = "<group>"; };
+		229B9873197B752900479586 /* DiaryModefyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiaryModefyViewController.swift; path = "Class/diary　/DiaryModefyViewController.swift"; sourceTree = "<group>"; };
+		229B9874197B752900479586 /* FaceCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FaceCollectionViewController.swift; path = "Class/diary　/FaceCollectionViewController.swift"; sourceTree = "<group>"; };
+		229B9875197B752900479586 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = "Class/diary　/MapViewController.h"; sourceTree = "<group>"; };
+		229B9876197B752900479586 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = "Class/diary　/MapViewController.m"; sourceTree = "<group>"; };
+		229B9877197B752900479586 /* WeatherCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherCollectionViewController.swift; path = "Class/diary　/WeatherCollectionViewController.swift"; sourceTree = "<group>"; };
 		22A624F61973D3060087E733 /* SetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewController.swift; sourceTree = "<group>"; };
 		22A624F81973D68A0087E733 /* SetTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetTableViewCell.xib; sourceTree = "<group>"; };
 		22A624FA1973D6AE0087E733 /* SetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewCell.swift; sourceTree = "<group>"; };
@@ -255,8 +257,6 @@
 		22CA831B1976217500435381 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		22CA831D197655C900435381 /* SetTapPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTapPasswordViewController.swift; sourceTree = "<group>"; };
 		22D3ABB319518748003DFCC9 /* Li_common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Li_common.swift; path = tool/Li_common.swift; sourceTree = "<group>"; };
-		22F34BCC196D33A300DB0C40 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		22F34BCD196D33A300DB0C40 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		22F443B91971292B00A10A4D /* UserDefault.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		22F443BB1971512E00A10A4D /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		22FD16EE1978159100AAF09E /* delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete.png; sourceTree = "<group>"; };
@@ -334,8 +334,8 @@
 		220224FA197B5C27007C3525 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				2273D63D194982AD00409B84 /* AppDelegate.swift */,
-				22004C2819710F22000BA368 /* User.storyboard */,
+				229B986C197B749700479586 /* AppDelegate.swift */,
+				229B986D197B749700479586 /* User.storyboard */,
 				2273D641194982AD00409B84 /* Main.storyboard */,
 				2273D65A1949904200409B84 /* diary */,
 				22004C2519710EBB000BA368 /* user */,
@@ -514,14 +514,14 @@
 		2273D65A1949904200409B84 /* diary */ = {
 			isa = PBXGroup;
 			children = (
-				222D6D27196949E2009C4EC4 /* DiaryListTableViewController.swift */,
-				2209A72F194A92CD00DEA18B /* DiaryModefyViewController.swift */,
-				2209A740194ABCD900DEA18B /* DiaryCell.xib */,
-				2209A742194ABEC600DEA18B /* DiaryCell.swift */,
-				22F34BCC196D33A300DB0C40 /* MapViewController.h */,
-				22F34BCD196D33A300DB0C40 /* MapViewController.m */,
-				224EC211196F65DF00E77638 /* WeatherCollectionViewController.swift */,
-				224EC21C196FB39300E77638 /* FaceCollectionViewController.swift */,
+				229B9870197B752900479586 /* DiaryCell.swift */,
+				229B9871197B752900479586 /* DiaryCell.xib */,
+				229B9872197B752900479586 /* DiaryListTableViewController.swift */,
+				229B9873197B752900479586 /* DiaryModefyViewController.swift */,
+				229B9874197B752900479586 /* FaceCollectionViewController.swift */,
+				229B9875197B752900479586 /* MapViewController.h */,
+				229B9876197B752900479586 /* MapViewController.m */,
+				229B9877197B752900479586 /* WeatherCollectionViewController.swift */,
 			);
 			name = diary;
 			sourceTree = "<group>";
@@ -726,6 +726,7 @@
 				22A624F91973D68A0087E733 /* SetTableViewCell.xib in Resources */,
 				229B9848197B5F6E00479586 /* Expression_29@2x.png in Resources */,
 				229B9836197B5F6E00479586 /* Expression_11@2x.png in Resources */,
+				229B9879197B752900479586 /* DiaryCell.xib in Resources */,
 				229B982D197B5F6E00479586 /* Expression_2@2x.png in Resources */,
 				22FD17051978159100AAF09E /* selectedLocate.png in Resources */,
 				229B984D197B5F6E00479586 /* Expression_34@2x.png in Resources */,
@@ -746,7 +747,6 @@
 				22FD179C197815D500AAF09E /* error.png in Resources */,
 				229B982F197B5F6E00479586 /* Expression_4@2x.png in Resources */,
 				22FD16FF1978159100AAF09E /* ic_tab_playlists_selected@2x.png in Resources */,
-				22004C2919710F22000BA368 /* User.storyboard in Resources */,
 				229B983F197B5F6E00479586 /* Expression_20@2x.png in Resources */,
 				229B9867197B5F8D00479586 /* weatherPList.plist in Resources */,
 				229B9842197B5F6E00479586 /* Expression_23@2x.png in Resources */,
@@ -755,12 +755,12 @@
 				229B985F197B5F8D00479586 /* weather2.png in Resources */,
 				229B9862197B5F8D00479586 /* weather5.png in Resources */,
 				229B982E197B5F6E00479586 /* Expression_3@2x.png in Resources */,
-				2209A741194ABCD900DEA18B /* DiaryCell.xib in Resources */,
 				229B9864197B5F8D00479586 /* weather7.png in Resources */,
 				22FD179E197815D500AAF09E /* success.png in Resources */,
 				229B9841197B5F6E00479586 /* Expression_22@2x.png in Resources */,
 				229B9863197B5F8D00479586 /* weather6.png in Resources */,
 				229B9865197B5F8D00479586 /* weather8.png in Resources */,
+				229B986F197B749700479586 /* User.storyboard in Resources */,
 				229B9843197B5F6E00479586 /* Expression_24@2x.png in Resources */,
 				229B9831197B5F6E00479586 /* Expression_6@2x.png in Resources */,
 				229B9853197B5F6E00479586 /* expression.plist in Resources */,
@@ -799,18 +799,18 @@
 				22CA831E197655C900435381 /* SetTapPasswordViewController.swift in Sources */,
 				22A624FB1973D6AE0087E733 /* SetTableViewCell.swift in Sources */,
 				22019D70196A3E7F002DE462 /* UIMenuBar.m in Sources */,
-				2209A730194A92CD00DEA18B /* DiaryModefyViewController.swift in Sources */,
+				229B9878197B752900479586 /* DiaryCell.swift in Sources */,
 				22004C2D197111A6000BA368 /* PasswordViewController.swift in Sources */,
-				224EC21D196FB39300E77638 /* FaceCollectionViewController.swift in Sources */,
 				22D3ABB419518748003DFCC9 /* Li_common.swift in Sources */,
 				22CA831419761A8000435381 /* TapPasswordView.m in Sources */,
-				2209A743194ABEC600DEA18B /* DiaryCell.swift in Sources */,
-				2273D63E194982AD00409B84 /* AppDelegate.swift in Sources */,
+				229B987A197B752900479586 /* DiaryListTableViewController.swift in Sources */,
 				22F443BC1971512E00A10A4D /* SignInViewController.swift in Sources */,
 				22F443BA1971292B00A10A4D /* UserDefault.swift in Sources */,
 				22004C1F1970E2F2000BA368 /* User.swift in Sources */,
 				22BDC3F8196E74BB0004F432 /* Li_ImageViewer.swift in Sources */,
+				229B987C197B752900479586 /* FaceCollectionViewController.swift in Sources */,
 				22CA831719761BFA00435381 /* PrivacySetViewController.swift in Sources */,
+				229B987E197B752900479586 /* WeatherCollectionViewController.swift in Sources */,
 				22004C221970E411000BA368 /* UserDao.swift in Sources */,
 				228D13B91952A1C500654855 /* DiaryDao.swift in Sources */,
 				22019D71196A3E7F002DE462 /* UIMenuBarItem.m in Sources */,
@@ -819,14 +819,14 @@
 				22004C2419710C6E000BA368 /* UserService.swift in Sources */,
 				22A624FE1973DADA0087E733 /* Set2TableViewCell.swift in Sources */,
 				22A624F71973D3060087E733 /* SetTableViewController.swift in Sources */,
+				229B986E197B749700479586 /* AppDelegate.swift in Sources */,
 				22004C2719710F0D000BA368 /* SignUpViewController.swift in Sources */,
 				2204EF00196C0CBD00E18F5B /* LIProgressHUD.m in Sources */,
-				224EC213196F65DF00E77638 /* WeatherCollectionViewController.swift in Sources */,
-				222D6D28196949E2009C4EC4 /* DiaryListTableViewController.swift in Sources */,
 				225A40BF1952C422008E0E00 /* DiaryService.swift in Sources */,
 				22CA831C1976217500435381 /* SwitchCell.swift in Sources */,
+				229B987D197B752900479586 /* MapViewController.m in Sources */,
+				229B987B197B752900479586 /* DiaryModefyViewController.swift in Sources */,
 				22004C2B19711192000BA368 /* EmailViewController.swift in Sources */,
-				22F34BCE196D33A300DB0C40 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
