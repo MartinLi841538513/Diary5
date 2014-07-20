@@ -540,7 +540,8 @@ class DiaryModefyViewController: UIViewController,UIActionSheetDelegate,UIMenuBa
         self.navigationController.pushViewController(mapViewController,animated:true)
         mapViewController.latitude = self.currentDiary().latitude as Double
         mapViewController.longitude = self.currentDiary().longitude as Double
-
+        mapViewController.address = self.currentDiary().address as NSString
+        println(self.currentDiary().address)
         println("双击进入地图模式")
     }
 
